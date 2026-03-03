@@ -24,7 +24,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <link href="{{asset('css/style.css')}}?v=<?php echo $version ?>" rel="stylesheet">
+    <link href="{{asset('css/styles.css')}}?v=<?php echo $version ?>" rel="stylesheet">
     <link href="{{asset('css/design.css')}}?v=<?php echo $version ?>" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
