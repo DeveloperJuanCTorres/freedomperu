@@ -113,21 +113,24 @@
 
 
 <!-- CATEGORÍAS -->
-<div class="swiper categorySwiper">
-    <div class="swiper-wrapper">
+<div class="container">
+    <div class="swiper categorySwiper py-4">
+        
+            <div class="swiper-wrapper">
 
-        @foreach($categories as $category)
-            <div class="swiper-slide">
-                <div class="category-card-pro">
-                    <img src="{{ asset('storage/'.$category->image) }}">
-                    <div class="category-info">
-                        <h5>{{ $category->name }}</h5>
+                @foreach($categories as $category)
+                    <div class="swiper-slide">
+                        <div class="category-card-pro">
+                            <img src="{{ asset('storage/'.$category->image) }}">
+                            <div class="category-info">
+                                <h5>{{ $category->name }}</h5>
+                            </div>
+                            <a href="{{ route('shop.index',['taxonomy'=>$category->slug]) }}"></a>
+                        </div>
                     </div>
-                    <a href="{{ route('shop.index',['taxonomy'=>$category->slug]) }}"></a>
-                </div>
-            </div>
-        @endforeach
+                @endforeach
 
+            </div>
     </div>
 </div>
 

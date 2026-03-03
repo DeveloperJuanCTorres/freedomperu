@@ -5,7 +5,8 @@
 
             <!-- MARCA -->
             <div class="col-lg-4 col-md-6 mb-4">
-                <h4 class="footer-logo"><span>POLO</span>LAB</h4>
+                <img width="70" src="images/logo-freedom.png" alt="">
+                <img width="150" src="images/freedom.png" alt="">
                 <p class="footer-text">
                     Creamos polos personalizados de alta calidad.
                     Diseña tu estilo, expresa tu identidad.
@@ -23,6 +24,7 @@
             <div class="col-lg-2 col-md-6 mb-4">
                 <h5>Explorar</h5>
                 <ul class="footer-links">
+                    <li><a href="{{ route('home') }}">Inicio</a></li>
                     <li><a href="{{ route('shop.index') }}">Tienda</a></li>
                     <li><a href="{{ route('design.index') }}">Personalizar</a></li>
                     <li><a href="#">Nosotros</a></li>

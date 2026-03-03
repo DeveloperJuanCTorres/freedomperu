@@ -36,6 +36,8 @@ Auth::routes();
 // Home → redirige a tienda
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/nosotros', [HomeController::class, 'about'])->name('about');
+
 // Listado productos
 Route::get('/tienda', [ShopController::class, 'index'])->name('shop.index');
 

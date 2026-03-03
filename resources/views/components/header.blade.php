@@ -7,9 +7,10 @@
         </a>
 
         <nav class="nav-desktop">
+            <a href="{{ route('home') }}">Inicio</a>
             <a href="{{ route('shop.index') }}">Tienda</a>
             <a href="{{ route('design.index') }}">Personalizar</a>
-            <a href="#">Nosotros</a>
+            <a href="{{ route('about') }}">Nosotros</a>
             <a href="#">Contacto</a>
         </nav>
 
@@ -30,8 +31,9 @@
 
 <div class="mobile-menu" id="mobileMenu">
     <div class="menu-overlay" id="menuOverlay"></div>
+    <a href="{{ route('home') }}">Inicio</a>
     <a href="{{ route('shop.index') }}">Tienda</a>
     <a href="{{ route('design.index') }}">Personalizar</a>
-    <a href="#">Nosotros</a>
+    <a href="{{ route('about') }}">Nosotros</a>
     <a href="#">Contacto</a>
 </div>

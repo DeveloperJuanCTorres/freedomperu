@@ -231,7 +231,7 @@
 }
 
 .cta-section {
-    background: #331E4F;
+    background: #f58634;
     color: white;
     padding: 80px 0;
 }
@@ -523,7 +523,7 @@ body.menu-open {
 
 /* FOOTER BASE */
 .main-footer {
-    background: #111;
+    background: #331E4F;
     color: #ccc;
     padding-top: 70px;
     font-size: 15px;
@@ -619,7 +619,7 @@ body.menu-open {
 
 /* BOTTOM */
 .footer-bottom {
-    background: #000;
+    background: #331E4F;
     padding: 20px 0;
     margin-top: 40px;
     font-size: 14px;
@@ -751,3 +751,50 @@ body.menu-open {
         grid-template-columns: 1fr;
     }
 }
+
+
+.about-hero h1 {
+    letter-spacing: 2px;
+}
+
+.about-page section {
+    position: relative;
+}
+
+/* Tarjetas con efecto PRO */
+.gradient-card {
+    transition: all 0.4s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border: none;
+}
+
+.gradient-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+}
+
+/* Gradientes modernos */
+
+.gradient-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.gradient-success {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+}
+
+.gradient-warning {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+}
+
+.gradient-info {
+    background: linear-gradient(135deg, #36d1dc, #5b86e5);
+}
+
+.gradient-danger {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+/* .bg-dark{
+    background-color: #331E4F !important;
+} */

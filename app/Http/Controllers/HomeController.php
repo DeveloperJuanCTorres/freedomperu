@@ -43,4 +43,15 @@ class HomeController extends Controller
             'banners'
         ));
     }
+
+    public function about()
+    {
+
+        $categories = Taxonomy::where('is_active', 1)
+                        ->get();
+
+        return view('pages.about', compact(
+            'categories'
+        ));
+    }
 }
