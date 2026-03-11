@@ -33,8 +33,6 @@
     </div>
 </section>
 
-
-
 <!-- DISEÑOS DESTACADOS -->
 <section class="featured-section py-5">
     <div class="container">
@@ -110,8 +108,6 @@
     </div>
 </section>
 
-
-
 <!-- CATEGORÍAS -->
 <div class="container">
     <div class="swiper categorySwiper py-4">
@@ -133,8 +129,6 @@
             </div>
     </div>
 </div>
-
-
 
 <!-- SECCIÓN CONFIANZA -->
 <section class="trust-section py-5">

@@ -19,7 +19,7 @@
     </section>
 
     <!-- QUIÉNES SOMOS -->
-    <section class="py-5">
+    <section class="py-5 bg-blue">
         <div class="container">
             <div class="row align-items-center">
                 
@@ -28,13 +28,13 @@
                 </div>
 
                 <div class="col-md-6">
-                    <h2 class="font-weight-bold mb-4">¿Quiénes Somos?</h2>
-                    <p class="text-muted">
+                    <h2 class="font-weight-bold mb-4 text-white">¿Quiénes Somos?</h2>
+                    <p class="text-white">
                         Somos una tienda especializada en la personalización de polos para eventos, empresas, 
                         emprendimientos y uso personal. Nos apasiona convertir tus ideas en diseños únicos 
                         con acabados de alta calidad.
                     </p>
-                    <p class="text-muted">
+                    <p class="text-white">
                         Trabajamos con materiales premium, impresión duradera y un sistema de personalización 
                         en línea que te permite diseñar tu propio polo fácilmente.
                     </p>
@@ -44,39 +44,9 @@
         </div>
     </section>
 
-    <!-- MISIÓN Y VISIÓN -->
-    <section class="bg-light py-5">
-        <div class="container">
-            <div class="row text-center">
-                
-                <div class="col-md-6 mb-4">
-                    <div class="gradient-card gradient-primary text-white p-5 rounded h-100">
-                        <i class="fas fa-bullseye fa-3x mb-4"></i>
-                        <h4 class="font-weight-bold">Nuestra Misión</h4>
-                        <p class="mt-3">
-                            Brindar productos personalizados de alta calidad que permitan a nuestros 
-                            clientes expresar su identidad y fortalecer su marca.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 mb-4">
-                    <div class="gradient-card gradient-success text-white p-5 rounded h-100">
-                        <i class="fas fa-eye fa-3x mb-4"></i>
-                        <h4 class="font-weight-bold">Nuestra Visión</h4>
-                        <p class="mt-3">
-                            Ser la tienda líder en personalización de polos en el mercado digital, 
-                            destacando por innovación, diseño y experiencia del cliente.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
+   
     <!-- VALORES -->
-    <section class="py-5">
+    <section class="bg-light py-5">
         <div class="container text-center">
             <h2 class="font-weight-bold mb-5">Nuestros Valores</h2>
             <div class="row">

@@ -798,3 +798,224 @@ body.menu-open {
 /* .bg-dark{
     background-color: #331E4F !important;
 } */
+
+
+
+.shop-banner img{
+width:100%;
+height:400px;
+object-fit:cover;
+}
+
+
+
+/* TAXONOMIES */
+
+.shop-taxonomies{
+
+background:#331E4F;
+padding:25px 0;
+overflow:hidden;
+
+}
+
+.taxonomy-scroll{
+
+display:flex;
+gap:40px;
+/* animation:scrollTax 40s linear infinite; */
+padding-left:40px;
+
+}
+
+.taxonomy-item{
+
+text-align:center;
+color:white;
+min-width:120px;
+text-decoration:none;
+transition:.3s;
+
+}
+
+.taxonomy-item:hover{
+
+transform:translateY(-5px);
+color:#ff4d4d;
+
+}
+
+.taxonomy-icon{
+
+width:70px;
+height:70px;
+margin:auto;
+border-radius:50%;
+overflow:hidden;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:5px;
+
+}
+
+.taxonomy-icon img{
+
+width:45px;
+
+}
+
+
+@keyframes scrollTax{
+
+0%{
+transform:translateX(0)
+}
+
+100%{
+transform:translateX(-50%)
+}
+
+}
+
+
+
+/* FILTROS */
+
+.filter-box{
+
+background:white;
+padding:20px;
+border-radius:8px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+
+}
+
+.filter-box h5{
+
+font-weight:700;
+margin-bottom:15px;
+
+}
+
+.filter-scroll{
+
+max-height:350px;
+overflow-y:auto;
+
+}
+
+.filter-item{
+
+display:block;
+margin-bottom:10px;
+cursor:pointer;
+
+}
+
+.filter-item input{
+
+margin-right:8px;
+
+}
+
+
+
+/* PRODUCTOS */
+
+.product-card{
+
+background:white;
+border-radius:10px;
+overflow:hidden;
+transition:.3s;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+
+}
+
+.product-card:hover{
+
+transform:translateY(-8px);
+box-shadow:0 15px 35px rgba(0,0,0,0.15);
+
+}
+
+.product-image{
+
+height:260px;
+background:#f6f6f6;
+display:flex;
+align-items:center;
+justify-content:center;
+
+}
+
+.product-image img{
+
+max-height:220px;
+
+}
+
+.product-info{
+
+padding:20px;
+text-align:center;
+
+}
+
+.product-info h6{
+
+font-weight:700;
+margin-bottom:10px;
+
+}
+
+
+
+/* COLORES */
+
+.product-colors{
+
+display:flex;
+justify-content:center;
+gap:8px;
+margin-bottom:15px;
+
+}
+
+.color-dot{
+
+width:18px;
+height:18px;
+border-radius:50%;
+border:2px solid white;
+box-shadow:0 0 3px rgba(0,0,0,0.4);
+
+}
+
+
+
+/* BOTON */
+
+.btn-buy{
+
+background:black;
+color:white;
+padding:8px 18px;
+border-radius:25px;
+text-decoration:none;
+transition:.3s;
+
+}
+
+.btn-buy:hover{
+
+background:#ff3b3b;
+color:white;
+
+}
+
+.bg-blue{
+    background-color: #35204a;
+}

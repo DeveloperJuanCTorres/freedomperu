@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Design;
 use App\Models\Product;
 use App\Models\Taxonomy;
 use Illuminate\Http\Request;
@@ -9,24 +10,29 @@ use Illuminate\Http\Request;
 class ShopController extends Controller
 {
     public function index(Request $request)
-    {
-        $query = Product::where('is_active', 1)
-            ->with(['variants', 'taxonomies']);
+    {        
+        $taxonomies = Taxonomy::all();
+        $designs = Design::all();
+        $products = Product::with(['taxonomies','designs']);
 
-        // Filtro por categoría (taxonomy)
         if ($request->taxonomy) {
-            $query->whereHas('taxonomies', function ($q) use ($request) {
-                $q->where('slug', $request->taxonomy);
+            $products->whereHas('taxonomies', function($q) use ($request){
+                $q->where('taxonomies.id', $request->taxonomy);
             });
         }
 
-        $products = $query->paginate(12);
+        if ($request->designs) {
+            $products->whereHas('designs', function($q) use ($request){
+                $q->whereIn('designs.id', $request->designs);
+            });
+        }
 
-        $taxonomies = Taxonomy::where('is_active', 1)
-            ->whereNull('parent_id')
-            ->with('children')
-            ->get();
+        $products = $products->paginate(9);
 
-        return view('shop.index', compact('products', 'taxonomies'));
+        return view('shop.index',compact(
+        'products',
+        'taxonomies',
+        'designs'
+        ));
     }
 }
