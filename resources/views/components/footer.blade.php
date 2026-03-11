@@ -60,8 +60,8 @@
     <!-- BOTTOM -->
     <div class="footer-bottom">
         <div class="container d-flex justify-content-between flex-wrap">
-            <p>© {{ date('Y') }} POLOLAB. Todos los derechos reservados.</p>
-            <p>Desarrollado con ❤️ en Perú</p>
+            <p>© {{ date('Y') }} FREEDOM. Todos los derechos reservados.</p>
+            <p>Desarrollado por <a target="_blank" href="https://grupotyg.pe"> Grupo TyG Ingenieros</a></p>
         </div>
     </div>
 

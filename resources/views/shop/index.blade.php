@@ -70,7 +70,7 @@
                                     endforeach
                                 </div> -->
                                 <a href="#" class="btn-buy">
-                                    Personalizar
+                                    Comprar
                                 </a>
                             </div>
                         </div>

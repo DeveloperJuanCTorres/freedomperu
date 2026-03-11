@@ -54,4 +54,10 @@ class HomeController extends Controller
             'categories'
         ));
     }
+
+    public function contact()
+    {
+
+        return view('pages.contact');
+    }
 }

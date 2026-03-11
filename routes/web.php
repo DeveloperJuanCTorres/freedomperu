@@ -38,6 +38,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/nosotros', [HomeController::class, 'about'])->name('about');
 
+Route::get('/contactanos', [HomeController::class, 'contact'])->name('contact');
+
 // Listado productos
 Route::get('/tienda', [ShopController::class, 'index'])->name('shop.index');
 

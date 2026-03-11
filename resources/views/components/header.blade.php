@@ -11,7 +11,7 @@
             <a href="{{ route('shop.index') }}">Tienda</a>
             <a href="{{ route('design.index') }}">Personalizar</a>
             <a href="{{ route('about') }}">Nosotros</a>
-            <a href="#">Contacto</a>
+            <a href="{{ route('contact') }}">Contacto</a>
         </nav>
 
         <div class="header-actions">
@@ -35,5 +35,5 @@
     <a href="{{ route('shop.index') }}">Tienda</a>
     <a href="{{ route('design.index') }}">Personalizar</a>
     <a href="{{ route('about') }}">Nosotros</a>
-    <a href="#">Contacto</a>
+    <a href="{{ route('contact') }}">Contacto</a>
 </div>
