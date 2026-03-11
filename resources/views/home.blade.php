@@ -33,6 +33,23 @@
     </div>
 </section>
 
+{{-- TAXONOMIES --}}
+<section class="shop-taxonomies">
+
+    <div class="taxonomy-scroll">
+
+        @foreach($categories as $taxonomy)
+        <a href="{{ route('shop.index',['taxonomy'=>$taxonomy->id]) }}"
+        class="taxonomy-item {{ request('taxonomy') == $taxonomy->id ? 'active' : '' }}">
+            <div class="taxonomy-icon">
+                <img src="{{ asset('storage/'.$taxonomy->image) }}">
+            </div>
+            <span>{{ $taxonomy->name }}</span>
+        </a>
+        @endforeach
+    </div>
+</section>
+
 <!-- DISEÑOS DESTACADOS -->
 <section class="featured-section py-5">
     <div class="container">
@@ -108,30 +125,9 @@
     </div>
 </section>
 
-<!-- CATEGORÍAS -->
-<div class="container">
-    <div class="swiper categorySwiper py-4">
-        
-            <div class="swiper-wrapper">
-
-                @foreach($categories as $category)
-                    <div class="swiper-slide">
-                        <div class="category-card-pro">
-                            <img src="{{ asset('storage/'.$category->image) }}">
-                            <div class="category-info">
-                                <h5>{{ $category->name }}</h5>
-                            </div>
-                            <a href="{{ route('shop.index',['taxonomy'=>$category->slug]) }}"></a>
-                        </div>
-                    </div>
-                @endforeach
-
-            </div>
-    </div>
-</div>
 
 <!-- SECCIÓN CONFIANZA -->
-<section class="trust-section py-5">
+<!-- <section class="trust-section py-5">
     <div class="container text-center">
         <div class="row">
             <div class="col-md-4">
@@ -158,7 +154,7 @@
             Comenzar Ahora
         </a>
     </div>
-</section>
+</section> -->
 
 @push('scripts')
 <script>
