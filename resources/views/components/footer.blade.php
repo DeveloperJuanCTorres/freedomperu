@@ -5,8 +5,7 @@
 
             <!-- MARCA -->
             <div class="col-lg-4 col-md-6 mb-4">
-                <img width="70" src="images/logo-freedom.png" alt="">
-                <img width="150" src="images/freedom.png" alt="">
+                <img width="250" src="images/logo.png" alt="">
                 <p class="footer-text">
                     Creamos polos personalizados de alta calidad.
                     Diseña tu estilo, expresa tu identidad.

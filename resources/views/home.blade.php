@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- HERO CAROUSEL -->
-<section class="hero-section" style="padding-top: 80px;">
+<section class="hero-section" style="padding-top: 70px;">
     <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
 

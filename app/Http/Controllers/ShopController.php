@@ -27,6 +27,17 @@ class ShopController extends Controller
             });
         }
 
+        if ($request->search) {
+
+            $products->where(function($q) use ($request){
+
+                $q->where('name','like','%'.$request->search.'%')
+                ->orWhere('description','like','%'.$request->search.'%');
+
+            });
+
+        }
+
         $products = $products->paginate(9);
 
         return view('shop.index',compact(
