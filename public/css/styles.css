@@ -1277,7 +1277,7 @@ border:1px solid #000;
     gap:20px;
     overflow-x:auto;
     scroll-behavior:smooth;
-    padding:10px 40px;
+    /* padding:10px 40px; */
 }
 
 .taxonomy-scroll::-webkit-scrollbar{
@@ -1292,6 +1292,7 @@ border:1px solid #000;
 
 .taxonomy-wrapper{
     position:relative;
+    padding:0 40px;
 }
 
 .scroll-btn{
