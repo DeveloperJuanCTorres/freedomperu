@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Design;
 use App\Models\Product;
+use App\Models\ShirtColor;
 use App\Models\Taxonomy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -36,11 +37,13 @@ class HomeController extends Controller
                         ->get();
 
         $banners = Banner::all();
+        $colors = ShirtColor::all();
 
         return view('home', compact(
             'products',
             'categories',
-            'banners'
+            'banners',
+            'colors'
         ));
     }
 
