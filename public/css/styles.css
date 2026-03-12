@@ -1292,7 +1292,6 @@ border:1px solid #000;
 
 .taxonomy-wrapper{
     position:relative;
-    padding:0 40px;
 }
 
 .scroll-btn{
@@ -1315,4 +1314,16 @@ border:1px solid #000;
 
 .scroll-btn.right{
     right:5px;
+}
+
+@media(max-width:768px){
+
+    .taxonomy-wrapper{
+        padding:0 10px;
+    }
+
+    .scroll-btn{
+        display:none;
+    }
+
 }
