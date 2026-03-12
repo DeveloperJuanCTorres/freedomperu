@@ -13,18 +13,35 @@
     {{-- TAXONOMIES --}}
     <section class="shop-taxonomies">
 
-        <div class="taxonomy-scroll">
+        <div class="taxonomy-wrapper">
 
-            @foreach($taxonomies as $taxonomy)
-            <a href="{{ route('shop.index',['taxonomy'=>$taxonomy->id]) }}"
-            class="taxonomy-item {{ request('taxonomy') == $taxonomy->id ? 'active' : '' }}">
-                <div class="taxonomy-icon">
-                    <img src="{{ asset('storage/'.$taxonomy->image) }}">
-                </div>
-                <span>{{ $taxonomy->name }}</span>
-            </a>
-            @endforeach
+            <button class="scroll-btn left" id="scrollLeft">
+                &#10094;
+            </button>
+
+            <div class="taxonomy-scroll" id="taxonomyScroll">
+
+                @foreach($taxonomies as $taxonomy)
+                <a href="{{ route('shop.index',['taxonomy'=>$taxonomy->id]) }}"
+                class="taxonomy-item {{ request('taxonomy') == $taxonomy->id ? 'active' : '' }}">
+                    
+                    <div class="taxonomy-icon">
+                        <img src="{{ asset('storage/'.$taxonomy->image) }}">
+                    </div>
+
+                    <span>{{ $taxonomy->name }}</span>
+
+                </a>
+                @endforeach
+
+            </div>
+
+            <button class="scroll-btn right" id="scrollRight">
+                &#10095;
+            </button>
+
         </div>
+
     </section>
 
     <section class="container container-fluid mt-4">
@@ -125,6 +142,23 @@
             let html = $(response).find('#productsGrid').html();
             $('#productsGrid').html(html);
         });
+    });
+
+
+
+
+    document.addEventListener("DOMContentLoaded", function(){
+
+        const scroll = document.getElementById("taxonomyScroll");
+
+        document.getElementById("scrollLeft").onclick = () => {
+            scroll.scrollBy({ left: -300, behavior: 'smooth' });
+        };
+
+        document.getElementById("scrollRight").onclick = () => {
+            scroll.scrollBy({ left: 300, behavior: 'smooth' });
+        };
+
     });
 </script>
 

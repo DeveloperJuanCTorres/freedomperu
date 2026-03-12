@@ -1271,3 +1271,47 @@ cursor:pointer;
 transform:scale(1.2);
 border:1px solid #000;
 }
+
+.taxonomy-scroll{
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    padding:10px 40px;
+}
+
+.taxonomy-scroll::-webkit-scrollbar{
+    display:none;
+}
+
+.taxonomy-item{
+    min-width:110px;
+    text-align:center;
+    flex-shrink:0;
+}
+
+.taxonomy-wrapper{
+    position:relative;
+}
+
+.scroll-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    border:none;
+    background:white;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+    cursor:pointer;
+    z-index:10;
+}
+
+.scroll-btn.left{
+    left:5px;
+}
+
+.scroll-btn.right{
+    right:5px;
+}
