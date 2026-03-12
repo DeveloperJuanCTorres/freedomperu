@@ -27,7 +27,7 @@
         </div>
     </section>
 
-    <section class="shop-container container-fluid mt-4">
+    <section class="container container-fluid mt-4">
 
         <div class="row">
             {{-- FILTROS --}}
