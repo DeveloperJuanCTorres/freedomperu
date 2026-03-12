@@ -1327,3 +1327,11 @@ border:1px solid #000;
     }
 
 }
+
+.taxonomy-scroll{
+    scroll-snap-type: x mandatory;
+}
+
+.taxonomy-item{
+    scroll-snap-align: start;
+}
