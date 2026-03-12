@@ -839,8 +839,11 @@ overflow:hidden;
 
 }
 
+
+
 .taxonomy-scroll{
     display:flex;
+    justify-content:center; 
     gap:20px;
     overflow-x:auto;
     scroll-behavior:smooth;
