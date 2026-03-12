@@ -964,7 +964,7 @@ box-shadow:0 15px 35px rgba(0,0,0,0.15);
 
 .product-image{
 
-height:260px;
+height:300px;
 background:#f6f6f6;
 display:flex;
 align-items:center;
@@ -1250,4 +1250,24 @@ transform: scale(1.05);
 transform: scale(1);
 }
 
+}
+
+
+.product-colors{
+display:flex;
+gap:6px;
+margin-top:10px;
+}
+
+.color-box{
+width:18px;
+height:18px;
+border-radius:3px;
+border:1px solid #ddd;
+cursor:pointer;
+}
+
+.color-box:hover{
+transform:scale(1.2);
+border:1px solid #000;
 }

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Design;
 use App\Models\Product;
+use App\Models\ShirtColor;
 use App\Models\Taxonomy;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -12,7 +14,8 @@ class ShopController extends Controller
     public function index(Request $request)
     {        
         $taxonomies = Taxonomy::all();
-        $designs = Design::all();
+        $designs = Type::all();
+        $colors = ShirtColor::all();
         $products = Product::with(['taxonomies','designs']);
 
         if ($request->taxonomy) {
@@ -43,7 +46,8 @@ class ShopController extends Controller
         return view('shop.index',compact(
         'products',
         'taxonomies',
-        'designs'
+        'designs',
+        'colors'
         ));
     }
 }

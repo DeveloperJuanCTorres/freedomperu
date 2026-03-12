@@ -43,4 +43,9 @@ class Product extends Model
     {
         return $this->hasMany(Design::class);
     }
+
+    public function types()
+    {
+        return $this->belongsTo(Type::class);
+    }
 }
