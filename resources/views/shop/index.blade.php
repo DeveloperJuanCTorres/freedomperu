@@ -15,10 +15,7 @@
 
         <div class="taxonomy-wrapper">
 
-            <button class="scroll-btn left" id="scrollLeft">
-                &#10094;
-            </button>
-
+           
             <div class="taxonomy-scroll" id="taxonomyScroll">
 
                 @foreach($taxonomies as $taxonomy)
@@ -36,10 +33,7 @@
 
             </div>
 
-            <button class="scroll-btn right" id="scrollRight">
-                &#10095;
-            </button>
-
+         
         </div>
 
     </section>
