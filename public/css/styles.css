@@ -840,13 +840,11 @@ overflow:hidden;
 }
 
 .taxonomy-scroll{
-
-display:flex;
-justify-content:center; 
-gap:40px;
-/* animation:scrollTax 40s linear infinite; */
-padding-left:40px;
-
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    padding:10px 20px;
 }
 
 .taxonomy-item{
