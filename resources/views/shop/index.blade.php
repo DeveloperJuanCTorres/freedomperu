@@ -189,7 +189,7 @@
 
                         design.set({
                             left: canvas.width / 2,
-                            top: canvas.height / 2,
+                            top: canvas.height / 2.6,
                             originX: 'center',
                             originY: 'center',
                             selectable:false,
