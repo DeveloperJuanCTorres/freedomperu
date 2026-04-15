@@ -68,23 +68,23 @@
             <div class="col-lg-9">
                 <div class="row" id="productsGrid">
                     @foreach($products as $product)
-                    <div class="col-lg-4 mb-4">
+                    <div class="col-lg-6 mb-4">
                         <div class="product-card">
 
                             <div class="product-image">
                                 @if($product->taxonomies->contains('name','Poleras'))
                                 <canvas 
                                     id="canvas-{{ $product->id }}" 
-                                    width="300" 
-                                    height="300"
+                                    width="400" 
+                                    height="500"
                                     data-image="{{ asset('images/polera_base_frontal.png') }}"
                                     data-design="{{ asset('storage/'.$product->image) }}">
                                 </canvas>
                                 @else
                                 <canvas 
                                     id="canvas-{{ $product->id }}" 
-                                    width="250" 
-                                    height="300"
+                                    width="400" 
+                                    height="500"
                                     data-image="{{ asset('images/polo_base_frontal.png') }}"
                                     data-design="{{ asset('storage/'.$product->image) }}">
                                 </canvas>
@@ -213,11 +213,11 @@
 
                     fabric.Image.fromURL(designPath,function(design){
 
-                        design.scaleToWidth(120);
+                        design.scaleToWidth(160);
 
                         design.set({
                             left: canvas.width / 2,
-                            top: canvas.height / 2.6,
+                            top: canvas.height / 3,
                             originX: 'center',
                             originY: 'center',
                             selectable:false,

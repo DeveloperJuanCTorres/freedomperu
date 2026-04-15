@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <!-- HERO CAROUSEL -->
 <section class="hero-section" style="padding-top: 70px;">
     <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -61,56 +62,56 @@
 
         <div class="row g-4">
             @foreach($products as $product)
-                    <div class="col-lg-3 mb-4">
-                        <div class="product-card">
+                <div class="col-lg-4 mb-4">
+                    <div class="product-card">
 
-                            <div class="product-image">
-                                @if($product->taxonomies->contains('name','Poleras'))
-                                <canvas 
-                                    id="canvas-{{ $product->id }}" 
-                                    width="300" 
-                                    height="300"
-                                    data-image="{{ asset('images/polera_base_frontal.png') }}"
-                                    data-design="{{ asset('storage/'.$product->image) }}">
-                                </canvas>
-                                @else
-                                <canvas 
-                                    id="canvas-{{ $product->id }}" 
-                                    width="250" 
-                                    height="300"
-                                    data-image="{{ asset('images/polo_base_frontal.png') }}"
-                                    data-design="{{ asset('storage/'.$product->image) }}">
-                                </canvas>
-                                @endif
+                        <div class="product-image">
+                            @if($product->taxonomies->contains('name','Poleras'))
+                            <canvas 
+                                id="canvas-{{ $product->id }}" 
+                                width="400" 
+                                height="500"
+                                data-image="{{ asset('images/polera_base_frontal.png') }}"
+                                data-design="{{ asset('storage/'.$product->image) }}">
+                            </canvas>
+                            @else
+                            <canvas 
+                                id="canvas-{{ $product->id }}" 
+                                width="400" 
+                                height="500"
+                                data-image="{{ asset('images/polo_base_frontal.png') }}"
+                                data-design="{{ asset('storage/'.$product->image) }}">
+                            </canvas>
+                            @endif
+                        </div>
+
+                        <div class="product-info">
+
+                            <h6>{{ $product->name }}</h6>
+
+                            {{-- COLORES --}}
+                            <div class="product-colors">
+                                @foreach($colors as $color)
+
+                                <span 
+                                    class="color-box"
+                                    style="background: {{ $color->hex_code }}"
+                                    data-color="{{ $color->hex_code }}"
+                                    data-product="{{ $product->id }}">
+                                </span>
+
+                                @endforeach
                             </div>
 
-                            <div class="product-info">
-
-                                <h6>{{ $product->name }}</h6>
-
-                                {{-- COLORES --}}
-                                <div class="product-colors">
-                                    @foreach($colors as $color)
-
-                                    <span 
-                                        class="color-box"
-                                        style="background: {{ $color->hex_code }}"
-                                        data-color="{{ $color->hex_code }}"
-                                        data-product="{{ $product->id }}">
-                                    </span>
-
-                                    @endforeach
-                                </div>
-
-                                <!-- <a href="#" class="btn-buy">
-                                    Comprar
-                                </a> -->
-
-                            </div>
+                            <!-- <a href="#" class="btn-buy">
+                                Comprar
+                            </a> -->
 
                         </div>
+
                     </div>
-                    @endforeach
+                </div>
+            @endforeach
         </div>
 
     </div>
@@ -194,6 +195,10 @@
         </a>
     </div>
 </section> -->
+
+
+
+
 
 @push('scripts')
 <script>
@@ -294,14 +299,14 @@ document.querySelectorAll('.color-options-pro span').forEach(el => {
 
                     fabric.Image.fromURL(designPath,function(design){
 
-                        design.scaleToWidth(120);
+                        design.scaleToWidth(150);
 
                         design.set({
                             left: canvas.width / 2,
-                            top: canvas.height / 2.6,
+                            top: canvas.height / 3,
                             originX: 'center',
                             originY: 'center',
-                            selectable:false,
+                            selectable:true,
                             evented:false
                         });
 
