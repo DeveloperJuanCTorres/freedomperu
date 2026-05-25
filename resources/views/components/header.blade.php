@@ -162,8 +162,8 @@
 
         <!-- Text -->
         <div class="floating-text d-none d-md-flex">
-            <span class="small-text">Tus diseños</span>
-            <span class="big-text">Personalizar</span>
+            <span class="small-text">Tus productos</span>
+            <span class="big-text">Carrito</span>
         </div>
 
     </div>
