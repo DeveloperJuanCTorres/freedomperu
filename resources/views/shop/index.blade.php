@@ -4,62 +4,178 @@
 
 @section('content')
 
-<!-- Hero Section -->
-<header class="store-hero py-5">
-    <div class="container-fluid px-lg-5 text-center">
-        <h1 class="display-4 font-headline fw-bolder text-primary mb-2">Colección Premium</h1>
-        <p class="text-muted lead mx-auto" style="max-width: 600px;">Descubre nuestra selección curada de prendas streetwear diseñadas con calidad de atelier.</p>
+<!-- FILTERS TOP -->
+<section class="shop-filters-section1 mb-3">
+
+    <div class="filters-wrapper1">
+
+        <!-- Categorías -->
+        <div class="mb-5">
+
+            <!-- <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <div>
+                    <h4 class="filters-title1 mb-1">
+                        Categorías
+                    </h4>
+                </div>
+
+            </div> -->
+
+            <!-- Scroll -->
+            <div class="categories-scroll1">
+
+                <!-- Categoria -->
+                <a href="#"
+                   class="category-card1 active">
+
+                    <div class="category-img1">
+
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80">
+
+                    </div>
+
+                    <span>Polos</span>
+
+                </a>
+
+                <!-- Categoria -->
+                <a href="#"
+                   class="category-card1">
+
+                    <div class="category-img1">
+
+                        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=500&q=80">
+
+                    </div>
+
+                    <span>Poleras</span>
+
+                </a>
+
+                <!-- Categoria -->
+                <a href="#"
+                   class="category-card1">
+
+                    <div class="category-img1">
+
+                        <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=500&q=80">
+
+                    </div>
+
+                    <span>Gorras</span>
+
+                </a>
+
+                <!-- Categoria -->
+                <a href="#"
+                   class="category-card1">
+
+                    <div class="category-img1">
+
+                        <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=500&q=80">
+
+                    </div>
+
+                    <span>Tomatodos</span>
+
+                </a>
+
+                <!-- Categoria -->
+                <a href="#"
+                   class="category-card1">
+
+                    <div class="category-img1">
+
+                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=500&q=80">
+
+                    </div>
+
+                    <span>Llaveros</span>
+
+                </a>
+
+                <!-- Categoria -->
+                <a href="#"
+                   class="category-card1">
+
+                    <div class="category-img1">
+
+                        <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=500&q=80">
+
+                    </div>
+
+                    <span>Gorras</span>
+
+                </a>                
+            </div>
+
+        </div>
+
+        <!-- ESTILOS -->
+        <div>
+
+            <!-- <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <div>
+                    <h4 class="filters-title1 mb-1">
+                        Estilos
+                    </h4>
+                </div>
+
+            </div> -->
+
+            <div class="styles-scroll">
+
+                <button class="style-tag active">
+                    Anime
+                </button>
+
+                <button class="style-tag">
+                    Videojuegos
+                </button>
+
+                <button class="style-tag">
+                    Minimalista
+                </button>
+
+                <button class="style-tag">
+                    Retro
+                </button>
+
+                <button class="style-tag">
+                    Streetwear
+                </button>
+
+                <button class="style-tag">
+                    Cyberpunk
+                </button>
+
+                <button class="style-tag">
+                    Urbano
+                </button>
+
+                <button class="style-tag">
+                    Cine & TV
+                </button>
+
+                
+
+            </div>
+
+        </div>
+
     </div>
-</header>
+
+</section>
+
 <!-- Main Content -->
 <div class="container-fluid px-lg-5 pb-5">
-    <div class="row">
-        <!-- Breadcrumb -->
-        <div class="col-12 mb-4">
-            <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '›';">
-                <ol class="breadcrumb text-uppercase small fw-bold mb-0">
-                    <li class="breadcrumb-item"><a class="text-decoration-none text-muted" href="#">FREEDOM</a></li>
-                    <li aria-current="page" class="breadcrumb-item active text-secondary">TIENDA</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
     <!-- Using align-items-flex-start on the row to allow sidebar sticky to work correctly -->
     <div class="row align-items-start">
-        <!-- Sidebar Filters -->
-        <aside class="col-lg-3 pe-lg-5">
-            <div class="card border-0 shadow-sm sticky-filter-card" style="border-radius: 1rem; background-color: rgb(255, 255, 255);">
-                <div class="card-body p-4">
-                    <div class="filter-section mb-5">
-                        <h5 class="font-headline fw-bold mb-4" style="font-size: 1rem; letter-spacing: 0.5px;">Categorías</h5>
-                        <div class="form-check mb-3"> <input class="form-check-input border-secondary" id="polos" type="checkbox" /> <label class="form-check-label ms-1" for="polos">Polos</label> </div>
-                        <div class="form-check mb-3"> <input checked="" class="form-check-input border-primary" id="poleras" type="checkbox" /> <label class="form-check-label fw-bold text-primary ms-1" for="poleras">Poleras</label> </div>
-                        <div class="form-check mb-3"> <input class="form-check-input border-secondary" id="llaveros" type="checkbox" /> <label class="form-check-label ms-1" for="llaveros">Llaveros</label> </div>
-                        <div class="form-check mb-3"> <input class="form-check-input border-secondary" id="gorras" type="checkbox" /> <label class="form-check-label ms-1" for="gorras">Gorras</label> </div>
-                        <div class="form-check mb-3"> <input class="form-check-input border-secondary" id="tomatodos" type="checkbox" /> <label class="form-check-label ms-1" for="tomatodos">Tomatodos</label> </div>
-                    </div>
-                    <div class="filter-section mb-5">
-                        <h5 class="font-headline fw-bold mb-4" style="font-size: 1rem; letter-spacing: 0.5px;">Estilos</h5>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="tag-filter active" style="border-radius: 50px; font-weight: 500; padding: 0.5rem 1.2rem;">Anime</span>
-                            <span class="tag-filter" style="border-radius: 50px; font-weight: 500; padding: 0.5rem 1.2rem;">Videojuegos</span>
-                            <span class="tag-filter" style="border-radius: 50px; font-weight: 500; padding: 0.5rem 1.2rem;">Cine &amp; TV</span>
-                            <span class="tag-filter" style="border-radius: 50px; font-weight: 500; padding: 0.5rem 1.2rem;">Minimalista</span>
-                            <span class="tag-filter" style="border-radius: 50px; font-weight: 500; padding: 0.5rem 1.2rem;">Retro</span>
-                        </div>
-                    </div>
-                    <div class="filter-section mb-2">
-                        <h5 class="font-headline fw-bold mb-4" style="font-size: 1rem; letter-spacing: 0.5px;">Precio</h5>
-                        <input class="form-range mb-3" id="priceRange" max="250" min="0" type="range" />
-                        <div class="d-flex justify-content-between small fw-bold text-muted text-uppercase" style="font-size: 0.7rem; letter-spacing: 1px;">
-                            <span>S/ 0</span> <span>S/ 250</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        
         <!-- Product Grid Column -->
-        <div class="col-lg-9">
+        <div class="col-lg-12">
             <!-- Grid Header -->
             <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
                 <span class="small text-muted">Mostrando <span class="fw-bold text-dark">24</span> productos</span>
@@ -73,7 +189,53 @@
                 </div>
             </div>
             <!-- Product Grid: exactly 3 cards per row on md+ -->
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
+                <!-- CUSTOM PRODUCT -->
+                <div class="col">
+
+                    <a href="{{ route('design.index') }}"
+                    class="text-decoration-none">
+
+                        <div class="custom-shop-card">
+
+                            <div class="custom-shop-image">
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80"
+                                    alt="Diseña tu producto">
+
+                                <div class="custom-shop-overlay">
+
+                                    <span class="custom-shop-badge">
+                                        FREEDOM STUDIO
+                                    </span>
+
+                                    <h3>
+                                        Diseña tu<br>
+                                        propio estilo
+                                    </h3>
+
+                                    <p>
+                                        Personaliza polos, poleras y accesorios
+                                        con tu creatividad.
+                                    </p>
+
+                                    <div class="custom-shop-btn">
+
+                                        Crear diseño
+                                        <i class="fas fa-arrow-right ms-2"></i>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
                 <!-- Product Card 1 -->
                 <div class="col">
                     <div class="product-card position-relative">
@@ -169,6 +331,60 @@
                             <h4 class="product-title fw-bold mb-2" style="font-size: 1rem; color: var(--primary-color);">Bespoke Moto Jacket</h4>
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="product-price fw-bold" style="color: var(--secondary-color); font-size: 1.1rem;">S/ 320.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 6 -->
+                <div class="col">
+                    <div class="product-card position-relative">
+                        <div class="product-image-wrapper mb-3 position-relative">
+                            <img alt="Essential Pack" class="img-fluid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5nHLnpGLAjKFJuLKNGlavR2gONN9cvAuvmmhrk9smiFKD7pwSPmC-bWGxs30JouHHkr9hfCblYcecSmwtcLV0DXx5PxoVoS6zpgPEiBChsg3JgD9RpVWm1zAFit22G1nX_LQuZkg8fUeuXgkKI3r4pNPWxgIxCgz9hDik9Ttp2Nzz5dQ3iwum3lCROTjARwpqEOTFo30UQVjDqcQ4zwH_PPA6VAByNp2mkPP5RAeWcMQk4elzOnrqhr32rvT1aStbClgfryBktg" />
+                            <button class="btn btn-primary position-absolute bottom-0 end-0 m-3 p-0 rounded-circle d-flex align-items-center justify-content-center shadow" style="width: 40px; height: 40px; background-color: var(--primary-color); border: none;">
+                                <i class="fas fa-shopping-bag text-white" style="font-size: 0.9rem;"></i>
+                            </button>
+                        </div>
+                        <div class="product-info">
+                            <p class="product-collection text-uppercase fw-bold mb-1" style="letter-spacing: 1px; font-size: 0.7rem;">Basic Collection</p>
+                            <h4 class="product-title fw-bold mb-2" style="font-size: 1rem; color: var(--primary-color);">Essential Pack (x3)</h4>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price fw-bold" style="color: var(--secondary-color); font-size: 1.1rem;">S/ 220.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 7 -->
+                <div class="col">
+                    <div class="product-card position-relative">
+                        <div class="product-image-wrapper mb-3 position-relative">
+                            <img alt="Matte Thermal Bottle" class="img-fluid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoKRt5gTlNwBTBNUfEIhOYs7J4u09hyCq75MmG5dBFUBZnx0H1srlz8CDmT16bDvd9PhDXCDQEgoziSXBispZeRaJqcXIOGj3HbSfV3vfJAlBUMx68TW7-DBhKScVSfUbtlcEupwk2pW0Qx9kuG_t3B5MYXVgM9Sx9jfGQ2egIHbueki51Dnkj7gAW8MJOa_PqBoGlmku6x7bQ9XNqvRh3G8wOCjOfhqbUQVHPcLqAYFqVLoNArlZ83YEn4XMqM5gJOr2icx9qBw" />
+                            <button class="btn btn-primary position-absolute bottom-0 end-0 m-3 p-0 rounded-circle d-flex align-items-center justify-content-center shadow" style="width: 40px; height: 40px; background-color: var(--primary-color); border: none;">
+                                <i class="fas fa-shopping-bag text-white" style="font-size: 0.9rem;"></i>
+                            </button>
+                        </div>
+                        <div class="product-info">
+                            <p class="product-collection text-uppercase fw-bold mb-1" style="letter-spacing: 1px; font-size: 0.7rem;">Accessories</p>
+                            <h4 class="product-title fw-bold mb-2" style="font-size: 1rem; color: var(--primary-color);">Matte Thermal Bottle</h4>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price fw-bold" style="color: var(--secondary-color); font-size: 1.1rem;">S/ 79.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 8 -->
+                <div class="col">
+                    <div class="product-card position-relative">
+                        <div class="product-image-wrapper mb-3 position-relative">
+                            <img alt="Sand Knit Sweater" class="img-fluid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA67YgvMHzGFRLkVZXKvysHd_MEQW6ijs34o83l5KFUZXFIdrhEXnQRbLp2Ik7rKXqvY20M88gZiXUUEg6x4WVNF75AvueCl3ri7pHwGbF_e1CmforJLAIYFEg3T3SSEj4hwZQMwSZZaKYb_dJMx3UlDfvkPmFgnrNJEoKqPl1TS315pXy0JNrvEAk4PWsPI9aKMhl3cxHl21ruz0teRPnEibPbQ_VjNJ9AMYhQQp4Cxq_LPGj6yEcUn3VyZDPPI_vgaSgQtob6Tw" />
+                            <button class="btn btn-primary position-absolute bottom-0 end-0 m-3 p-0 rounded-circle d-flex align-items-center justify-content-center shadow" style="width: 40px; height: 40px; background-color: var(--primary-color); border: none;">
+                                <i class="fas fa-shopping-bag text-white" style="font-size: 0.9rem;"></i>
+                            </button>
+                        </div>
+                        <div class="product-info">
+                            <p class="product-collection text-uppercase fw-bold mb-1" style="letter-spacing: 1px; font-size: 0.7rem;">Fall Collection</p>
+                            <h4 class="product-title fw-bold mb-2" style="font-size: 1rem; color: var(--primary-color);">Sand Knit Sweater</h4>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price fw-bold" style="color: var(--secondary-color); font-size: 1.1rem;">S/ 185.00</span>
                             </div>
                         </div>
                     </div>

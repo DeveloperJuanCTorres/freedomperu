@@ -12,7 +12,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <?php
-        $version = '1993.4.3';
+        $version = '1993.4.4';
     ?>
 
     <!-- Fonts -->
@@ -31,6 +31,7 @@
     
     <link href="{{asset('css/styles.css')}}?v=<?php echo $version ?>" rel="stylesheet">
     <link href="{{asset('css/navbar.css')}}?v=<?php echo $version ?>" rel="stylesheet">
+    <link href="{{asset('css/tienda.css')}}?v=<?php echo $version ?>" rel="stylesheet">
     <!-- <link href="{{asset('css/design.css')}}?v=<?php echo $version ?>" rel="stylesheet"> -->
     <!-- <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"> -->
 
