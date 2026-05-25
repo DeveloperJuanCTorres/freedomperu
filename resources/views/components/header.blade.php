@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg sticky-top py-3 custom-navbar-header">
+<nav class="navbar navbar-expand-lg sticky-top py-4 custom-navbar-header">
     <div class="container">
 
         <!-- Logo -->
