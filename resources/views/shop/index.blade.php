@@ -105,7 +105,7 @@
 
                     </div>
 
-                    <span>Gorras</span>
+                    <span>Pack</span>
 
                 </a>                
             </div>
