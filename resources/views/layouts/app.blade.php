@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     
     <link href="{{asset('css/styles.css')}}?v=<?php echo $version ?>" rel="stylesheet">
+    <link href="{{asset('css/navbar.css')}}?v=<?php echo $version ?>" rel="stylesheet">
     <!-- <link href="{{asset('css/design.css')}}?v=<?php echo $version ?>" rel="stylesheet"> -->
     <!-- <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"> -->
 

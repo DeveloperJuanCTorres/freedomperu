@@ -1,0 +1,511 @@
+/* =========================
+   NAVBAR
+========================= */
+
+.custom-navbar-header{
+    background: #331E4F !important;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0,0,0,.15);
+    transition: all .3s ease;
+    z-index: 999;
+}
+
+/* Logo */
+.custom-navbar-header .navbar-brand{
+    color: #fff;
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+}
+
+.custom-navbar-header .navbar-brand:hover{
+    color: #fff;
+}
+
+/* Links */
+.custom-navbar-header .nav-link{
+    color: rgba(255,255,255,.75);
+    font-weight: 500;
+    font-size: .95rem;
+    padding: .7rem 1rem !important;
+    border-radius: 12px;
+    transition: all .3s ease;
+    position: relative;
+}
+
+.custom-navbar-header .nav-link:hover{
+    color: #fff;
+    background: rgba(255,255,255,.08);
+}
+
+.custom-navbar-header .nav-link.active{
+    color: #fff;
+    background: rgba(255,255,255,.12);
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.navbar-search{
+    position: relative;
+    width: 260px;
+}
+
+.navbar-search i{
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,.65);
+    font-size: .9rem;
+    z-index: 1;
+}
+
+.navbar-search input{
+    width: 100%;
+    height: 48px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.08);
+    border-radius: 50px;
+    outline: none;
+    padding: 0 20px 0 48px;
+    color: #fff;
+    font-size: .92rem;
+    transition: all .3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.navbar-search input::placeholder{
+    color: rgba(255,255,255,.55);
+}
+
+.navbar-search input:focus{
+    border-color: rgba(255,255,255,.35);
+    background: rgba(255,255,255,.12);
+    box-shadow: 0 0 0 4px rgba(255,255,255,.08);
+}
+
+/* =========================
+   OFFCANVAS
+========================= */
+
+.custom-offcanvas{
+    background: #331E4F;
+    width: 300px;
+    border-right: 1px solid rgba(255,255,255,.08);
+}
+
+.custom-offcanvas .nav-link{
+    color: rgba(255,255,255,.78);
+    font-size: 1rem;
+    padding: .95rem 1rem !important;
+    border-radius: 14px;
+    transition: all .3s ease;
+}
+
+.custom-offcanvas .nav-link:hover{
+    background: rgba(255,255,255,.08);
+    color: #fff;
+    transform: translateX(4px);
+}
+
+.custom-offcanvas .nav-link.active{
+    background: rgba(255,255,255,.12);
+    color: #fff;
+}
+
+.mobile-search{
+    width: 100%;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 991px){
+
+    .custom-navbar-header{
+        padding-top: .9rem !important;
+        padding-bottom: .9rem !important;
+    }
+
+    .custom-navbar-header .navbar-brand{
+        font-size: 1.5rem;
+    }
+
+}
+
+
+
+
+
+
+/* =========================
+   FOOTER PREMIUM
+========================= */
+
+.footer-premium{
+    background: #f3f4f7;
+    position: relative;
+    overflow: hidden;
+    margin-top: 100px;
+    border-top: 1px solid rgba(51,30,79,.08);
+}
+
+/* Línea superior decorativa */
+.footer-premium::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        #331E4F,
+        #ffb689,
+        #331E4F
+    );
+}
+
+.footer-top{
+    padding-top: 90px;
+    padding-bottom: 70px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.footer-logo{
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #331E4F;
+    margin-bottom: 1.3rem;
+}
+
+.footer-description{
+    color: #6b7280;
+    line-height: 1.9;
+    font-size: .97rem;
+    max-width: 350px;
+}
+
+/* =========================
+   SOCIAL
+========================= */
+
+.footer-social{
+    display: flex;
+    gap: 14px;
+    margin-top: 2rem;
+}
+
+.footer-social a{
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #fff;
+    color: #331E4F;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1rem;
+
+    transition: all .35s ease;
+    box-shadow: 0 6px 20px rgba(0,0,0,.06);
+
+    text-decoration: none;
+}
+
+.footer-social a:hover{
+    background: #331E4F;
+    color: #fff;
+    transform: translateY(-4px);
+}
+
+/* =========================
+   TITLES
+========================= */
+
+.footer-title{
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #331E4F;
+    margin-bottom: 1.7rem;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+.footer-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li{
+    margin-bottom: 1rem;
+}
+
+.footer-list a{
+    color: #6b7280;
+    text-decoration: none;
+    transition: all .3s ease;
+    font-size: .95rem;
+}
+
+.footer-list a:hover{
+    color: #331E4F;
+    padding-left: 4px;
+}
+
+/* =========================
+   BOTTOM
+========================= */
+
+.footer-bottom{
+    border-top: 1px solid rgba(51,30,79,.08);
+    padding: 1.5rem 0;
+    background: rgba(255,255,255,.45);
+    backdrop-filter: blur(10px);
+}
+
+.footer-copy{
+    color: #6b7280;
+    font-size: .92rem;
+}
+
+/* Right */
+.footer-bottom-right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* Payments */
+.footer-payments{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.footer-payments i{
+    font-size: 1.8rem;
+    color: #7b7b7b;
+    transition: all .3s ease;
+}
+
+.footer-payments i:hover{
+    color: #331E4F;
+}
+
+/* Libro */
+.footer-book{
+    display: inline-flex;
+    align-items: center;
+
+    background: #331E4F;
+    color: #fff;
+
+    padding: .85rem 1.3rem;
+    border-radius: 50px;
+
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .92rem;
+
+    transition: all .35s ease;
+}
+
+.footer-book:hover{
+    background: #ffb689;
+    color: #331E4F;
+    transform: translateY(-3px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 991px){
+
+    .footer-top{
+        padding-top: 70px;
+        padding-bottom: 50px;
+    }
+
+    .footer-bottom-right{
+        justify-content: flex-start;
+    }
+
+}
+
+@media(max-width: 768px){
+
+    .footer-logo{
+        font-size: 1.7rem;
+    }
+
+    .footer-payments i{
+        font-size: 1.5rem;
+    }
+
+    .footer-book{
+        width: 100%;
+        justify-content: center;
+    }
+
+}
+
+
+
+/* =========================
+   FLOATING CUSTOM BUTTON
+========================= */
+
+.floating-custom-btn{
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    width: 70px;
+    height: 82px;
+
+    border: none;
+    z-index: 1050;
+
+    background: linear-gradient(
+        135deg,
+        #331E4F 0%,
+        #241238 100%
+    );
+
+    border-radius: 24px 0 0 24px;
+
+    box-shadow: 0 12px 35px rgba(51,30,79,.35);
+
+    transition: all .35s ease;
+    overflow: hidden;
+}
+
+/* Hover */
+.floating-custom-btn:hover{
+    width: 210px;
+    background: linear-gradient(
+        135deg,
+        #ffb689 0%,
+        #ffc9aa 100%
+    );
+
+    box-shadow: 0 18px 40px rgba(255,182,137,.35);
+}
+
+/* Content */
+.floating-custom-content{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    /* padding: 0 1.2rem; */
+    gap: 16px;
+}
+
+/* Icon wrapper */
+.floating-icon-wrapper{
+    position: relative;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icon */
+.floating-icon-wrapper i{
+    font-size: 1.8rem;
+    color: #fff;
+    transition: all .35s ease;
+}
+
+.floating-custom-btn:hover .floating-icon-wrapper i{
+    color: #331E4F;
+    transform: rotate(-8deg) scale(1.05);
+}
+
+/* Badge */
+.floating-badge{
+    position: absolute;
+    /* top: -4px; */
+    right: -8px;
+
+    width: 22px;
+    height: 22px;
+
+    border-radius: 50%;
+
+    background: #ff4d6d;
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: .72rem;
+    font-weight: 700;
+
+    border: 2px solid #fff;
+}
+
+/* Text */
+.floating-text{
+    flex-direction: column;
+    align-items: flex-start;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all .35s ease;
+    white-space: nowrap;
+}
+
+.floating-custom-btn:hover .floating-text{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.small-text{
+    font-size: .72rem;
+    color: rgba(51,30,79,.7);
+    font-weight: 600;
+}
+
+.big-text{
+    font-size: 1rem;
+    color: #331E4F;
+    font-weight: 800;
+    letter-spacing: .5px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 768px){
+
+    .floating-custom-btn{
+        width: 72px;
+        height: 72px;
+        border-radius: 22px 0 0 22px;
+    }
+
+    .floating-custom-btn:hover{
+        width: 72px;
+    }
+
+}

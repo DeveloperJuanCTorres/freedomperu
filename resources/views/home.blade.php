@@ -11,8 +11,15 @@
                 <span class="hero-tagline">Colección Atelier 2024</span>
                 <h1 class="hero-title text-white">Tu Libertad,<br /><span style="color: #ffb689;">Tu Diseño.</span></h1>
                 <div class="d-flex gap-3">
-                    <button class="btn btn-lg btn-dark px-5 py-3 rounded-1">Ver Colección</button>
-                    <button class="btn btn-lg btn-outline-light px-5 py-3 rounded-1">Saber Más</button>
+                    <a href="{{ route('shop.index') }}"
+                    class="btn btn-lg btn-hero-primary px-5 py-3">
+                        Ver Colección
+                    </a>
+
+                    <a href="{{ route('design.index') }}"
+                    class="btn btn-lg btn-hero-outline px-5 py-3">
+                        Personalizar
+                    </a>
                 </div>
             </div>
         </div>
@@ -20,9 +27,17 @@
             <img alt="Custom Apparel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACr5nwviZL0r4rJLb85BsTUCnSH-IUnmYxLchAof5hVyNHgI3aloo0w5nncou4N-hOidsvIqk39dLCqISLOQ80Ba1oRqUJOuGxVeeRLU4TkEH3YbE3ZMK7EOLASX5D5FerLJ09JAF6ZXiJeSVf_P2cb9j3nVOIIxGDa3ryUk2NQt86rmdkhWXX-sstCEcjrcOPKr3lZLhL11NsA3tBRQRB37fnH5J-VkWJtRp-LIYGgj9BcxI1a8_3l-RGnmVkW9hf4rW06IwDEQ" />
             <div class="carousel-caption">
                 <span class="hero-tagline">Esencia Urbana</span>
-                <h1 class="hero-title text-white">Crea sin límites</h1>
+                <h1 class="hero-title text-white">Crea sin <span style="color: #ffb689;">Límites.</span></h1>
                 <div class="d-flex gap-3">
-                    <button class="btn btn-lg btn-dark px-5 py-3 rounded-1">Personalizar</button>
+                    <a href="{{ route('shop.index') }}"
+                    class="btn btn-lg btn-hero-primary px-5 py-3">
+                        Ver Colección
+                    </a>
+
+                    <a href="{{ route('design.index') }}"
+                    class="btn btn-lg btn-hero-outline px-5 py-3">
+                        Personalizar
+                    </a>
                 </div>
             </div>
         </div>
@@ -37,8 +52,8 @@
 <!-- Categories -->
 <div class="container py-4">
     <div class="text-center mb-5 mt-4">
-        <h2 class="display-5 fw-bold mb-3">Explora Categorías</h2>
-        <p class="text-muted mx-auto" style="max-width: 600px;">Selecciona tu lienzo y comienza a crear una pieza única que hable de ti.</p>
+        <h2 class="display-5 fw-bold mb-3">Categorías</h2>
+        <p class="text-muted mx-auto" style="max-width: 600px;">Selecciona y crea una prenda única para tu look.</p>
     </div>
     <div class="row g-4">
         <div class="col-6 col-md-4 col-lg">
@@ -88,13 +103,59 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-end mb-5">
             <div>
-                <h2 class="display-6 mb-0">Productos Destacados</h2>
-                <p class="text-muted mt-2">La base perfecta para tu creatividad.</p>
+                <h2 class="display-6 fw-bold mb-0">Productos Destacados</h2>
+                <p class="text-muted mt-2">La base perfecta para tu estilo.</p>
             </div>
             <a class="text-decoration-none fw-bold" href="#" style="color: var(--secondary-color);">Ver todo <i class="fas fa-arrow-right ms-2"></i></a>
         </div>
     </div>
     <div class="row g-4 px-4">
+        <!-- CARD PERSONALIZAR -->
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+
+            <a href="{{ route('design.index') }}"
+            class="text-decoration-none">
+
+                <div class="product-card custom-design-card">
+
+                    <!-- Imagen -->
+                    <div class="product-img-container position-relative overflow-hidden">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80"
+                            alt="Personaliza tu polo"
+                            class="custom-product-img">
+
+                        <!-- Overlay -->
+                        <div class="custom-overlay">
+
+                            <span class="custom-badge">
+                                DISEÑA TU ESTILO
+                            </span>
+
+                            <h3 class="custom-title">
+                                Crea tu<br>
+                                propio diseño
+                            </h3>
+
+                            <p class="custom-text">
+                                Personaliza polos, poleras y más con tu identidad.
+                            </p>
+
+                            <div class="custom-btn">
+                                Personalizar Ahora
+                                <i class="fas fa-arrow-right ms-2"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+        </div>
         <!-- Product 1 -->
         <div class="col-12 col-sm-6 col-md-6 col-lg-4">
             <div class="product-card">
@@ -195,27 +256,6 @@
                 </div>
             </div>
         </div>
-        <!-- Product 6 -->
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-            <div class="product-card">
-                <div class="product-img-container">
-                    <img alt="Gorra Urban" id="img-prod-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4btxm6XSMNRzzK2N3D-6wwtoQjQgjMRywAw_vyIhxnKbkGLS96XBaA5o-Y1WTd8o3_lk5nvf3TErN_iY7VB6cQ_Tibe_7PFzqexltE0-eGDzHlwyAJsKIEHpD4uUNUoC4eSzxC1yc8PU-va3bJvjxEodZjmzXMOY_euHV4bOpa7I5x4BmF5NIxLaEz4Ezw9M7MJQ1Mc0YiWdNbymfsLyCFjUMx_OAq_X0JbN_pivCJRworO4SjddexHYZcI9-H4vZFkMgNzc4Pg" />
-                    <button class="btn-add-cart"><i class="fas fa-cart-plus"></i></button>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h3 class="h5 mb-1">Gorra Urban Craft</h3>
-                        <p class="text-muted small">Premium Canvas</p>
-                        <div class="mt-2">
-                            <span class="color-swatch" style="background-color: #000000;"></span>
-                            <span class="color-swatch" style="background-color: #ffffff;"></span>
-                            <span class="color-swatch" style="background-color: #f58634;"></span>
-                        </div>
-                    </div>
-                    <span class="fw-bold h5">S/ 55.00</span>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 <!-- Customization CTA -->
@@ -223,8 +263,8 @@
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
-                <h2 class="display-3 fw-bolder lh-1 mb-4">Diseña lo que <br /><span style="color: #ffb689; font-style: italic;">imaginas.</span></h2>
-                <p class="lead opacity-75 mb-5" style="max-width: 500px;">Nuestra herramienta de personalización 3D te permite visualizar cada detalle en tiempo real. Calidad de taller, diseño de autor.</p>
+                <h2 class="display-3 fw-bolder lh-1 mb-4">Diseña sin <br /><span style="color: #ffb689; font-style: italic;">límites.</span></h2>
+                <p class="lead opacity-75 mb-5" style="max-width: 500px;">Nuestra herramienta de personalización 3D te permite visualizar cada detalle en tiempo real de tu diseño.</p>
                 <div class="d-flex flex-column flex-md-row align-items-md-center gap-4">
                     <button class="btn btn-lg btn-warning fw-bold px-4 py-3 shadow-lg" style="background-color: var(--secondary-color); border: none; color: white;">
                         Diseñar Ahora <i class="fas fa-paint-brush ms-2"></i>

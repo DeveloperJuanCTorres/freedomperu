@@ -1,83 +1,173 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg sticky-top py-3">
+<nav class="navbar navbar-expand-lg sticky-top py-3 custom-navbar-header">
     <div class="container">
-        <a class="navbar-brand" href="#">FREEDOM</a>
-        <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
-            <span class="navbar-toggler-icon"></span>
+
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold" href="/">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40">
+        </a>
+
+        <!-- Mobile Button -->
+        <button class="navbar-toggler border-0 shadow-none"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#mobileMenu"
+                aria-controls="mobileMenu">
+            <i class="fas fa-bars text-white fs-3"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link {{ request()->routeIs('shop.*') ? 'active' : '' }}" href="{{ route('shop.index') }}">Tienda</a></li>
-                <li class="nav-item"><a class="nav-link {{ request()->routeIs('design.*') ? 'active' : '' }}" href="{{ route('design.index') }}">Personalizar</a></li>
-                <li class="nav-item"><a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">Nosotros</a></li>
-                <li class="nav-item"><a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contacto</a></li>
+
+        <!-- Desktop Menu -->
+        <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
+
+            <!-- Center Menu -->
+            <ul class="navbar-nav mx-auto gap-lg-2">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
+                       href="{{ route('home') }}">
+                        Inicio
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('shop.*') ? 'active' : '' }}"
+                       href="{{ route('shop.index') }}">
+                        Tienda
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('design.*') ? 'active' : '' }}"
+                       href="{{ route('design.index') }}">
+                        Personalizar
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
+                       href="{{ route('about') }}">
+                        Nosotros
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
+                       href="{{ route('contact') }}">
+                        Contacto
+                    </a>
+                </li>
             </ul>
-            <div class="d-flex align-items-center gap-4">
-                <div class="input-group input-group-sm" style="max-width: 200px;"><span class="input-group-text bg-light border-0 rounded-start-pill ps-3"><i class="fas fa-search text-muted"></i></span><input class="form-control bg-light border-0 rounded-end-pill py-2" placeholder="Buscar..." style="font-size: 0.85rem;" type="text" /></div>
+
+            <!-- Search -->
+            <div class="navbar-search">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar productos...">
             </div>
+
         </div>
     </div>
 </nav>
 
+<!-- Offcanvas Mobile -->
+<div class="offcanvas offcanvas-start custom-offcanvas"
+     tabindex="-1"
+     id="mobileMenu">
 
+    <div class="offcanvas-header border-bottom border-light border-opacity-10">
+        <h5 class="offcanvas-title fw-bold text-white">
+            FREEDOM
+        </h5>
 
-<!-- <header class="main-header">
-    <div class="container header-container">
+        <button type="button"
+                class="btn-close btn-close-white shadow-none"
+                data-bs-dismiss="offcanvas">
+        </button>
+    </div>
 
-        <a href="{{ route('home') }}" class="logo">
-            <img class="logo-img" width="200" src="images/logo.png" alt="">
-        </a>
+    <div class="offcanvas-body d-flex flex-column">
 
-        <nav class="nav-desktop">
-            <a class="{{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Inicio</a>
-            <a class="{{ request()->routeIs('shop.*') ? 'active' : '' }}" href="{{ route('shop.index') }}">Tienda</a>
-            <a class="{{ request()->routeIs('design.*') ? 'active' : '' }}" href="{{ route('design.index') }}">Personalizar</a>
-            <a class="{{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">Nosotros</a>
-            <a class="{{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contacto</a>
-        </nav>
-        <div class="nav-desktop">
-            <form action="{{ route('shop.index') }}" method="GET" class="header-search">
-                <input
-                    type="text"
-                    name="search"
-                    placeholder="Buscar polos o diseños..."
-                    value="{{ request('search') }}">
-
-                <button type="submit">
-                    <i class="bi bi-search"></i>
-                </button>
-
-            </form>
+        <!-- Search Mobile -->
+        <div class="navbar-search mobile-search mb-4">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Buscar productos...">
         </div>
 
-        <div class="header-actions">
-            <a href="{{ route('cart.index') }}" class="cart-icon text-white">
-                <i class="bi bi-bag"></i>
-                <span class="cart-count">{{ count(session('cart', [])) }}</span>
-            </a>
+        <!-- Mobile Menu -->
+        <ul class="navbar-nav gap-2">
 
-         
-            <div class="mobile-toggle" id="mobileToggle">
-                <i class="bi bi-list"></i>
-            </div>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
+                   href="{{ route('home') }}">
+                    <i class="fas fa-home me-2"></i> Inicio
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('shop.*') ? 'active' : '' }}"
+                   href="{{ route('shop.index') }}">
+                    <i class="fas fa-store me-2"></i> Tienda
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('design.*') ? 'active' : '' }}"
+                   href="{{ route('design.index') }}">
+                    <i class="fas fa-palette me-2"></i> Personalizar
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
+                   href="{{ route('about') }}">
+                    <i class="fas fa-users me-2"></i> Nosotros
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
+                   href="{{ route('contact') }}">
+                    <i class="fas fa-envelope me-2"></i> Contacto
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+</div>
+
+
+
+<!-- <button class="btn btn-primary position-fixed end-0 translate-middle-y shadow-lg d-flex align-items-center justify-content-center p-0" data-bs-target="#offcanvasCart" data-bs-toggle="offcanvas" style="top: 50%; width: 60px; height: 60px; border-radius: 20px 0 0 20px; z-index: 1050; background-color: #1f0a34; border: none;" type="button">
+    <div class="position-relative"><i class="fas fa-shopping-cart fs-4 text-white"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">2</span></div>
+</button> -->
+
+<!-- Floating Customizer Button -->
+<button
+    class="floating-custom-btn"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasCart">
+
+    <div class="floating-custom-content">
+
+        <!-- Icon -->
+        <div class="floating-icon-wrapper">
+
+            <i class="fas fa-shirt"></i>
+
+            <span class="floating-badge">
+                2
+            </span>
+
+        </div>
+
+        <!-- Text -->
+        <div class="floating-text d-none d-md-flex">
+            <span class="small-text">Tus diseños</span>
+            <span class="big-text">Personalizar</span>
         </div>
 
     </div>
-</header>
 
-<div class="mobile-menu" id="mobileMenu">
-    <div class="menu-overlay" id="menuOverlay"></div>
-    <a href="{{ route('home') }}">Inicio</a>
-    <a href="{{ route('shop.index') }}">Tienda</a>
-    <a href="{{ route('design.index') }}">Personalizar</a>
-    <a href="{{ route('about') }}">Nosotros</a>
-    <a href="{{ route('contact') }}">Contacto</a>
-</div> -->
-
-
-<button class="btn btn-primary position-fixed end-0 translate-middle-y shadow-lg d-flex align-items-center justify-content-center p-0" data-bs-target="#offcanvasCart" data-bs-toggle="offcanvas" style="top: 50%; width: 60px; height: 60px; border-radius: 20px 0 0 20px; z-index: 1050; background-color: #1f0a34; border: none;" type="button">
-    <div class="position-relative"><i class="fas fa-shopping-bag fs-4 text-white"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">2</span></div>
 </button>
 
 

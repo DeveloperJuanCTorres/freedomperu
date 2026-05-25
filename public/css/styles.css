@@ -1,5 +1,5 @@
     :root {
-        --primary-color: #1f0a34;
+        --primary-color: #331E4F;
         /* #35204A variation for brand */
         --secondary-color: #984800;
         /* #F58634 variation for brand */
@@ -26,7 +26,7 @@
     }
 
     /* Navbar */
-    .navbar {
+    /* .navbar {
         background-color: rgba(253, 248, 253, 0.8) !important;
         backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -54,7 +54,7 @@
 
     .nav-link:hover {
         color: var(--secondary-color) !important;
-    }
+    } */
 
     /* Hero Carousel */
     .carousel-item {
@@ -77,18 +77,175 @@
         right: 10%;
     }
 
-    .hero-title {
+    /* .hero-title {
         font-size: clamp(2.5rem, 8vw, 4.5rem);
         line-height: 1;
         margin-bottom: 1.5rem;
-    }
+    } */
 
-    .hero-tagline {
+    /* .hero-tagline {
         color: var(--secondary-color);
         letter-spacing: 4px;
         font-weight: 700;
         text-transform: uppercase;
+    } */
+
+    /* =========================
+   HERO CAROUSEL
+========================= */
+
+#heroCarousel{
+    position: relative;
+}
+
+#heroCarousel .carousel-item{
+    height: 92vh;
+    min-height: 650px;
+    position: relative;
+}
+
+#heroCarousel .carousel-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(.55);
+}
+
+/* Overlay elegante */
+#heroCarousel .carousel-item::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(20,10,35,.82) 0%,
+        rgba(20,10,35,.55) 35%,
+        rgba(20,10,35,.15) 100%
+    );
+    z-index: 1;
+}
+
+/* Caption */
+#heroCarousel .carousel-caption{
+    z-index: 2;
+    bottom: 50%;
+    transform: translateY(50%);
+    text-align: left;
+    left: 8%;
+    right: auto;
+    max-width: 650px;
+}
+
+/* Tagline */
+.hero-tagline{
+    display: inline-block;
+    color: #ffb689;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-size: .9rem;
+}
+
+/* Titulo */
+.hero-title{
+    font-size: clamp(3rem, 7vw, 5.8rem);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 2rem;
+}
+
+/* =========================
+   BOTONES PREMIUM
+========================= */
+
+/* Botón principal */
+.btn-hero-primary{
+    background: #ffb689;
+    color: #2a173f;
+    border: none;
+    border-radius: 60px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    transition: all .35s ease;
+    box-shadow: 0 10px 30px rgba(255,182,137,.28);
+}
+
+.btn-hero-primary:hover{
+    background: #ffc6a2;
+    color: #2a173f;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 35px rgba(255,182,137,.35);
+}
+
+/* Botón secundario */
+.btn-hero-outline{
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.25);
+    color: #fff;
+    border-radius: 60px;
+    backdrop-filter: blur(12px);
+    font-weight: 600;
+    transition: all .35s ease;
+}
+
+.btn-hero-outline:hover{
+    background: #ffffff;
+    color: #331E4F;
+    transform: translateY(-3px);
+}
+
+/* =========================
+   CONTROLES
+========================= */
+
+.carousel-control-prev,
+.carousel-control-next{
+    width: 6%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,.12);
+    backdrop-filter: blur(10px);
+    background-size: 45%;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 991px){
+
+    #heroCarousel .carousel-item{
+        height: 80vh;
+        min-height: 600px;
     }
+
+    #heroCarousel .carousel-caption{
+        left: 5%;
+        right: 5%;
+        bottom: 50%;
+        max-width: 100%;
+    }
+
+    .hero-title{
+        font-size: 3rem;
+    }
+
+    #heroCarousel .carousel-caption .d-flex{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #heroCarousel .carousel-caption .btn{
+        width: 100%;
+    }
+
+}
 
     /* Categories */
     .category-scroll {
@@ -210,7 +367,7 @@
     .custom-cta-section {
         background-color: var(--primary-color);
         color: white;
-        padding: 100px 0;
+        padding: 50px 0;
         overflow: hidden;
     }
 
@@ -400,6 +557,124 @@
 
 
 
+/* =========================
+   CARD PERSONALIZAR
+========================= */
 
+.custom-design-card{
+    border-radius: 28px;
+    overflow: hidden;
+    /* background: #fff; */
+    transition: all .4s ease;
+    height: 100%;
+    /* box-shadow: 0 10px 30px rgba(0,0,0,.08); */
+}
 
+.custom-design-card:hover{
+    transform: translateY(-10px);
+    /* box-shadow: 0 20px 50px rgba(0,0,0,.18); */
+}
 
+.custom-product-img{
+    width: 100%;
+    height: 580px;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.custom-design-card:hover .custom-product-img{
+    transform: scale(1.08);
+}
+
+/* Overlay oscuro elegante */
+.custom-overlay{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,.05) 0%,
+        rgba(15,10,25,.25) 30%,
+        rgba(20,10,35,.88) 100%
+    );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+}
+
+/* Badge */
+.custom-badge{
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(10px);
+    color: #ffb689;
+    padding: .55rem 1rem;
+    border-radius: 50px;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+/* Título */
+.custom-title{
+    color: #fff;
+    font-size: 2.3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+/* Texto */
+.custom-text{
+    color: rgba(255,255,255,.75);
+    font-size: .98rem;
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+}
+
+/* Botón */
+.custom-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+
+    background: #ffb689;
+    color: #331E4F;
+
+    padding: .95rem 1.5rem;
+    border-radius: 60px;
+
+    font-weight: 700;
+    transition: all .35s ease;
+}
+
+.custom-design-card:hover .custom-btn{
+    background: #ffd0b2;
+    transform: translateX(5px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 768px){
+
+    .custom-product-img{
+        height: 500px;
+    }
+
+    .custom-title{
+        font-size: 2rem;
+    }
+
+}
+
+/* =========================
+  END CARD PERSONALIZAR
+========================= */
