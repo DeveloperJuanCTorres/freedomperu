@@ -104,7 +104,7 @@
         <div class="d-flex justify-content-between align-items-end mb-5">
             <div>
                 <h2 class="display-6 fw-bold mb-0">Productos Destacados</h2>
-                <p class="text-muted mt-2">La base perfecta para tu estilo.</p>
+                <p class="text-muted mt-2">La base perfecta para crear tu estilo.</p>
             </div>
             <a class="text-decoration-none fw-bold" href="#" style="color: var(--secondary-color);">Ver todo <i class="fas fa-arrow-right ms-2"></i></a>
         </div>

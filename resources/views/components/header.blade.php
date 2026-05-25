@@ -73,9 +73,9 @@
      id="mobileMenu">
 
     <div class="offcanvas-header border-bottom border-light border-opacity-10">
-        <h5 class="offcanvas-title fw-bold text-white">
-            FREEDOM
-        </h5>
+        <a class="navbar-brand fw-bold" href="/">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40">
+        </a>
 
         <button type="button"
                 class="btn-close btn-close-white shadow-none"
