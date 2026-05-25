@@ -281,13 +281,13 @@
             </div>
             <div class="col-lg-6">
                 <div class="design-preview-container">
-                    <div class="floating-badge">
+                    <!-- <div class="floating-badge">
                         <div class="d-flex align-items-center gap-2 mb-1">
                             <span class="bg-success rounded-circle" style="width: 8px; height: 8px;"></span>
                             <span class="text-uppercase fw-bold" style="font-size: 0.6rem; letter-spacing: 1px;">En Vivo</span>
                         </div>
                         <span class="opacity-75">Cambiando color a: <span style="color: #ffb689;">Atelier Purple</span></span>
-                    </div>
+                    </div> -->
                     <div class="text-center position-relative">
                         <img alt="3D Customizer" class="img-fluid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1LoaOHovfArW3vANul0vvuxy2yvNmVASNU70KKosXCzfJ7HFafku7CxnDBgmu1Djq5QUeqlLdIxR6vx5BkQMJAd07HzYSH8c_2AMtVM1UrZhW5CweV8jP3RL3LfbX48Btm76Wdnb6oV4Dk8uTdwair2td6bYAkDZpVGNu7jKLOTqtUqUtn3vzPMIJJe3M-WFc6vUKIk_XdpOSQsSc_PIdd2wqshc0LjDqgOZd8S2noYWa8WAexvanIlgXbDhMUb-eCVb2ShO5Mg" />
                         <div class="position-absolute top-50 start-50 translate-middle border border-dashed border-warning opacity-50 rounded" style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center;">
