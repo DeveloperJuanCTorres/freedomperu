@@ -5,161 +5,142 @@
 @section('content')
 
 <!-- FILTERS TOP -->
-<section class="shop-filters-section1 mb-3">
+<!-- =========================================
+OFFCANVAS FILTERS
+========================================= -->
 
-    <div class="filters-wrapper1">
+<div class="offcanvas offcanvas-top filters-offcanvas"
+     tabindex="-1"
+     id="filtersOffcanvasTop">
 
-        <!-- Categorías -->
+    <div class="offcanvas-body px-lg-5 px-4">
+
+        <!-- CATEGORÍAS -->
+
         <div class="mb-5">
 
-            <!-- <div class="d-flex justify-content-between align-items-center mb-4">
+            <!-- <h4 class="filters-title1 mb-4">
+                Categorías
+            </h4> -->
 
-                <div>
-                    <h4 class="filters-title1 mb-1">
-                        Categorías
-                    </h4>
+            <div class="filters-centered-wrapper">
+
+                <div class="categories-scroll1">
+
+                    <a href="#"
+                       class="category-card1 active">
+
+                        <div class="category-img1">
+                            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80">
+                        </div>
+
+                        <span>Polos</span>
+
+                    </a>
+
+                    <a href="#"
+                       class="category-card1">
+
+                        <div class="category-img1">
+                            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=500&q=80">
+                        </div>
+
+                        <span>Poleras</span>
+
+                    </a>
+
+                    <a href="#"
+                       class="category-card1">
+
+                        <div class="category-img1">
+                            <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=500&q=80">
+                        </div>
+
+                        <span>Gorras</span>
+
+                    </a>
+
+                    <a href="#"
+                       class="category-card1">
+
+                        <div class="category-img1">
+                            <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=500&q=80">
+                        </div>
+
+                        <span>Tomatodos</span>
+
+                    </a>
+
+                    <a href="#"
+                       class="category-card1">
+
+                        <div class="category-img1">
+                            <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=500&q=80">
+                        </div>
+
+                        <span>Llaveros</span>
+
+                    </a>
+
                 </div>
 
-            </div> -->
-
-            <!-- Scroll -->
-            <div class="categories-scroll1">
-
-                <!-- Categoria -->
-                <a href="#"
-                   class="category-card1 active">
-
-                    <div class="category-img1">
-
-                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80">
-
-                    </div>
-
-                    <span>Polos</span>
-
-                </a>
-
-                <!-- Categoria -->
-                <a href="#"
-                   class="category-card1">
-
-                    <div class="category-img1">
-
-                        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=500&q=80">
-
-                    </div>
-
-                    <span>Poleras</span>
-
-                </a>
-
-                <!-- Categoria -->
-                <a href="#"
-                   class="category-card1">
-
-                    <div class="category-img1">
-
-                        <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=500&q=80">
-
-                    </div>
-
-                    <span>Gorras</span>
-
-                </a>
-
-                <!-- Categoria -->
-                <a href="#"
-                   class="category-card1">
-
-                    <div class="category-img1">
-
-                        <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=500&q=80">
-
-                    </div>
-
-                    <span>Tomatodos</span>
-
-                </a>
-
-                <!-- Categoria -->
-                <a href="#"
-                   class="category-card1">
-
-                    <div class="category-img1">
-
-                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=500&q=80">
-
-                    </div>
-
-                    <span>Llaveros</span>
-
-                </a>
-
-                <!-- Categoria -->
-                <a href="#"
-                   class="category-card1">
-
-                    <div class="category-img1">
-
-                        <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=500&q=80">
-
-                    </div>
-
-                    <span>Pack</span>
-
-                </a>                
             </div>
 
         </div>
 
         <!-- ESTILOS -->
+
         <div>
 
-            <!-- <div class="d-flex justify-content-between align-items-center mb-4">
+            <!-- <h4 class="filters-title1 mb-4">
+                Estilos
+            </h4> -->
 
-                <div>
-                    <h4 class="filters-title1 mb-1">
-                        Estilos
-                    </h4>
+            <div class="filters-centered-wrapper">
+
+                <div class="styles-scroll">
+
+                    <button class="style-tag active">
+                        Anime
+                    </button>
+
+                    <button class="style-tag">
+                        Videojuegos
+                    </button>
+
+                    <button class="style-tag">
+                        Minimalista
+                    </button>
+
+                    <button class="style-tag">
+                        Retro
+                    </button>
+
+                    <button class="style-tag">
+                        Streetwear
+                    </button>
+
+                    <button class="style-tag">
+                        Cyberpunk
+                    </button>
+
+                    <button class="style-tag">
+                        Urbano
+                    </button>
+
+                    <button class="style-tag">
+                        Cine & TV
+                    </button>
+
+                    <button class="style-tag">
+                        Manga
+                    </button>
+
+                    <button class="style-tag">
+                        Gamer
+                    </button>
+
                 </div>
-
-            </div> -->
-
-            <div class="styles-scroll">
-
-                <button class="style-tag active">
-                    Anime
-                </button>
-
-                <button class="style-tag">
-                    Videojuegos
-                </button>
-
-                <button class="style-tag">
-                    Minimalista
-                </button>
-
-                <button class="style-tag">
-                    Retro
-                </button>
-
-                <button class="style-tag">
-                    Streetwear
-                </button>
-
-                <button class="style-tag">
-                    Cyberpunk
-                </button>
-
-                <button class="style-tag">
-                    Urbano
-                </button>
-
-                <button class="style-tag">
-                    Cine & TV
-                </button>
-
-                
 
             </div>
 
@@ -167,10 +148,11 @@
 
     </div>
 
-</section>
+</div>
+
 
 <!-- Main Content -->
-<div class="container-fluid px-lg-5 pb-5">
+<div class="container-fluid px-lg-5 pb-5 pt-5">
     <!-- Using align-items-flex-start on the row to allow sidebar sticky to work correctly -->
     <div class="row align-items-start">
         
@@ -734,4 +716,20 @@
 </script>
 @endpush
 
+<!-- FLOATING FILTER BUTTON -->
+
+<button
+    class="floating-filter-btn"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#filtersOffcanvasTop">
+
+    <span class="filter-icon">
+        <i class="fas fa-sliders-h"></i>
+    </span>
+
+    <span class="filter-text">
+        Filtros
+    </span>
+
+</button>
 @endsection
