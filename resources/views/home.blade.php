@@ -135,9 +135,9 @@
                 <div class="product-img-container">
                     <canvas
                         id="canvas-product-{{ $product->id }}"
-                        width="600"
-                        height="700"
-                        class="product-canvas d-flex m-auto"
+                        width="2000"
+                        height="2600"
+                        class="product-canvas"
                         data-shirt="{{ asset('images/polo-base.png') }}"
                         data-design="{{ asset('storage/'.$product->image) }}">
                     </canvas>
@@ -234,14 +234,20 @@
 
             fabric.Image.fromURL(shirtPath, function(shirt) {
 
-                shirt.scaleToWidth(canvas.width);
+                 const scale = Math.min(
+                    canvas.width / shirt.width,
+                    canvas.height / shirt.height
+                );
+
+                shirt.scale(scale);
 
                 shirt.set({
-                    left: 0,
-                    top: 0,
-                    selectable: false,
-                    evented: false
+                    left: (canvas.width - shirt.getScaledWidth()) / 2,
+                    top: (canvas.height - shirt.getScaledHeight()) / 2,
+                    selectable:false,
+                    evented:false
                 });
+
 
                 // sombra suave
                 shirt.shadow = new fabric.Shadow({
