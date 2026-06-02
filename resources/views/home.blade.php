@@ -157,105 +157,45 @@
 
         </div>
         <!-- Product 1 -->
+         @foreach($products as $product)
         <div class="col-12 col-sm-6 col-md-6 col-lg-4">
             <div class="product-card">
                 <div class="product-img-container">
-                    <img alt="Polo Premium" id="img-prod-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0L9bvgUaYIfcRAi_1GCOvQGGHk57YDoE8Sm6i1jT3fZJGaAAwq7d8IqVz7lzBt0TqRjupHiqLBhlw3If0OXDpHVJ3nTgiTjezwsUqnMG3qMRK8H4IbWxTND_iR8y6xLp8MxXUiwbzJWZa5rtNoWWrE5Z47UIy0XoHNdakRPpOeVOuPCuG2GzGcplz1qP-sEXZUDDQnUWdUslJvJpeUc27D0X4mq-V5LrYNoGijN8d-jwLgXdfUq6XyHBQsFR3vKcRglV-vKBl6A" />
-                    <button class="btn-add-cart"><i class="fas fa-cart-plus"></i></button>
+                    <canvas
+                        id="canvas-product-{{ $product->id }}"
+                        width="400"
+                        height="500"
+                        class="product-canvas"
+                        data-shirt="{{ asset('images/polo-base.png') }}"
+                        data-design="{{ asset('storage/'.$product->image) }}">
+                    </canvas>
+
+                    <button class="btn-add-cart">
+                        <i class="fas fa-cart-plus"></i>
+                    </button>
+
                 </div>
                 <div class="d-flex justify-content-between">
                     <div>
-                        <h3 class="h5 mb-1">Polo Premium Atelier</h3>
-                        <p class="text-muted small">100% Algodón Pima</p>
+                        <h3 class="h5 mb-1">{{ $product->name }}</h3>
+                        <!-- <p class="text-muted small">{{ $product->description }}</p> -->
                         <div class="mt-2">
-                            <span class="color-swatch" onclick="changeImg('img-prod-1', 'https://lh3.googleusercontent.com/aida-public/AB6AXuD0L9bvgUaYIfcRAi_1GCOvQGGHk57YDoE8Sm6i1jT3fZJGaAAwq7d8IqVz7lzBt0TqRjupHiqLBhlw3If0OXDpHVJ3nTgiTjezwsUqnMG3qMRK8H4IbWxTND_iR8y6xLp8MxXUiwbzJWZa5rtNoWWrE5Z47UIy0XoHNdakRPpOeVOuPCuG2GzGcplz1qP-sEXZUDDQnUWdUslJvJpeUc27D0X4mq-V5LrYNoGijN8d-jwLgXdfUq6XyHBQsFR3vKcRglV-vKBl6A')" style="background-color: #ffffff;"></span>
-                            <span class="color-swatch" onclick="changeImg('img-prod-1', 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&amp;fit=crop&amp;q=80&amp;w=800')" style="background-color: #1f0a34;"></span>
-                            <span class="color-swatch" style="background-color: #984800;"></span>
+                            @foreach($colors as $color)
+
+                                <span
+                                    class="color-box"
+                                    style="background: {{ $color->hex_code }}"
+                                    data-product="{{ $product->id }}"
+                                    data-color="{{ $color->hex_code }}">
+                                </span>
+                            @endforeach
                         </div>
                     </div>
                     <span class="fw-bold h5">S/ 89.00</span>
                 </div>
             </div>
         </div>
-        <!-- Product 2 -->
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-            <div class="product-card">
-                <div class="product-img-container">
-                    <img alt="Polera Custom" id="img-prod-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACr5nwviZL0r4rJLb85BsTUCnSH-IUnmYxLchAof5hVyNHgI3aloo0w5nncou4N-hOidsvIqk39dLCqISLOQ80Ba1oRqUJOuGxVeeRLU4TkEH3YbE3ZMK7EOLASX5D5FerLJ09JAF6ZXiJeSVf_P2cb9j3nVOIIxGDa3ryUk2NQt86rmdkhWXX-sstCEcjrcOPKr3lZLhL11NsA3tBRQRB37fnH5J-VkWJtRp-LIYGgj9BcxI1a8_3l-RGnmVkW9hf4rW06IwDEQ" />
-                    <button class="btn-add-cart"><i class="fas fa-cart-plus"></i></button>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h3 class="h5 mb-1">Polera Oversize Custom</h3>
-                        <p class="text-muted small">Heavyweight Fleece</p>
-                        <div class="mt-2">
-                            <span class="color-swatch" style="background-color: #cbd5e1;"></span>
-                            <span class="color-swatch" style="background-color: #000000;"></span>
-                            <span class="color-swatch" style="background-color: #35204a;"></span>
-                        </div>
-                    </div>
-                    <span class="fw-bold h5">S/ 149.00</span>
-                </div>
-            </div>
-        </div>
-        <!-- Product 3 -->
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-            <div class="product-card">
-                <div class="product-img-container">
-                    <img alt="Gorra Urban" id="img-prod-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4btxm6XSMNRzzK2N3D-6wwtoQjQgjMRywAw_vyIhxnKbkGLS96XBaA5o-Y1WTd8o3_lk5nvf3TErN_iY7VB6cQ_Tibe_7PFzqexltE0-eGDzHlwyAJsKIEHpD4uUNUoC4eSzxC1yc8PU-va3bJvjxEodZjmzXMOY_euHV4bOpa7I5x4BmF5NIxLaEz4Ezw9M7MJQ1Mc0YiWdNbymfsLyCFjUMx_OAq_X0JbN_pivCJRworO4SjddexHYZcI9-H4vZFkMgNzc4Pg" />
-                    <button class="btn-add-cart"><i class="fas fa-cart-plus"></i></button>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h3 class="h5 mb-1">Gorra Urban Craft</h3>
-                        <p class="text-muted small">Premium Canvas</p>
-                        <div class="mt-2">
-                            <span class="color-swatch" style="background-color: #000000;"></span>
-                            <span class="color-swatch" style="background-color: #ffffff;"></span>
-                            <span class="color-swatch" style="background-color: #f58634;"></span>
-                        </div>
-                    </div>
-                    <span class="fw-bold h5">S/ 55.00</span>
-                </div>
-            </div>
-        </div>
-        <!-- Product 4 (Added for col-lg-3 layout) -->
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-            <div class="product-card">
-                <div class="product-img-container">
-                    <img alt="Tomatodo Custom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDscQ5ObCBJk4tp1mkmW_rXYPdsukmIu8m5LqPJrVWCvm8FLI8IbVQw6VB0IHIJO4gpnY5rg31yFEck6-DQT24q1vloj94a-MGw83KlmcGyuS7l6bwy1fXq7LaBYbSywVz6oill5EqdHl-Z2NZT3hIqu6bYYD_rQp6Vsm8_NYzDQZY5hOf_In0uoo02rkQPuuD4PQHB_bI4SVsTb0RbKYlhK-jHWvZG6AktLGTSuQDs04YmNkhh28g1f9FUvCi10A5uK051RBfdIw" />
-                    <button class="btn-add-cart"><i class="fas fa-cart-plus"></i></button>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h3 class="h5 mb-1">Tomatodo Freedom</h3>
-                        <p class="text-muted small">Acero Inoxidable</p>
-                    </div>
-                    <span class="fw-bold h5">S/ 45.00</span>
-                </div>
-            </div>
-        </div>
-        <!-- Product 5 -->
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-            <div class="product-card">
-                <div class="product-img-container">
-                    <img alt="Polera Custom" id="img-prod-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACr5nwviZL0r4rJLb85BsTUCnSH-IUnmYxLchAof5hVyNHgI3aloo0w5nncou4N-hOidsvIqk39dLCqISLOQ80Ba1oRqUJOuGxVeeRLU4TkEH3YbE3ZMK7EOLASX5D5FerLJ09JAF6ZXiJeSVf_P2cb9j3nVOIIxGDa3ryUk2NQt86rmdkhWXX-sstCEcjrcOPKr3lZLhL11NsA3tBRQRB37fnH5J-VkWJtRp-LIYGgj9BcxI1a8_3l-RGnmVkW9hf4rW06IwDEQ" />
-                    <button class="btn-add-cart"><i class="fas fa-cart-plus"></i></button>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h3 class="h5 mb-1">Polera Oversize Custom</h3>
-                        <p class="text-muted small">Heavyweight Fleece</p>
-                        <div class="mt-2">
-                            <span class="color-swatch" style="background-color: #cbd5e1;"></span>
-                            <span class="color-swatch" style="background-color: #000000;"></span>
-                            <span class="color-swatch" style="background-color: #35204a;"></span>
-                        </div>
-                    </div>
-                    <span class="fw-bold h5">S/ 149.00</span>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>
 <!-- Customization CTA -->
@@ -302,233 +242,27 @@
 
 
 
-
-<!-- HERO CAROUSEL -->
-<!-- <section class="hero-section" style="padding-top: 70px;">
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-inner">
-
-            @foreach($banners as $key => $banner)
-            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                <div class="hero-slide"
-                    style="background-image: url('{{ asset('storage/' . str_replace('\\', '/', $banner->image)) }}')">
-
-                    <div class="hero-overlay"></div>
-
-                    <div class="container hero-content">
-                        <h1>{{ $banner->title }}</h1>
-                        <p>{{ $banner->subtitle }}</p>
-
-                        @if($banner->button_link)
-                        <a href="{{ $banner->button_link }}" class="btn-hero">
-                            {{ $banner->button_text ?? 'Explorar' }}
-                        </a>
-                        @endif
-                    </div>
-
-                </div>
-            </div>
-            @endforeach
-
-        </div>
-    </div>
-</section> -->
-
-{{-- TAXONOMIES --}}
-<!-- <section class="shop-taxonomies">
-
-    <div class="taxonomy-scroll">
-
-        @foreach($categories as $taxonomy)
-        <a href="{{ route('shop.index',['taxonomy'=>$taxonomy->id]) }}"
-            class="taxonomy-item {{ request('taxonomy') == $taxonomy->id ? 'active' : '' }}">
-            <div class="taxonomy-icon">
-                <img src="{{ asset('storage/'.$taxonomy->image) }}">
-            </div>
-            <span>{{ $taxonomy->name }}</span>
-        </a>
-        @endforeach
-    </div>
-</section> -->
-
-<!-- DISEÑOS DESTACADOS -->
-<!-- <section class="featured-section py-5">
-    <div class="container">
-
-        <div class="section-header text-center">
-            <h2>Diseños Destacados</h2>
-            <p>Descubre nuestros diseños más populares</p>
-        </div>
-
-        <div class="row g-4">
-            @foreach($products as $product)
-            <div class="col-lg-4 mb-4">
-                <div class="product-card">
-
-                    <div class="product-image">
-                        @if($product->taxonomies->contains('name','Poleras'))
-                        <canvas
-                            id="canvas-{{ $product->id }}"
-                            width="420"
-                            height="520"
-                            style=" width: 100% !important; height: auto !important;"
-                            data-image="{{ asset('images/polera_base_frontal.png') }}"
-                            data-design="{{ asset('storage/'.$product->image) }}">
-                        </canvas>
-                        @else
-                        <canvas
-                            id="canvas-{{ $product->id }}"
-                            width="400"
-                            height="500"
-                            data-image="{{ asset('images/polo_base_frontal.png') }}"
-                            data-design="{{ asset('storage/'.$product->image) }}">
-                        </canvas>
-                        @endif
-                    </div>
-
-                    <div class="product-info">
-
-                        <h6>{{ $product->name }}</h6>
-
-                       
-                        <div class="product-colors">
-                            @foreach($colors as $color)
-
-                            <span
-                                class="color-box"
-                                style="background: {{ $color->hex_code }}"
-                                data-color="{{ $color->hex_code }}"
-                                data-product="{{ $product->id }}">
-                            </span>
-
-                            @endforeach
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            @endforeach
-        </div>
-
-    </div>
-</section> -->
-
-
-<!-- PERSONALIZA TU POLO PRO -->
-<!-- <section class="custom-section-pro">
-    <div class="container">
-        <div class="row align-items-center">
-
-            <div class="col-lg-6 text-center mb-5 mb-lg-0">
-                <div class="custom-preview-pro">
-                    <img id="shirtBase"
-                        src="{{ asset('images/shirt-base.png') }}"
-                        class="shirt-base">
-
-                    <img id="designOverlay"
-                        src="{{ asset('images/sample-design.png') }}"
-                        class="design-overlay">
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="custom-content-pro">
-                    <span class="badge-custom">Personalización Premium</span>
-
-                    <h2>Crea un Polo <br><strong>Único para Ti</strong></h2>
-
-                    <p>
-                        Elige colores, aplica diseños y visualiza tu creación
-                        en tiempo real con calidad profesional.
-                    </p>
-
-                    <div class="color-options-pro">
-                        <span data-color="#ffffff" style="background:#ffffff"></span>
-                        <span data-color="#000000" style="background:#000000"></span>
-                        <span data-color="#331E4F" style="background:#331E4F"></span>
-                        <span data-color="#C0392B" style="background:#C0392B"></span>
-                    </div>
-
-                    <a href="{{ route('design.index') }}" class="btn-custom-pro">
-                        Diseñar Ahora
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section> -->
-
-
 @push('scripts')
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", () => {
 
-        new Swiper(".categorySwiper", {
-            slidesPerView: 4,
-            spaceBetween: 25,
-            loop: true,
-            autoplay: {
-                delay: 3000
-            },
-            breakpoints: {
-                320: {
-                    slidesPerView: 1
-                },
-                768: {
-                    slidesPerView: 2
-                },
-                1024: {
-                    slidesPerView: 4
-                }
-            }
-        });
+        let products = {};
 
-        document.querySelectorAll('.color-options span').forEach(el => {
-            el.addEventListener('click', function() {
-                document.getElementById('shirtBase').style.backgroundColor =
-                    this.dataset.color;
-            });
-        });
+        document.querySelectorAll(".product-canvas").forEach(canvasElement => {
 
-    });
-</script>
+            const productId = canvasElement.id.replace('canvas-product-', '');
 
-<script>
-    document.querySelectorAll('.color-options-pro span').forEach(el => {
-        el.addEventListener('click', function() {
-
-            document.querySelectorAll('.color-options-pro span')
-                .forEach(s => s.style.border = '3px solid transparent');
-
-            this.style.border = '3px solid #fff';
-
-            document.getElementById('shirtBase').style.filter =
-                `drop-shadow(0 25px 40px rgba(0,0,0,0.4)) hue-rotate(0deg)`;
-
-        });
-    });
-</script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-
-        let canvases = {};
-
-        document.querySelectorAll("canvas[id^='canvas-']").forEach(canvasEl => {
-
-            let productId = canvasEl.id.replace("canvas-", "");
-            let canvas = new fabric.Canvas(canvasEl.id, {
-                selection: false
+            const canvas = new fabric.Canvas(canvasElement.id, {
+                selection: false,
+                enableRetinaScaling: true
             });
 
-            let shirtPath = canvasEl.dataset.image;
-            let designPath = canvasEl.dataset.design;
-
-            /* POLO BASE */
+            const shirtPath = canvasElement.dataset.shirt;
+            const designPath = canvasElement.dataset.design;
 
             fabric.Image.fromURL(shirtPath, function(shirt) {
+
+                shirt.scaleToWidth(canvas.width);
 
                 shirt.set({
                     left: 0,
@@ -537,21 +271,26 @@
                     evented: false
                 });
 
-                shirt.scaleToWidth(canvas.width);
+                // sombra suave
+                shirt.shadow = new fabric.Shadow({
+                    color: 'rgba(0,0,0,0.15)',
+                    blur: 20,
+                    offsetY: 8
+                });
 
                 canvas.add(shirt);
                 canvas.sendToBack(shirt);
 
-                /* ===== COLOR ALEATORIO ===== */
-
-                let colors = document.querySelectorAll(
+                // Color inicial aleatorio
+                const colors = document.querySelectorAll(
                     `.color-box[data-product="${productId}"]`
                 );
 
                 if (colors.length) {
 
-                    let randomIndex = Math.floor(Math.random() * colors.length);
-                    let randomColor = colors[randomIndex].dataset.color;
+                    const randomColor =
+                        colors[Math.floor(Math.random() * colors.length)]
+                        .dataset.color;
 
                     shirt.filters = [
                         new fabric.Image.filters.BlendColor({
@@ -564,56 +303,59 @@
                     shirt.applyFilters();
                 }
 
-                /* DISEÑO DEL PRODUCTO */
+                fabric.Image.fromURL(designPath, function(design) {
 
-                if (designPath) {
-
-                    fabric.Image.fromURL(designPath, function(design) {
-
-                        design.scaleToWidth(160);
-
-                        design.set({
-                            left: canvas.width / 2,
-                            top: canvas.height / 3.2,
-                            originX: 'center',
-                            originY: 'center',
-                            selectable: true,
-                            evented: false
-                        });
-
-                        canvas.add(design);
-                        canvas.bringToFront(design);
-
-                        canvas.renderAll();
-
+                    // importante para calidad
+                    design.set({
+                        objectCaching: false,
+                        selectable: false,
+                        evented: false,
+                        originX: 'center',
+                        originY: 'center'
                     });
 
-                }
+                    // tamaño proporcional
+                    design.scaleToWidth(canvas.width * 0.32);
 
-                canvases[productId] = {
-                    canvas: canvas,
-                    shirt: shirt
-                };
+                    design.set({
+                        left: canvas.width / 2,
+                        top: canvas.height * 0.42
+                    });
 
-                canvas.renderAll();
+                    canvas.add(design);
+                    canvas.bringToFront(design);
 
+                    canvas.renderAll();
+
+                    products[productId] = {
+                        canvas,
+                        shirt,
+                        design
+                    };
+
+                }, {
+                    crossOrigin: 'anonymous'
+                });
+
+            }, {
+                crossOrigin: 'anonymous'
             });
 
         });
 
-        /* CAMBIAR COLOR */
+        // Cambio de color
+        document.querySelectorAll(".color-box").forEach(colorBtn => {
 
-        document.querySelectorAll('.color-box').forEach(btn => {
+            colorBtn.addEventListener("click", function() {
 
-            btn.addEventListener('click', function() {
+                const productId = this.dataset.product;
+                const color = this.dataset.color;
 
-                let productId = this.dataset.product;
-                let color = this.dataset.color;
+                const item = products[productId];
 
-                let shirt = canvases[productId].shirt;
-                let canvas = canvases[productId].canvas;
+                if (!item) return;
 
-                shirt.filters = [
+                item.shirt.filters = [
                     new fabric.Image.filters.BlendColor({
                         color: color,
                         mode: 'multiply',
@@ -621,15 +363,17 @@
                     })
                 ];
 
-                shirt.applyFilters();
-                canvas.renderAll();
+                item.shirt.applyFilters();
 
+                item.canvas.renderAll();
             });
 
         });
 
     });
 </script>
+
+
 @endpush
 
 @endsection

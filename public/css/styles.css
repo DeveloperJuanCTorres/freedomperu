@@ -678,3 +678,86 @@
 /* =========================
   END CARD PERSONALIZAR
 ========================= */
+
+
+
+
+.product-canvas{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+.product-img-container{
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+    background:#f8f8f8;
+}
+
+.product-card:hover canvas{
+    transform:scale(1.03);
+}
+
+.product-card canvas{
+    transition:.4s ease;
+}
+
+
+.color-box{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    display:inline-block;
+    cursor:pointer;
+    margin-right:8px;
+    border:2px solid #e5e7eb;
+    transition:.3s;
+}
+
+.color-box:hover{
+    transform:scale(1.15);
+}
+
+.color-box[data-color="#ffffff"]{
+    border:2px solid #d1d5db;
+}
+
+
+.product-card{
+    background:#ffffff;
+    border:1px solid #f1f5f9;
+    border-radius:24px;
+    padding:20px;
+    transition:.35s ease;
+    height:100%;
+    overflow:hidden;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.08),
+        0 5px 15px rgba(0,0,0,.04);
+}
+
+
+.product-img-container{
+    background:linear-gradient(
+        180deg,
+        #fafafa 0%,
+        #f3f4f6 100%
+    );
+
+    border-radius:20px;
+
+    padding:20px;
+
+    margin-bottom:15px;
+
+    min-height:350px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}

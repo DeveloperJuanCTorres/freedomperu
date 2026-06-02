@@ -102,8 +102,8 @@
             overlay.addEventListener('click', closeMenu);
 
         });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/fabric@4.6.0/dist/fabric.min.js"></script> -->
+    </script>-->
+    <script src="https://cdn.jsdelivr.net/npm/fabric@4.6.0/dist/fabric.min.js"></script> 
     @stack('scripts')
 </body>
 </html>
