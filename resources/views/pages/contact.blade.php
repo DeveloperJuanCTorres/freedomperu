@@ -41,21 +41,7 @@
         color: var(--primary-color) !important;
     }
 
-    .nav-link {
-        font-weight: 500;
-        color: var(--on-surface-variant) !important;
-        margin: 0 15px;
-        transition: color 0.3s;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-        color: var(--primary-color) !important;
-    }
-
-    .nav-link.active {
-        border-bottom: 2px solid var(--secondary-color);
-    }
+  
 
     /* Hero Section */
     .hero-contact {

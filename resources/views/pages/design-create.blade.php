@@ -41,40 +41,7 @@
         font-weight: 800;
     }
 
-    /* Navbar Styling */
-    .navbar-freedom {
-        background: rgba(253, 248, 253, 0.8);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--outline-variant);
-        height: 80px;
-        z-index: 1050;
-    }
-
-    .navbar-brand {
-        font-family: 'Manrope', sans-serif;
-        font-weight: 900;
-        letter-spacing: -1px;
-        color: var(--primary) !important;
-        text-transform: uppercase;
-    }
-
-    .nav-link {
-        font-weight: 600;
-        color: var(--on-surface-variant) !important;
-        margin: 0 1rem;
-        transition: color 0.3s ease;
-        font-size: 0.9rem;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-        color: var(--primary) !important;
-    }
-
-    .nav-link.active {
-        border-bottom: 2px solid var(--secondary);
-    }
-
+   
     .search-container {
         background: var(--surface-container-high);
         border-radius: 50px;

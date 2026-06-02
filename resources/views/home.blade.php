@@ -56,46 +56,18 @@
         <p class="text-muted mx-auto" style="max-width: 600px;">Selecciona y crea una prenda única para tu look.</p>
     </div>
     <div class="row g-4">
+        @foreach($categories as $category)
         <div class="col-6 col-md-4 col-lg">
-            <div class="category-card position-relative overflow-hidden rounded-4 shadow-sm h-100" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; aspect-ratio: 3/4;"><img alt="Polos" class="w-100 h-100 object-fit-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtrGB7_Ge8FI0z_3Med6ldRIkIaizkCAWIzUKoN_56iKyrjlLzVSIkHJ0P2gx7rMu7D_VWnTltBdrTtTQTfJQS-hWsJzc20_xPQYuMCoqmXmyYrWxAotq9vw44HzLX9sIEVetwPc0qZszIBcYnkkWQrfJIc6XefqiuHKrkyC0F1Rmz5KE_f1vxm_ZgKrkw1JMGA2Z3keT0itO3gZt7jK-JucgV5ei3ObviEvpPTZZWZAAt-gteSB40okl9OEf3jzXPzOjMpdXTPg" />
+            <div class="category-card position-relative overflow-hidden rounded-4 shadow-sm h-100" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; aspect-ratio: 3/4;">
+                <img alt="{{ $category->name }}" class="w-100 h-100 object-fit-cover" src="{{ asset('storage/' . $category->image) }}" />
                 <div class="position-absolute bottom-0 start-0 end-0 p-4 bg-black bg-opacity-10 backdrop-blur-md" style="backdrop-filter: blur(10px); background: linear-gradient(transparent, rgba(0,0,0,0.7));">
-                    <h4 class="text-white h5 mb-0 fw-bold">Polos</h4>
+                    <h4 class="text-white h5 mb-0 fw-bold">{{ $category->name }}</h4>
                     <p class="text-white-50 small mb-0">Esenciales Premium</p>
                 </div>
             </div>
         </div>
-        <div class="col-6 col-md-4 col-lg">
-            <div class="category-card position-relative overflow-hidden rounded-4 shadow-sm h-100" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; aspect-ratio: 3/4;"><img alt="Poleras" class="w-100 h-100 object-fit-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCtveXnM3Y__m8DhfbGxbE8k59T8hVFCcdiVxjIt0tq1UcAilJ_WjCqJUt7sjSJzSWHi-JCoWmXK3eH6lY_iD5pPqB3KWHMqOV5BFxdWoMv_bRv9QGFCFgpOJHB8KqYlRLCt7JuDTApnSIFYagLs_OHG26JddTKF4dwsE-ICTU4Ym-Z753ghmaM8Y41rm7MbHS3QjmC5fxa0mfk8X1Zf3zWdfN7ibSjPWO1JsDpZy5-f9_aCi5IxE-ZlQXaLjlonHLL3rBS3q8Wg" />
-                <div class="position-absolute bottom-0 start-0 end-0 p-4 bg-black bg-opacity-10 backdrop-blur-md" style="backdrop-filter: blur(10px); background: linear-gradient(transparent, rgba(0,0,0,0.7));">
-                    <h4 class="text-white h5 mb-0 fw-bold">Poleras</h4>
-                    <p class="text-white-50 small mb-0">Fleece &amp; Confort</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg">
-            <div class="category-card position-relative overflow-hidden rounded-4 shadow-sm h-100" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; aspect-ratio: 3/4;"><img alt="Llaveros" class="w-100 h-100 object-fit-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZu5gfHQqzu0O4S8U389XvbitfrK4Vp_w95V0Lra9ZA5FePswf1nTOeZzq-AkLp3D4ycFIycayXJiEj2s1rhzvQbmPkLf4Aec5JQi8QRI4rGwfm-scZ7bohzZG1KgCI2Q96pcypkqsV7UssW1nDF30nbrZRV7GftRuuCoQdDxe_iN7SZ4sYC7lw16ISZMVVGrfLocejCA_fiZZnH3zGM4LyiokVpvEl3hgAd-nXeAnCqabuOLz6C1KNGUR1zzE71LeOf7JcqG2Eg" />
-                <div class="position-absolute bottom-0 start-0 end-0 p-4 bg-black bg-opacity-10 backdrop-blur-md" style="backdrop-filter: blur(10px); background: linear-gradient(transparent, rgba(0,0,0,0.7));">
-                    <h4 class="text-white h5 mb-0 fw-bold">Llaveros</h4>
-                    <p class="text-white-50 small mb-0">Accesorios Únicos</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg">
-            <div class="category-card position-relative overflow-hidden rounded-4 shadow-sm h-100" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; aspect-ratio: 3/4;"><img alt="Gorras" class="w-100 h-100 object-fit-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE-lI9RbKaCTaT94dkj8J6u3VAQ8Tm-6KjhNm2qgDa3eIIlBCI9ypcIE0iAPVkGuqjIqjpuGWueMcz8-00I3JS8VIOEfudY6djTnqQSC5AMoAa4sfPWT5C55ekREVd1DmFCUhwayd5kKL0xq7wu2TOelvwzRCZAMrVUiPoQZbJV03kvI68clhVd7jqDJGy7_x6lXhlwI_whOdj3x8vrgOyCRbRhD5EJJZveuVCq2VAFBNhRDiTFtcG107vAaeVBKjPjLX4ux4N_g" />
-                <div class="position-absolute bottom-0 start-0 end-0 p-4 bg-black bg-opacity-10 backdrop-blur-md" style="backdrop-filter: blur(10px); background: linear-gradient(transparent, rgba(0,0,0,0.7));">
-                    <h4 class="text-white h5 mb-0 fw-bold">Gorras</h4>
-                    <p class="text-white-50 small mb-0">Streetwear Craft</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg">
-            <div class="category-card position-relative overflow-hidden rounded-4 shadow-sm h-100" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; aspect-ratio: 3/4;"><img alt="Tomatodo" class="w-100 h-100 object-fit-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDscQ5ObCBJk4tp1mkmW_rXYPdsukmIu8m5LqPJrVWCvm8FLI8IbVQw6VB0IHIJO4gpnY5rg31yFEck6-DQT24q1vloj94a-MGw83KlmcGyuS7l6bwy1fXq7LaBYbSywVz6oill5EqdHl-Z2NZT3hIqu6bYYD_rQp6Vsm8_NYzDQZY5hOf_In0uoo02rkQPuuD4PQHB_bI4SVsTb0RbKYlhK-jHWvZG6AktLGTSuQDs04YmNkhh28g1f9FUvCi10A5uK051RBfdIw" />
-                <div class="position-absolute bottom-0 start-0 end-0 p-4 bg-black bg-opacity-10 backdrop-blur-md" style="backdrop-filter: blur(10px); background: linear-gradient(transparent, rgba(0,0,0,0.7));">
-                    <h4 class="text-white h5 mb-0 fw-bold">Tomatodo</h4>
-                    <p class="text-white-50 small mb-0">Estilo &amp; Hidratación</p>
-                </div>
-            </div>
-        </div>
+        @endforeach
+        
     </div>
 </div>
 <!-- Full-Width Featured Products Section -->

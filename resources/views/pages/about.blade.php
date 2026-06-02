@@ -34,30 +34,6 @@
         letter-spacing: -0.02em
     }
 
-    /* Navbar Custom Styles */
-    .navbar {
-        background-color: rgba(253, 248, 253, 0.98);
-        backdrop-filter: blur(10px);
-        padding: 1rem 0;
-        transition: var(--transition-smooth);
-        z-index: 1050;
-        border-bottom: 1px solid var(--outline-variant)
-    }
-
-    .navbar-brand {
-        font-family: "Manrope", sans-serif;
-        font-weight: 900;
-        letter-spacing: 0.25em;
-        color: var(--primary) !important;
-        text-transform: uppercase
-    }
-
- 
-
-    .nav-link:hover,
-    .nav-link.active {
-        color: var(--secondary) !important
-    }
 
     /* Hero Section */
     .hero-section {
