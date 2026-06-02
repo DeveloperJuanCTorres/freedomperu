@@ -138,7 +138,7 @@
                         width="2000"
                         height="2600"
                         class="product-canvas"
-                        data-shirt="{{ asset('images/polo-base.png') }}"
+                        data-shirt="{{ asset('images/polo_base_frontal.png') }}"
                         data-design="{{ asset('storage/'.$product->image) }}">
                     </canvas>
 
@@ -293,11 +293,11 @@
                     });
 
                     // tamaño proporcional
-                    design.scaleToWidth(canvas.width * 0.32);
+                    design.scaleToWidth(canvas.width * 0.49);
 
                     design.set({
                         left: canvas.width / 2,
-                        top: canvas.height * 0.42
+                        top: canvas.height * 0.45
                     });
 
                     canvas.add(design);
