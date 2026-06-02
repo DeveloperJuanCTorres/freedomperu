@@ -135,9 +135,9 @@
                 <div class="product-img-container">
                     <canvas
                         id="canvas-product-{{ $product->id }}"
-                        width="400"
-                        height="500"
-                        class="product-canvas"
+                        width="600"
+                        height="700"
+                        class="product-canvas d-flex m-auto"
                         data-shirt="{{ asset('images/polo-base.png') }}"
                         data-design="{{ asset('storage/'.$product->image) }}">
                     </canvas>
