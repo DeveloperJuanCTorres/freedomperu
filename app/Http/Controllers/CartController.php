@@ -8,7 +8,7 @@ use App\Models\ProductVariant;
 use App\Models\ShirtColor;
 use App\Models\Taxonomy;
 use Illuminate\Http\Request;
-use Darryldecode\Cart\Facades\CartFacade as Cart;
+use Cart;
 
 class CartController extends Controller
 {
