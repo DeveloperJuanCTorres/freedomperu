@@ -3,66 +3,103 @@
 namespace App\Http\Controllers;
 
 use App\Models\Design;
+use App\Models\Product;
 use App\Models\ProductVariant;
+use App\Models\ShirtColor;
+use App\Models\Taxonomy;
 use Illuminate\Http\Request;
+use Darryldecode\Cart\Facades\CartFacade as Cart;
 
 class CartController extends Controller
 {
     public function index()
     {
         $cart = session()->get('cart', []);
-        return view('cart.index', compact('cart'));
+        $products = Product::where('is_active', 1)
+                    ->latest()
+                    ->get();
+
+        $categories = Taxonomy::where('is_active', 1)
+                        ->get();
+
+        $colors = ShirtColor::all();
+        return view('cart.index', compact('cart', 'products', 'categories', 'colors'));
     }
 
     public function add(Request $request)
     {
-        $variant = ProductVariant::findOrFail($request->product_variant_id);
+        try {           
+        
+            $request->validate([
+                'product_id' => 'required|exists:products,id',
+                'color_id'   => 'required|exists:shirt_colors,id',
+            ]);
 
-        $design = null;
-        if ($request->design_id) {
-            $design = Design::find($request->design_id);
+            $product = Product::findOrFail($request->product_id);
+
+            // Se usa una combinación producto-color para que sean ítems diferentes
+            $cartId = $product->id . '-' . $request->color_id;
+
+            if (Cart::get($cartId)) {
+
+                Cart::update($cartId, [
+                    'quantity' => [
+                        'relative' => true,
+                        'value' => 1
+                    ]
+                ]);
+
+            } else {
+                $color = ShirtColor::findOrFail($request->color_id);
+
+                Cart::add([
+                    'id' => $cartId,
+                    'name' => $product->name,
+                    'price' => $product->base_price,
+                    'quantity' => 1,
+                    'attributes' => [
+                        'product_id' => $product->id,
+                        'color_id'   => $color->id,
+                        'color'      => $color->hex_code,
+                        'color_name' => $color->name,
+                        'image'      => $product->image,
+                    ]
+                ]);
+
+            }
+
+            return response()->json([
+                'success' => true,
+                'count' => Cart::getTotalQuantity(),
+                'subtotal'=>Cart::getSubTotal(),
+                'total'=>Cart::getTotal(),
+                'html'=>view('components.cart-items')->render()
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+                'line' => $e->getLine(),
+                'file' => $e->getFile()
+            ], 500);
         }
-
-        $cart = session()->get('cart', []);
-
-        $key = uniqid();
-
-        $unitPrice = $variant->price;
-
-        if ($design) {
-            $unitPrice += $design->extra_price;
-        }
-
-        $cart[$key] = [
-            'product_id' => $variant->product_id,
-            'product_variant_id' => $variant->id,
-            'design_id' => $design?->id,
-            'custom_design_data' => $request->custom_design_data,
-            'name' => $variant->product->name,
-            'color' => $variant->color,
-            'size' => $variant->size,
-            'quantity' => $request->quantity,
-            'unit_price' => $unitPrice,
-            'total_price' => $unitPrice * $request->quantity
-        ];
-
-        session()->put('cart', $cart);
-
-        return back()->with('success', 'Producto agregado al carrito');
     }
 
-    public function remove($key)
+    public function content()
     {
-        $cart = session()->get('cart', []);
-        unset($cart[$key]);
-        session()->put('cart', $cart);
-
-        return back();
+        return view('components.cart-items')->render();
     }
 
-    public function clear()
+    public function remove(Request $request)
     {
-        session()->forget('cart');
-        return back();
+        Cart::remove($request->id);
+
+        return response()->json([
+            'success' => true,
+            'count' => Cart::getTotalQuantity(),
+            'subtotal' => Cart::getSubTotal(),
+            'total' => Cart::getTotal(),
+            'html' => view('components.cart-items')->render()
+        ]);
     }
+
 }

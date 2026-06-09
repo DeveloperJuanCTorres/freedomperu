@@ -142,12 +142,12 @@
                         data-design="{{ asset('storage/'.$product->image) }}">
                     </canvas>
 
-                    <button class="btn-add-cart">
+                    <button class="btn-add-cart" data-product="{{ $product->id }}">
                         <i class="fas fa-cart-plus"></i>
                     </button>
 
                 </div>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between px-4">
                     <div>
                         <h3 class="h5 mb-1">{{ $product->name }}</h3>
                         <!-- <p class="text-muted small">{{ $product->description }}</p> -->
@@ -158,7 +158,8 @@
                                     class="color-box"
                                     style="background: {{ $color->hex_code }}"
                                     data-product="{{ $product->id }}"
-                                    data-color="{{ $color->hex_code }}">
+                                    data-color="{{ $color->hex_code }}"
+                                    data-color-id="{{ $color->id }}">
                                 </span>
                             @endforeach
                         </div>
@@ -215,10 +216,14 @@
 
 
 @push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
 
         let products = {};
+        let selectedColors = {};
+
+        
 
         document.querySelectorAll(".product-canvas").forEach(canvasElement => {
 
@@ -266,9 +271,17 @@
 
                 if (colors.length) {
 
-                    const randomColor =
-                        colors[Math.floor(Math.random() * colors.length)]
-                        .dataset.color;
+                    // const randomColor =
+                    //     colors[Math.floor(Math.random() * colors.length)]
+                    //     .dataset.color;
+
+                    const random = colors[Math.floor(Math.random() * colors.length)];
+                    selectedColors[productId] = {
+                        id: random.dataset.colorId,
+                        hex: random.dataset.color
+                    };
+
+                    const randomColor = random.dataset.color;
 
                     shirt.filters = [
                         new fabric.Image.filters.BlendColor({
@@ -323,11 +336,16 @@
 
         // Cambio de color
         document.querySelectorAll(".color-box").forEach(colorBtn => {
-
+            
             colorBtn.addEventListener("click", function() {
-
                 const productId = this.dataset.product;
                 const color = this.dataset.color;
+
+                // selectedColors[productId] = color;
+                selectedColors[productId] = {
+                    id: this.dataset.colorId,
+                    hex: this.dataset.color
+                };
 
                 const item = products[productId];
 
@@ -344,11 +362,131 @@
                 item.shirt.applyFilters();
 
                 item.canvas.renderAll();
+
             });
 
         });
 
+        document.querySelectorAll(".btn-add-cart").forEach(btn => {
+
+            btn.addEventListener("click", function () {
+
+                const productId = this.dataset.product;
+
+                if (!selectedColors[productId]) {
+
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Seleccione un color',
+                        text: 'Debe seleccionar un color antes de agregar el producto.'
+                    });
+
+                    return;
+                }
+
+                fetch("{{ route('cart.add') }}", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                    },
+
+                    body: JSON.stringify({
+
+                        product_id: productId,
+                        color_id: selectedColors[productId].id,
+                        quantity: 1
+
+                    })
+
+                })
+                .then(response => response.json())
+                .then(data => {
+
+                    Swal.fire({
+                        toast: true,
+                        position: "top-end",
+                        icon: "success",
+                        title: "Producto agregado al carrito",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                    // Si tienes contador del carrito
+                    if (data.count) {
+                        $("#cart-count").text(data.count);
+                    }
+                    document.getElementById("cart-content").innerHTML = data.html;
+
+                    document.getElementById("cart-count").textContent = data.count;
+
+                    bootstrap.Offcanvas
+                        .getOrCreateInstance(
+                            document.getElementById('offcanvasCart')
+                        )
+                        .show();
+
+                })
+                .catch(error => {
+
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: "No se pudo agregar el producto al carrito."
+                    });
+
+                    console.log(error);
+
+                });
+
+            });
+
+        });
+
+        
+
     });
+</script>
+
+<script>
+    document.addEventListener("click", function(e){
+
+            const btn = e.target.closest(".remove-cart");
+
+            if(!btn) return;
+
+            const id = btn.dataset.id;
+
+            fetch("{{ route('cart.remove') }}",{
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"application/json",
+                    "X-CSRF-TOKEN":"{{ csrf_token() }}"
+                },
+
+                body:JSON.stringify({
+                    id:id
+                })
+
+            })
+            .then(r=>r.json())
+            .then(data=>{
+
+                document.getElementById("cart-content").innerHTML = data.html;
+
+                const cartCount = document.getElementById("cart-count");
+
+                if(cartCount){
+                    cartCount.textContent = data.count;
+                }
+
+            });
+
+        });
 </script>
 
 

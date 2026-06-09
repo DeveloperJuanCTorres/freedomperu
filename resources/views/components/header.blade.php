@@ -136,10 +136,6 @@
 
 
 
-<!-- <button class="btn btn-primary position-fixed end-0 translate-middle-y shadow-lg d-flex align-items-center justify-content-center p-0" data-bs-target="#offcanvasCart" data-bs-toggle="offcanvas" style="top: 50%; width: 60px; height: 60px; border-radius: 20px 0 0 20px; z-index: 1050; background-color: #1f0a34; border: none;" type="button">
-    <div class="position-relative"><i class="fas fa-shopping-cart fs-4 text-white"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">2</span></div>
-</button> -->
-
 <!-- Floating Customizer Button -->
 <button
     class="floating-custom-btn"
@@ -154,8 +150,8 @@
 
             <i class="fas fa-shirt"></i>
 
-            <span class="floating-badge">
-                2
+            <span class="floating-badge" id="cart-count">
+                {{ Cart::getTotalQuantity() }}
             </span>
 
         </div>
@@ -177,7 +173,12 @@
     </div>
     <div class="offcanvas-body">
         <div class="d-flex flex-column h-100">
-            <div class="flex-grow-1">
+            <div id="cart-content">
+
+                @include('components.cart-items')
+
+            </div>
+            <!-- <div class="flex-grow-1">
                 <div class="d-flex gap-3 mb-4 align-items-center pb-3 border-bottom"><img class="rounded" height="70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0L9bvgUaYIfcRAi_1GCOvQGGHk57YDoE8Sm6i1jT3fZJGaAAwq7d8IqVz7lzBt0TqRjupHiqLBhlw3If0OXDpHVJ3nTgiTjezwsUqnMG3qMRK8H4IbWxTND_iR8y6xLp8MxXUiwbzJWZa5rtNoWWrE5Z47UIy0XoHNdakRPpOeVOuPCuG2GzGcplz1qP-sEXZUDDQnUWdUslJvJpeUc27D0X4mq-V5LrYNoGijN8d-jwLgXdfUq6XyHBQsFR3vKcRglV-vKBl6A" style="object-fit: cover;" width="70" />
                     <div>
                         <h6 class="mb-1 fw-bold">Polo Premium Atelier</h6>
@@ -194,7 +195,7 @@
             <div class="border-top pt-4">
                 <div class="d-flex justify-content-between mb-2"><span class="text-muted">Subtotal</span><span class="fw-bold">S/ 238.00</span></div>
                 <div class="d-flex justify-content-between mb-4"><span class="h5 fw-bolder">Total</span><span class="h5 fw-bolder text-primary">S/ 238.00</span></div><button class="btn btn-dark w-100 py-3 fw-bold rounded-1" style="background-color: #1f0a34;">Finalizar Compra</button><button class="btn btn-link w-100 mt-2 text-dark text-decoration-none small" data-bs-dismiss="offcanvas">Seguir comprando</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

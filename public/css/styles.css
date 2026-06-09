@@ -682,11 +682,11 @@
 
 
 
-.product-canvas{
+/* .product-canvas{
     width:100%;
     height:auto;
     display:block;
-}
+} */
 
 .product-img-container{
     position:relative;
@@ -728,7 +728,7 @@
     background:#ffffff;
     border:1px solid #f1f5f9;
     border-radius:24px;
-    padding:20px;
+    /* padding:20px; */
     transition:.35s ease;
     height:100%;
     overflow:hidden;
@@ -773,7 +773,10 @@
     width:100% !important;
     height:100% !important;
     display:block;
+     margin:auto;
 }
+
+
 
 
 .canvas-container{

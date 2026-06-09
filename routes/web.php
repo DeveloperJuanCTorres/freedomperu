@@ -53,16 +53,17 @@ Route::get('/producto/{slug}', [ProductController::class, 'show'])
 |--------------------------------------------------------------------------
 */
 
+Route::post('/cart/add',[CartController::class,'add'])->name('cart.add');
+
+Route::get('/cart/content',[CartController::class,'content'])->name('cart.content');
+
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+
 Route::prefix('carrito')->group(function () {
 
     Route::get('/', [CartController::class, 'index'])
         ->name('cart.index');
 
-    Route::post('/agregar', [CartController::class, 'add'])
-        ->name('cart.add');
-
-    Route::delete('/eliminar/{key}', [CartController::class, 'remove'])
-        ->name('cart.remove');
 
     Route::delete('/vaciar', [CartController::class, 'clear'])
         ->name('cart.clear');

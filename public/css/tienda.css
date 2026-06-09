@@ -320,109 +320,12 @@
    CUSTOM PRODUCT CARD
 ========================================================= */
 
-.custom-shop-card{
-    height:100%;
 
-    border-radius:30px;
-    overflow:hidden;
-
-    box-shadow:
-        0 10px 35px rgba(0,0,0,.1);
-}
-
-.custom-shop-image{
-    position:relative;
-    height:100%;
-}
-
-.custom-shop-image img{
-    width:100%;
-    height:520px;
-
-    object-fit:cover;
-}
-
-.custom-shop-overlay{
-    position:absolute;
-    inset:0;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-
-    padding:2rem;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,.05),
-            rgba(20,10,35,.92)
-        );
-}
-
-.custom-shop-badge{
-    width:fit-content;
-
-    margin-bottom:1rem;
-
-    background:rgba(255,255,255,.12);
-    color:#ffb689;
-
-    padding:.55rem 1rem;
-
-    border-radius:50px;
-
-    font-size:.72rem;
-    font-weight:700;
-    letter-spacing:1px;
-}
-
-.custom-shop-overlay h3{
-    margin-bottom:1rem;
-
-    color:#fff;
-
-    font-size:2rem;
-    font-weight:800;
-    line-height:1.1;
-}
-
-.custom-shop-overlay p{
-    margin-bottom:1.5rem;
-
-    color:rgba(255,255,255,.75);
-}
-
-.custom-shop-btn{
-    width:fit-content;
-
-    background:#ffb689;
-    color:#331E4F;
-
-    padding:.95rem 1.5rem;
-
-    border-radius:50px;
-
-    font-weight:700;
-
-    transition:all .35s ease;
-}
-
-.custom-shop-card:hover .custom-shop-btn{
-    transform:translateX(5px);
-}
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:991px){
-
-    .custom-shop-image img{
-        height:450px;
-    }
-
-}
 
 @media(max-width:768px){
 
