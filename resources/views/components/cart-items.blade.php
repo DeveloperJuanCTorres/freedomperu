@@ -103,7 +103,7 @@
     </div>
 
     <a
-        href="{{ route('checkout.index') }}"
+        href="#"
         class="btn btn-dark w-100 py-3 fw-bold rounded-1"
         style="background:#1f0a34;">
 

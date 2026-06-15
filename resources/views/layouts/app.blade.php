@@ -12,7 +12,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <?php
-        $version = '1993.4.7';
+        $version = '1993.4.8';
     ?>
 
     <!-- Fonts -->

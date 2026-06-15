@@ -780,5 +780,5 @@
 
 
 .canvas-container{
-    position: static !important;
+    /* position: static !important; */
 }

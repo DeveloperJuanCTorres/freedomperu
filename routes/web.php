@@ -74,11 +74,12 @@ Route::prefix('carrito')->group(function () {
 | CHECKOUT
 |--------------------------------------------------------------------------
 */
+Route::get('/checkout', [CheckoutController::class, 'index'])
+        ->name('checkout.index');
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/checkout', [CheckoutController::class, 'index'])
-        ->name('checkout.index');
+    
 
     Route::post('/checkout/aplicar-cupon', [CheckoutController::class, 'applyCoupon'])
         ->name('checkout.coupon');
