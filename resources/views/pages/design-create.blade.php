@@ -784,7 +784,7 @@
                 </div>
 
                 <!-- CANVAS -->
-                <div class="canvas-container-custom">
+                <div class="canvas-container-custom position-absolute">
 
                     <canvas id="canvas" width="500" height="600"></canvas>
 
