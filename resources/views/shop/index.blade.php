@@ -37,7 +37,7 @@ OFFCANVAS FILTERS
                             <img src="{{ asset('storage/'.$taxonomy->image) }}">
                         </div>
 
-                        <span>{{ $taxonomy->name }}</span>
+                        <span class="text-white">{{ $taxonomy->name }}</span>
 
                     </a>
 
