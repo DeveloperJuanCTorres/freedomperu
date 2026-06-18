@@ -85,6 +85,7 @@ OFFCANVAS FILTERS
 </div>
 
 
+
 <!-- Main Content -->
 <div class="py-5 container-fluid">
     <!-- Using align-items-flex-start on the row to allow sidebar sticky to work correctly -->
@@ -92,6 +93,58 @@ OFFCANVAS FILTERS
         
         <!-- Product Grid Column -->
         <div class="col-lg-12">
+
+            <!--==========================
+            BANNER TIENDA
+            ===========================-->
+
+            <div class="shop-hero-banner mb-5">
+
+                <div class="hero-overlay"></div>
+
+                <div class="row align-items-center h-100 position-relative">
+
+                    <div class="col-lg-7 px-lg-5 px-4">
+
+                        <span class="hero-tag">
+                            ✦ NUEVA COLECCIÓN 2026
+                        </span>
+
+                        <h1 class="hero-title mt-3">
+                            Diseña el Polo
+                            <br>
+                            que te representa
+                        </h1>
+
+                        <p class="hero-description mt-3">
+
+                            Personaliza colores, estampados y estilos únicos
+                            con calidad premium y envíos a todo el Perú.
+
+                        </p>
+
+                        <a href="#productsGrid" class="btn btn-light hero-btn">
+
+                            Explorar colección
+
+                            <i class="fa-solid fa-arrow-right ms-2"></i>
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-lg-5 text-center d-none d-lg-block">
+
+                        <img
+                            src="{{ asset('images/banner-shirt.png') }}"
+                            class="hero-image">
+
+                    </div>
+
+                </div>
+
+            </div>
+
             <!-- Grid Header -->
             <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
                 <span class="small text-muted">Mostrando <span class="fw-bold text-dark">24</span> productos</span>
