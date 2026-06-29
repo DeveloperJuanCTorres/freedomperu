@@ -55,7 +55,7 @@
         text-align: center;
         color: white;
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
-        margin-bottom: 4rem;
+        /* margin-bottom: 4rem; */
     }
 
     /* Form Visibility & Aesthetics */
