@@ -48,7 +48,7 @@
         background: linear-gradient(rgba(31, 10, 52, 0.85), rgba(31, 10, 52, 0.85)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuAO-yQW99dWQ1jpjNmf3alB6SPGFjM7xe7WkkXa-ww4IJ5zAxCg4PFJy6G-hAlqieJJizSrsH7Owige5BQvbeGYptYUntY6oqFSv53NVvi-lUe-dLDEIfaxJxd9-0SKI37feU_jIe6ivcxMrhYUrN3H5VmIsMUoZg62Ru1FU2Lc5S3duY6vvkmPTrLg7VD9NwkEbRTKSO0N4rulcxSh0JDet7Tp6ujHbUpB1z_wRDJUB_UvVKtU8dqjs_9yHwfMNDIgMAA-GVx0Ow');
         background-size: cover;
         background-position: center;
-        height: 400px;
+        height: 300px;
         display: flex;
         align-items: center;
         justify-content: center;
