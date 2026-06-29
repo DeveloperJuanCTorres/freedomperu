@@ -194,14 +194,14 @@
 
         </div>
 
-        <button
+        <a
             class="btn btn-primary w-100 py-3 rounded-pill fw-bold">
 
             <i class="fas fa-lock me-2"></i>
 
             Confirmar Pedido
 
-        </button>
+        </a>
 
         <div class="text-center mt-4">
 
