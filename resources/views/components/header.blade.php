@@ -4,7 +4,7 @@
 
         <!-- Logo -->
         <a class="navbar-brand fw-bold" href="/">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" height="60">
         </a>
 
         <!-- Mobile Button -->
