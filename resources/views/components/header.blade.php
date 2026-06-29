@@ -1,10 +1,10 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg sticky-top py-4 custom-navbar-header">
+<nav class="navbar navbar-expand-lg sticky-top py-navbar custom-navbar-header">
     <div class="container">
 
         <!-- Logo -->
         <a class="navbar-brand fw-bold" href="/">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" height="60">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40">
         </a>
 
         <!-- Mobile Button -->
