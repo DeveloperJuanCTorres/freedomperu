@@ -87,7 +87,7 @@ OFFCANVAS FILTERS
 
 
 <!-- Main Content -->
-<div class="py-5 container-fluid">
+<div class="py-2 container-fluid">
     <!-- Using align-items-flex-start on the row to allow sidebar sticky to work correctly -->
     <div class="row align-items-start">
         
