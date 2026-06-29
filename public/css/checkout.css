@@ -1,0 +1,132 @@
+.delivery-card{
+
+    display:block;
+    cursor:pointer;
+
+}
+
+.delivery-card input{
+
+    display:none;
+
+}
+
+.delivery-content{
+
+    border:2px solid #e9ecef;
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
+
+}
+
+.delivery-card input:checked + .delivery-content{
+
+    border-color:#1f0a34;
+    background:#f7f3fb;
+
+}
+
+.delivery-content:hover{
+
+    border-color:#1f0a34;
+
+}
+
+/*======================================
+PAYMENT
+======================================*/
+
+.payment-card{
+
+    display:block;
+    cursor:pointer;
+
+}
+
+.payment-card input{
+
+    display:none;
+
+}
+
+.payment-content{
+
+    border:2px solid #ececec;
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
+
+}
+
+.payment-content img{
+
+    max-height:45px;
+
+}
+
+.payment-card input:checked + .payment-content{
+
+    border-color:#1f0a34;
+    background:#f8f4fc;
+
+}
+
+.payment-content:hover{
+
+    border-color:#1f0a34;
+
+}
+
+/*=========================================
+CHECKOUT SUMMARY
+=========================================*/
+
+.checkout-summary{
+
+    position:sticky;
+
+    top:100px;
+
+}
+
+.checkout-products{
+
+    max-height:350px;
+
+    overflow-y:auto;
+
+    padding-right:5px;
+
+}
+
+.checkout-products::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.checkout-products::-webkit-scrollbar-thumb{
+
+    background:#d5d5d5;
+
+    border-radius:10px;
+
+}
+
+.checkout-summary .btn-primary{
+
+    background:#1f0a34;
+
+    border:none;
+
+}
+
+.checkout-summary .btn-primary:hover{
+
+    background:#321053;
+
+}
+

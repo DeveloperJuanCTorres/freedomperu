@@ -1,0 +1,403 @@
+/*==================================================
+CART PAGE
+==================================================*/
+
+.cart-header{
+    background:#f8f9fb;
+    padding:60px 0;
+    border-bottom:1px solid #ececec;
+}
+
+.cart-header h1{
+    font-size:2.3rem;
+    font-weight:700;
+}
+
+.cart-header p{
+    color:#777;
+}
+
+.breadcrumb{
+    margin-bottom:15px;
+}
+
+.breadcrumb-item a{
+    text-decoration:none;
+    color:#666;
+}
+
+.breadcrumb-item.active{
+    color:#1f0a34;
+    font-weight:600;
+}
+
+/*==================================================
+CARD
+==================================================*/
+
+.card{
+    border:none;
+    border-radius:20px;
+}
+
+.card-body{
+    padding:2rem;
+}
+
+/*==================================================
+PRODUCT ITEM
+==================================================*/
+
+.cart-item{
+
+    transition:.25s;
+
+}
+
+.cart-item:hover{
+
+    background:#fafafa;
+
+}
+
+.cart-item:last-child{
+
+    border-bottom:none!important;
+
+}
+
+.cart-item img{
+
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:14px;
+    border:1px solid #eee;
+
+}
+
+.cart-item h5{
+
+    font-size:1.08rem;
+    margin-bottom:.6rem;
+
+}
+
+.cart-item .text-muted{
+
+    font-size:.92rem;
+
+}
+
+/*==================================================
+QUANTITY
+==================================================*/
+
+.quantity-group{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+}
+
+.quantity-group button{
+
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:none;
+    background:#f2f2f2;
+    transition:.25s;
+
+}
+
+.quantity-group button:hover{
+
+    background:#1f0a34;
+    color:#fff;
+
+}
+
+.quantity-input{
+
+    width:60px;
+    border-radius:12px;
+    font-weight:600;
+    background:#fff;
+
+}
+
+/*==================================================
+DELETE
+==================================================*/
+
+.remove-cart{
+
+    color:#dc3545;
+    text-decoration:none;
+    font-size:.9rem;
+    font-weight:500;
+
+}
+
+.remove-cart:hover{
+
+    color:#b10000;
+
+}
+
+/*==================================================
+SUMMARY
+==================================================*/
+
+/* .sticky-top{
+
+    top:100px;
+
+} */
+
+.summary-card{
+
+    border-radius:20px;
+
+}
+
+.summary-card h4{
+
+    font-weight:700;
+
+}
+
+.summary-card hr{
+
+    margin:1.4rem 0;
+
+}
+
+.summary-total{
+
+    font-size:2rem;
+    color:#1f0a34;
+    font-weight:700;
+
+}
+
+/*==================================================
+COUPON
+==================================================*/
+
+.input-group .form-control{
+
+    border-radius:30px 0 0 30px;
+
+}
+
+.input-group .btn{
+
+    border-radius:0 30px 30px 0;
+
+}
+
+/*==================================================
+BUTTONS
+==================================================*/
+
+.btn-checkout{
+
+    width:100%;
+    background:#1f0a34;
+    color:#fff;
+    border:none;
+    padding:15px;
+    border-radius:40px;
+    font-weight:700;
+    transition:.3s;
+
+}
+
+.btn-checkout:hover{
+
+    background:#34125b;
+    color:#fff;
+
+}
+
+.btn-shopping{
+
+    width:100%;
+    border-radius:40px;
+    padding:14px;
+
+}
+
+/*==================================================
+EMPTY CART
+==================================================*/
+
+.empty-cart{
+
+    padding:80px 20px;
+    text-align:center;
+
+}
+
+.empty-cart img{
+
+    width:220px;
+    margin-bottom:25px;
+
+}
+
+.empty-cart h3{
+
+    font-size:1.8rem;
+    font-weight:700;
+
+}
+
+.empty-cart p{
+
+    color:#777;
+    margin-bottom:25px;
+
+}
+
+/*==================================================
+BADGE
+==================================================*/
+
+.badge{
+
+    font-size:.9rem;
+    font-weight:500;
+    padding:10px 15px;
+
+}
+
+/*==================================================
+BENEFITS
+==================================================*/
+
+.summary-benefits{
+
+    background:#fafafa;
+    border-radius:18px;
+    padding:20px;
+
+}
+
+.summary-benefits .item{
+
+    display:flex;
+    align-items:center;
+    margin-bottom:12px;
+
+}
+
+.summary-benefits .item:last-child{
+
+    margin-bottom:0;
+
+}
+
+.summary-benefits i{
+
+    color:#28a745;
+    margin-right:10px;
+
+}
+
+/*==================================================
+RESPONSIVE
+==================================================*/
+
+@media(max-width:991px){
+
+    .sticky-top{
+
+        position:relative!important;
+        top:0!important;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .cart-header{
+
+        padding:40px 0;
+
+    }
+
+    .cart-header h1{
+
+        font-size:1.8rem;
+
+    }
+
+    .card-body{
+
+        padding:1.4rem;
+
+    }
+
+    .cart-item{
+
+        text-align:center;
+
+    }
+
+    .quantity-group{
+
+        justify-content:center;
+        margin-top:15px;
+
+    }
+
+    .cart-item img{
+
+        max-width:130px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .summary-total{
+
+        font-size:1.7rem;
+
+    }
+
+    .btn-checkout{
+
+        padding:13px;
+
+    }
+
+}
+
+
+.loading-cart{
+
+    cursor:progress;
+
+}
+
+.loading-cart::before{
+
+    content:'';
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(255,255,255,.5);
+
+    z-index:9999;
+
+}

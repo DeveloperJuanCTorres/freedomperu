@@ -102,8 +102,27 @@
 
     </div>
 
-    <a
-        href="#"
+    <a href="{{ route('cart.index') }}"
+    class="btn btn-outline-dark w-100 mb-2">
+
+        <i class="fas fa-shopping-cart me-2"></i>
+
+        Ver carrito
+
+    </a>
+
+    <a href="{{ route('checkout.index') }}"
+    class="btn btn-dark w-100"
+    style="background:#1f0a34">
+
+        <i class="fas fa-lock me-2"></i>
+
+        Finalizar compra
+
+    </a>
+
+    <!-- <a
+        href="{{route('cart.index')}}"
         class="btn btn-dark w-100 py-3 fw-bold rounded-1"
         style="background:#1f0a34;">
 
@@ -117,6 +136,6 @@
 
         Seguir comprando
 
-    </button>
+    </button> -->
 
 </div>

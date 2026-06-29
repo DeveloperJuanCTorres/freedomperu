@@ -150,7 +150,7 @@ OFFCANVAS FILTERS
                 <span class="small text-muted">Mostrando <span class="fw-bold text-dark">24</span> productos</span>
                 <div class="d-flex align-items-center">
                     <label class="small me-2">Ordenar por:</label>
-                    <select class="form-select form-select-sm border-0 fw-bold p-0 bg-transparent shadow-none" style="width: auto;">
+                    <select id="sortProducts" class="form-select form-select-sm border-0 fw-bold p-0 bg-transparent shadow-none" style="width: auto;">
                         <option>Más recientes</option>
                         <option>Menor precio</option>
                         <option>Mayor precio</option>
@@ -168,17 +168,10 @@ OFFCANVAS FILTERS
             </div>
 
             <!-- Pagination -->
-            <nav aria-label="Page navigation" class="mt-5 pt-4">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><span class="page-link bg-transparent">...</span></li>
-                    <li class="page-item"><a class="page-link" href="#">12</a></li>
-                    <li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
-                </ul>
-            </nav>
+            <div id="paginationContainer" class="shop-pagination mt-5">
+                {{ $products->links('pagination::bootstrap-5') }}
+            </div>
+            
         </div>
     </div>
 </div>
@@ -188,7 +181,7 @@ OFFCANVAS FILTERS
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    function initFabricProducts() {
 
         let products = {};
         let selectedColors = {};
@@ -417,6 +410,12 @@ OFFCANVAS FILTERS
 
         
 
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+        initFabricProducts();
+
     });
 </script>
 
@@ -554,47 +553,169 @@ OFFCANVAS FILTERS
         });
     }
 
-    function loadProducts() {
+    // function loadProducts() {
 
-        const taxonomy = document.querySelector(".category-card1.active")?.dataset.id || "";
+    //     const taxonomy = document.querySelector(".category-card1.active")?.dataset.id || "";
+
+    //     let designs = [];
+
+    //     document.querySelectorAll(".style-tag.active").forEach(btn => {
+    //         designs.push(btn.dataset.id);
+    //     });
+
+    //     let url = new URL("{{ route('shop.index') }}");
+
+    //     url.searchParams.append("taxonomy", taxonomy);
+
+    //     designs.forEach(id => {
+    //         url.searchParams.append("designs[]", id);
+    //     });
+
+    //     fetch(url.toString(), {
+    //         headers: {
+    //             "X-Requested-With": "XMLHttpRequest"
+    //         }
+    //     })
+    //     .then(r => r.text())
+    //     .then(html => {
+
+    //         const grid = new DOMParser()
+    //             .parseFromString(html, "text/html")
+    //             .querySelector("#productsGrid");
+
+    //         if (!grid) {
+    //             console.log("No vino productsGrid en la respuesta");
+    //             return;
+    //         }
+
+    //         document.getElementById("productsGrid").innerHTML = grid.innerHTML;
+
+    //         // IMPORTANTE: reactivar canvas si usas FabricJS
+    //         reinitFabric?.();
+    //     });
+    // }
+
+    function loadProducts(page = 1){
+
+        const taxonomy =
+            document.querySelector(".category-card1.active")?.dataset.id || "";
 
         let designs = [];
 
-        document.querySelectorAll(".style-tag.active").forEach(btn => {
+        document.querySelectorAll(".style-tag.active").forEach(btn=>{
+
             designs.push(btn.dataset.id);
+
         });
+
+        const search =
+            document.getElementById("searchProduct")?.value || "";
+
+        const sort =
+            document.getElementById("sortProducts")?.value || "";
 
         let url = new URL("{{ route('shop.index') }}");
 
-        url.searchParams.append("taxonomy", taxonomy);
+        url.searchParams.set("page", page);
 
-        designs.forEach(id => {
-            url.searchParams.append("designs[]", id);
+        if(taxonomy)
+            url.searchParams.set("taxonomy",taxonomy);
+
+        if(search)
+            url.searchParams.set("search",search);
+
+        if(sort)
+            url.searchParams.set("sort",sort);
+
+        designs.forEach(id=>{
+
+            url.searchParams.append("designs[]",id);
+
         });
 
-        fetch(url.toString(), {
+        history.pushState({}, "", url);
+
+        fetch(url, {
             headers: {
-                "X-Requested-With": "XMLHttpRequest"
+                "X-Requested-With": "XMLHttpRequest",
+                "Accept": "application/json"
             }
         })
-        .then(r => r.text())
-        .then(html => {
+        .then(res => res.json())
+        .then(data => {
 
-            const grid = new DOMParser()
-                .parseFromString(html, "text/html")
-                .querySelector("#productsGrid");
+            // const doc = new DOMParser()
+            //     .parseFromString(html,"text/html");
 
-            if (!grid) {
-                console.log("No vino productsGrid en la respuesta");
-                return;
+            // document.getElementById("productsGrid").innerHTML =
+            //     doc.querySelector("#productsGrid").innerHTML;
+
+            // document.getElementById("paginationContainer").innerHTML =
+            //     doc.querySelector("#paginationContainer").innerHTML;
+
+            // initProducts();
+
+            console.log(data.products);
+console.log(data.pagination);
+
+            document.querySelector("#productsGrid .row").innerHTML = data.products;
+
+            document.querySelector("#paginationContainer").innerHTML = data.pagination;
+
+            initFabricProducts();
+
+            const offcanvas = bootstrap.Offcanvas.getInstance(
+                document.getElementById('filtersOffcanvasTop')
+            );
+
+            if (offcanvas) {
+                offcanvas.hide();
             }
 
-            document.getElementById("productsGrid").innerHTML = grid.innerHTML;
-
-            // IMPORTANTE: reactivar canvas si usas FabricJS
-            reinitFabric?.();
         });
+
     }
+
+    document.addEventListener("click",function(e){
+
+        const link = e.target.closest("#paginationContainer a");
+
+        if(!link)
+            return;
+
+        e.preventDefault();
+
+        const url = new URL(link.href);
+
+        const page = url.searchParams.get("page");
+
+        loadProducts(page);
+
+    });
+
+    document
+    .getElementById("sortProducts")
+    .addEventListener("change",function(){
+
+        loadProducts();
+
+    });
+
+    let timer;
+
+    document
+    .getElementById("searchProduct")
+    .addEventListener("keyup",function(){
+
+        clearTimeout(timer);
+
+        timer = setTimeout(function(){
+
+            loadProducts();
+
+        },400);
+
+    });
 
     document.addEventListener("click", function(e){
 

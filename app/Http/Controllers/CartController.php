@@ -14,7 +14,7 @@ class CartController extends Controller
 {
     public function index()
     {
-        $cart = session()->get('cart', []);
+        // $cart = session()->get('cart', []);
         $products = Product::where('is_active', 1)
                     ->latest()
                     ->get();
@@ -23,7 +23,7 @@ class CartController extends Controller
                         ->get();
 
         $colors = ShirtColor::all();
-        return view('cart.index', compact('cart', 'products', 'categories', 'colors'));
+        return view('cart.index', compact('products', 'categories', 'colors'));
     }
 
     public function add(Request $request)
@@ -94,12 +94,84 @@ class CartController extends Controller
         Cart::remove($request->id);
 
         return response()->json([
-            'success' => true,
-            'count' => Cart::getTotalQuantity(),
-            'subtotal' => Cart::getSubTotal(),
-            'total' => Cart::getTotal(),
-            'html' => view('components.cart-items')->render()
+
+            'success'=>true,
+
+            'count'=>Cart::getTotalQuantity(),
+
+            'subtotal'=>number_format(Cart::getSubTotal(),2),
+
+            'total'=>number_format(Cart::getTotal(),2),
+
+            'offcanvas'=>view('components.cart-items')->render(),
+
+            'cart'=>view('cart.partials.items')->render(),
+
+            'summary' => view('cart.partials.summary')->render()
+
         ]);
+    }
+
+    // public function remove(Request $request)
+    // {
+    //     Cart::remove($request->id);
+
+    //     return response()->json([
+    //         'success' => true,
+    //         'count' => Cart::getTotalQuantity(),
+    //         'subtotal' => Cart::getSubTotal(),
+    //         'total' => Cart::getTotal(),
+    //         'html' => view('components.cart-items')->render()
+    //     ]);
+    // }
+
+    public function update(Request $request)
+    {
+        $item = Cart::get($request->id);
+
+        if (!$item) {
+            return response()->json([
+                'success' => false
+            ],404);
+        }
+
+        $newQuantity = $item->quantity + $request->action;
+
+        if($newQuantity <= 0){
+
+            Cart::remove($request->id);
+
+        }else{
+
+            Cart::update($request->id,[
+
+                'quantity'=>[
+                    'relative'=>false,
+                    'value'=>$newQuantity
+                ]
+
+            ]);
+
+        }
+
+        return response()->json([
+
+            'success'=>true,
+
+            'count'=>Cart::getTotalQuantity(),
+
+            'subtotal'=>number_format(Cart::getSubTotal(),2),
+
+            'total'=>number_format(Cart::getTotal(),2),
+
+            'offcanvas'=>view('components.cart-items')->render(),
+
+            'cart'=>view('cart.partials.items')->render(),
+
+            'summary' => view('cart.partials.summary')->render()
+
+        ]);
+
     }
 
 }

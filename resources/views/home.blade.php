@@ -164,7 +164,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <span class="fw-bold h5">S/ 89.00</span>
+                    <span class="fw-bold h5">S/ {{ $product->base_price }}</span>
                 </div>
             </div>
         </div>

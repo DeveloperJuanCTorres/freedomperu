@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::where('is_active', 1)
-                    ->latest()
+                    ->latest()->take(8)
                     ->get();
 
         $categories = Taxonomy::where('is_active', 1)

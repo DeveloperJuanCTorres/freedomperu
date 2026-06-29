@@ -13,6 +13,7 @@ class ShopController extends Controller
 {
     public function index(Request $request)
     {
+        
         $taxonomies = Taxonomy::all();
         $designs = Type::all();
         $colors = ShirtColor::all();
@@ -29,6 +30,7 @@ class ShopController extends Controller
             });
 
         }
+
 
         // Estilos
         if ($request->filled('designs')) {
@@ -72,12 +74,25 @@ class ShopController extends Controller
 
         }
         
-        $products = $products->paginate(9);
+        $products = $products->paginate(8)->withQueryString();
 
         // AJAX
         if ($request->ajax()) {
 
-            return view('shop.partials.products-grid', compact('products', 'colors'));
+            return response()->json([
+
+                'products' => view(
+                    'shop.partials.products-grid',
+                    compact('products','colors')
+                )->render(),
+
+                'pagination' => $products
+                    ->links('pagination::bootstrap-5')
+                    ->render(),
+
+            ]);
+
+            // return view('shop.partials.products-grid', compact('products', 'colors'));
 
         }
 

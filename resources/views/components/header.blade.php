@@ -60,7 +60,7 @@
             <!-- Search -->
             <div class="navbar-search">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Buscar productos...">
+                <input id="searchProduct" type="text" placeholder="Buscar productos...">
             </div>
 
         </div>
@@ -178,24 +178,6 @@
                 @include('components.cart-items')
 
             </div>
-            <!-- <div class="flex-grow-1">
-                <div class="d-flex gap-3 mb-4 align-items-center pb-3 border-bottom"><img class="rounded" height="70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0L9bvgUaYIfcRAi_1GCOvQGGHk57YDoE8Sm6i1jT3fZJGaAAwq7d8IqVz7lzBt0TqRjupHiqLBhlw3If0OXDpHVJ3nTgiTjezwsUqnMG3qMRK8H4IbWxTND_iR8y6xLp8MxXUiwbzJWZa5rtNoWWrE5Z47UIy0XoHNdakRPpOeVOuPCuG2GzGcplz1qP-sEXZUDDQnUWdUslJvJpeUc27D0X4mq-V5LrYNoGijN8d-jwLgXdfUq6XyHBQsFR3vKcRglV-vKBl6A" style="object-fit: cover;" width="70" />
-                    <div>
-                        <h6 class="mb-1 fw-bold">Polo Premium Atelier</h6>
-                        <p class="text-muted small mb-0">S/ 89.00 x 1</p>
-                    </div>
-                </div>
-                <div class="d-flex gap-3 mb-4 align-items-center pb-3 border-bottom"><img class="rounded" height="70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACr5nwviZL0r4rJLb85BsTUCnSH-IUnmYxLchAof5hVyNHgI3aloo0w5nncou4N-hOidsvIqk39dLCqISLOQ80Ba1oRqUJOuGxVeeRLU4TkEH3YbE3ZMK7EOLASX5D5FerLJ09JAF6ZXiJeSVf_P2cb9j3nVOIIxGDa3ryUk2NQt86rmdkhWXX-sstCEcjrcOPKr3lZLhL11NsA3tBRQRB37fnH5J-VkWJtRp-LIYGgj9BcxI1a8_3l-RGnmVkW9hf4rW06IwDEQ" style="object-fit: cover;" width="70" />
-                    <div>
-                        <h6 class="mb-1 fw-bold">Polera Oversize Custom</h6>
-                        <p class="text-muted small mb-0">S/ 149.00 x 1</p>
-                    </div>
-                </div>
-            </div>
-            <div class="border-top pt-4">
-                <div class="d-flex justify-content-between mb-2"><span class="text-muted">Subtotal</span><span class="fw-bold">S/ 238.00</span></div>
-                <div class="d-flex justify-content-between mb-4"><span class="h5 fw-bolder">Total</span><span class="h5 fw-bolder text-primary">S/ 238.00</span></div><button class="btn btn-dark w-100 py-3 fw-bold rounded-1" style="background-color: #1f0a34;">Finalizar Compra</button><button class="btn btn-link w-100 mt-2 text-dark text-decoration-none small" data-bs-dismiss="offcanvas">Seguir comprando</button>
-            </div> -->
         </div>
     </div>
 </div>

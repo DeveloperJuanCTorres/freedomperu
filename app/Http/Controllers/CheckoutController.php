@@ -4,30 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\Coupon;
 use Illuminate\Http\Request;
+use Cart;
 
 class CheckoutController extends Controller
 {
     public function index()
     {
-        $cart = session()->get('cart', []);
+        $cart = Cart::getContent();
 
-        if (empty($cart)) {
+        if ($cart->isEmpty()) {
+
             return redirect()->route('cart.index');
+
         }
 
-        $subtotal = collect($cart)->sum('total_price');
+        $subtotal = Cart::getSubTotal();
 
-        $tax = $subtotal * 0.18;
         $shipping = 15;
-        $discount = session('discount', 0);
 
-        $total = $subtotal + $tax + $shipping - $discount;
+        $tax = 0;
+
+        $discount = session('discount',0);
+
+        $total = $subtotal + $shipping - $discount;
 
         return view('checkout.index', compact(
             'cart',
             'subtotal',
-            'tax',
             'shipping',
+            'tax',
             'discount',
             'total'
         ));
