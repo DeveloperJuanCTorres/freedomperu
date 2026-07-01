@@ -22,7 +22,7 @@
                 <!-- Social -->
                 <div class="footer-social">
 
-                    <a href="https://www.instagram.com" target="_blank">
+                    <a href="https://www.instagram.com/freedomperu2022/" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
 
@@ -30,7 +30,7 @@
                         <i class="fab fa-facebook-f"></i>
                     </a>
 
-                    <a href="https://www.tiktok.com" target="_blank">
+                    <a href="https://www.tiktok.com/@freedomperu2022" target="_blank">
                         <i class="fab fa-tiktok"></i>
                     </a>
 

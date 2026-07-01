@@ -376,13 +376,13 @@
                     <label class="tool-label"><span class="step-number">1</span> Selección de Prenda</label>
                     <div class="row g-2">
                         <div class="col-6">
-                            <div class="product-card active p-3 text-center rounded-3 border-2">
+                            <div class="product-card active p-3 text-center rounded-3 border-2" data-garment="polo">
                                 <i class="fa-solid fa-shirt fs-4 mb-2 text-primary"></i>
                                 <p class="small fw-bold mb-0 text-primary">Polo</p>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="product-card p-3 text-center rounded-3 border-2">
+                            <div class="product-card p-3 text-center rounded-3 border-2" data-garment="polera">
                                 <i class="fa-solid fa-vest fs-4 mb-2 text-muted"></i>
                                 <p class="small fw-bold mb-0 text-muted">Polera</p>
                             </div>
@@ -472,7 +472,35 @@
             <div class="visualizer-main shadow-lg position-relative overflow-hidden">
 
                 <!-- BOTONES VISTA -->
-                <div class="position-absolute top-0 start-0 p-3 z-3 d-flex gap-2">
+                 <div class="position-absolute top-0 start-0 p-3 z-3 d-flex flex-wrap gap-2">
+
+                    <button class="btn btn-light rounded-pill shadow-sm px-3 py-2 fw-bold btn-view active"
+                        data-view="frontal">
+                        <i class="fa-solid fa-shirt me-1"></i>
+                        Frente
+                    </button>
+
+                    <button class="btn btn-light rounded-pill shadow-sm px-3 py-2 fw-bold btn-view"
+                        data-view="trasera">
+                        <i class="fa-solid fa-rotate me-1"></i>
+                        Espalda
+                    </button>
+
+                    <button class="btn btn-light rounded-pill shadow-sm px-3 py-2 fw-bold btn-view"
+                        data-view="manga_derecha">
+                        <i class="fa-solid fa-arrow-right me-1"></i>
+                        Manga Der.
+                    </button>
+
+                    <button class="btn btn-light rounded-pill shadow-sm px-3 py-2 fw-bold btn-view"
+                        data-view="manga_izquierda">
+                        <i class="fa-solid fa-arrow-left me-1"></i>
+                        Manga Izq.
+                    </button>
+
+                </div>
+
+                <!-- <div class="position-absolute top-0 start-0 p-3 z-3 d-flex gap-2">
 
                     <button class="btn btn-light rounded-pill shadow-sm px-3 py-2 fw-bold btn-view active"
                         data-view="frontal">
@@ -484,7 +512,7 @@
                         <i class="fa-solid fa-rotate me-1"></i> Espalda
                     </button>
 
-                </div>
+                </div> -->
 
                 <!-- CONTROLES -->
                 <div class="visualizer-controls z-3">
@@ -502,7 +530,7 @@
                 <!-- CANVAS -->
                 <div class="canvas-container-custom position-absolute">
 
-                    <canvas id="canvas" width="500" height="600"></canvas>
+                    <canvas id="canvas" width="500" height="600" class="pt-5"></canvas>
 
                     <!-- GUIA -->
                     <div class="design-guide">
@@ -631,6 +659,8 @@
 
         const project = {
 
+            currentGarment: 'polo',
+
             currentView: 'frontal',
 
             currentColor: '#1f0a34',
@@ -642,23 +672,27 @@
             views:{
 
                 frontal:{
-
                     json:null,
-
                     preview:null,
-
                     gallery:[]
-
                 },
 
                 trasera:{
-
                     json:null,
-
                     preview:null,
-
                     gallery:[]
+                },
 
+                manga_derecha:{
+                    json:null,
+                    preview:null,
+                    gallery:[]
+                },
+
+                manga_izquierda:{
+                    json:null,
+                    preview:null,
+                    gallery:[]
                 }
 
             }
@@ -681,11 +715,17 @@
 
             return {
 
+                garment: project.currentGarment,
+
                 color: project.currentColor,
 
                 frontal: project.views.frontal.json,
 
-                trasera: project.views.trasera.json
+                trasera: project.views.trasera.json,
+
+                manga_derecha: project.views.manga_derecha.json,
+
+                manga_izquierda: project.views.manga_izquierda.json
 
             };
 
@@ -891,7 +931,9 @@
             restoreCanvas(function() {
 
                 const imagePath =
-                    "{{ asset('images') }}/polo_base_" +
+                    "{{ asset('images') }}/" +
+                    project.currentGarment +
+                    "_base_" +
                     project.currentView +
                     ".png";
 
@@ -986,6 +1028,23 @@
                 loadShirt();
 
             }
+
+        });
+
+        document.querySelectorAll('.product-card').forEach(card => {
+
+            card.addEventListener('click', function () {
+
+                document.querySelectorAll('.product-card')
+                    .forEach(c => c.classList.remove('active'));
+
+                this.classList.add('active');
+
+                project.currentGarment = this.dataset.garment;
+
+                loadShirt();
+
+            });
 
         });
 

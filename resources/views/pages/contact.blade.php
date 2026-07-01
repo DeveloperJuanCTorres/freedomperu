@@ -239,7 +239,7 @@
                 <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
                 <div class="info-content">
                     <h4>Email</h4>
-                    <p>freedomperu@gmail.com</p>
+                    <p>freedomperu2022@gmail.com</p>
                 </div>
             </div>
             <div class="info-card">
@@ -252,9 +252,9 @@
             <div class="mt-5">
                 <h4 class="mb-3 fs-6 fw-bold text-uppercase opacity-50">Síguenos</h4>
                 <div class="d-flex gap-3">
-                    <a class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" href="https://www.instagram.com" target="_blank" style="width: 45px; height: 45px;"><i class="fa-brands fa-instagram"></i></a>
-                    <a class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" href="https://www.facebook.com/freedomperu" target="_blank" style="width: 45px; height: 45px;"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" href="https://www.tiktok.com" target="_blank" style="width: 45px; height: 45px;"><i class="fa-brands fa-tiktok"></i></a>
+                    <a class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" href="https://www.instagram.com/freedomperu2022/" target="_blank" style="width: 45px; height: 45px;"><i class="fa-brands fa-instagram"></i></a>
+                    <a class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" href="https://www.facebook.com/Freedomperu" target="_blank" style="width: 45px; height: 45px;"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" href="https://www.tiktok.com/@freedomperu2022" target="_blank" style="width: 45px; height: 45px;"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
             <!-- <div class="map-container mt-5 shadow-sm">
