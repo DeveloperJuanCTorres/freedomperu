@@ -150,7 +150,7 @@ OFFCANVAS FILTERS
                 <span class="small text-muted">Mostrando <span class="fw-bold text-dark">24</span> productos</span>
                 <div class="d-flex align-items-center">
                     <label class="small me-2">Ordenar por:</label>
-                    <select id="sortProducts" class="form-select form-select-sm border-0 fw-bold p-0 bg-transparent shadow-none" style="width: auto;">
+                    <select id="sortProducts" class="form-select bg-transparent shadow-none" style="width: auto;">
                         <option>Más recientes</option>
                         <option>Menor precio</option>
                         <option>Mayor precio</option>
