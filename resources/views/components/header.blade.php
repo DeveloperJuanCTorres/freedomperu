@@ -59,8 +59,18 @@
 
             <!-- Search -->
             <div class="navbar-search">
-                <i class="fas fa-search"></i>
-                <input id="searchProduct" type="text" placeholder="Buscar productos...">
+                <form action="{{ route('shop.index') }}" method="GET" class="navbar-search">
+
+                    <i class="fas fa-search"></i>
+
+                    <input
+                        id="searchProduct"
+                        name="search"
+                        type="text"
+                        placeholder="Buscar productos..."
+                        value="{{ request('search') }}">
+
+                </form>
             </div>
 
         </div>
@@ -87,8 +97,18 @@
 
         <!-- Search Mobile -->
         <div class="navbar-search mobile-search mb-4">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Buscar productos...">
+            <form action="{{ route('shop.index') }}" method="GET" class="navbar-search mobile-search mb-4">
+
+                <i class="fas fa-search"></i>
+
+                <input
+                    id="searchProductMobile"
+                    name="search"
+                    type="text"
+                    placeholder="Buscar productos..."
+                    value="{{ request('search') }}">
+
+            </form>
         </div>
 
         <!-- Mobile Menu -->

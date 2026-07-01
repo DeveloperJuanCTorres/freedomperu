@@ -50,10 +50,29 @@ class ShopController extends Controller
         // Buscar
         if ($request->filled('search')) {
 
-            $products->where(function ($q) use ($request) {
+            $search = trim($request->search);
 
-                $q->where('name', 'like', '%' . $request->search . '%')
-                ->orWhere('description', 'like', '%' . $request->search . '%');
+            $products->where(function ($q) use ($search) {
+
+                // Nombre
+                $q->where('name', 'like', "%{$search}%")
+
+                // Descripción
+                ->orWhere('description', 'like', "%{$search}%")
+
+                // Categoría
+                ->orWhereHas('taxonomies', function ($taxonomy) use ($search) {
+
+                    $taxonomy->where('name', 'like', "%{$search}%");
+
+                })
+
+                // Diseño
+                ->orWhereHas('designs', function ($design) use ($search) {
+
+                    $design->where('name', 'like', "%{$search}%");
+
+                });
 
             });
 
