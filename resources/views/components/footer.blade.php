@@ -22,19 +22,19 @@
                 <!-- Social -->
                 <div class="footer-social">
 
-                    <a href="#">
+                    <a href="https://www.instagram.com" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
 
-                    <a href="#">
+                    <a href="https://www.facebook.com/Freedomperu" target="_blank">
                         <i class="fab fa-facebook-f"></i>
                     </a>
 
-                    <a href="#">
+                    <a href="https://www.tiktok.com" target="_blank">
                         <i class="fab fa-tiktok"></i>
                     </a>
 
-                    <a href="#">
+                    <a href="https://wa.me/51976687566" target="_blank">
                         <i class="fab fa-whatsapp"></i>
                     </a>
 
@@ -48,13 +48,31 @@
                 <div class="row">
 
                     <!-- Empresa -->
-                    <div class="col-6 col-md-3">
+                    <div class="col-6 col-md-4">
 
                         <h6 class="footer-title">
-                            Compañía
+                            Enlaces
                         </h6>
 
                         <ul class="footer-list">
+
+                            <li>
+                                <a href="{{ route('home') }}">
+                                    Inicio
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('shop.index') }}">
+                                    Tienda
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('design.index') }}">
+                                    Personalizar
+                                </a>
+                            </li>
 
                             <li>
                                 <a href="{{ route('about') }}">
@@ -63,14 +81,8 @@
                             </li>
 
                             <li>
-                                <a href="#">
-                                    Sostenibilidad
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    Blog
+                                <a href="{{ route('contact') }}">
+                                    Contáctanos
                                 </a>
                             </li>
 
@@ -79,7 +91,7 @@
                     </div>
 
                     <!-- Ayuda -->
-                    <div class="col-6 col-md-3">
+                    <!-- <div class="col-6 col-md-4">
 
                         <h6 class="footer-title">
                             Ayuda
@@ -107,10 +119,10 @@
 
                         </ul>
 
-                    </div>
+                    </div> -->
 
                     <!-- Personalizar -->
-                    <div class="col-6 col-md-3 mt-4 mt-md-0">
+                    <div class="col-6 col-md-4 mt-4 mt-md-0">
 
                         <h6 class="footer-title">
                             Personalización
@@ -141,7 +153,7 @@
                     </div>
 
                     <!-- Legal -->
-                    <div class="col-6 col-md-3 mt-4 mt-md-0">
+                    <div class="col-6 col-md-4 mt-4 mt-md-0">
 
                         <h6 class="footer-title">
                             Legal
@@ -193,6 +205,10 @@
                         © 2026 FREEDOM. Todos los derechos reservados.
                     </p>
 
+                    <p class="footer-copy mb-0">
+                        Creado por <a href="https://grupotyg.pe" target="_blank">Grupo TyG Ingenieros</a>
+                    </p>
+
                 </div>
 
                 <!-- Right -->
@@ -230,3 +246,9 @@
     </div>
 
 </footer>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<a href="https://wa.me/51976687566?text=Hola,+necesito+información" target=”_blank” class="whatsapp-btn">
+  <i class="bi bi-whatsapp"></i>
+</a>

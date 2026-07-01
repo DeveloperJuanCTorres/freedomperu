@@ -184,7 +184,7 @@
     footer {
         background-color: var(--primary);
         color: var(--white);
-        padding: 80px 0 40px
+        /* padding: 80px 0 40px */
     }
 
     .footer-link {

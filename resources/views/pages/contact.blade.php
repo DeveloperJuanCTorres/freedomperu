@@ -200,7 +200,7 @@
 
     footer {
         background-color: #f1ecf2;
-        padding: 5rem 0 3rem;
+        /* padding: 5rem 0 3rem; */
         margin-top: 5rem;
     }
 </style>
@@ -224,22 +224,22 @@
             <div class="info-card">
                 <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
                 <div class="info-content">
-                    <h4>Dirección</h4>
-                    <p>Calle Las Camelias 780, San Isidro<br />Lima, Perú</p>
+                    <h4>Dirección</h4>m
+                    <p>Av. America 316 San Carlos - JLO<br />Chiclayo, Perú</p>
                 </div>
             </div>
             <div class="info-card">
                 <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
                 <div class="info-content">
                     <h4>Teléfono</h4>
-                    <p>+51 1 456 7890</p>
+                    <p>+51 976687566</p>
                 </div>
             </div>
             <div class="info-card">
                 <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
                 <div class="info-content">
                     <h4>Email</h4>
-                    <p>info@freedom.com</p>
+                    <p>freedomperu@gmail.com</p>
                 </div>
             </div>
             <div class="info-card">
@@ -252,14 +252,14 @@
             <div class="mt-5">
                 <h4 class="mb-3 fs-6 fw-bold text-uppercase opacity-50">Síguenos</h4>
                 <div class="d-flex gap-3">
-                    <a class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" href="#" style="width: 45px; height: 45px;"><i class="fa-brands fa-instagram"></i></a>
-                    <a class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" href="#" style="width: 45px; height: 45px;"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" href="#" style="width: 45px; height: 45px;"><i class="fa-brands fa-pinterest-p"></i></a>
+                    <a class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" href="https://www.instagram.com" target="_blank" style="width: 45px; height: 45px;"><i class="fa-brands fa-instagram"></i></a>
+                    <a class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" href="https://www.facebook.com/freedomperu" target="_blank" style="width: 45px; height: 45px;"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" href="https://www.tiktok.com" target="_blank" style="width: 45px; height: 45px;"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
-            <div class="map-container mt-5 shadow-sm">
+            <!-- <div class="map-container mt-5 shadow-sm">
                 <img alt="Ubicación Lima" class="w-100 h-100 object-fit-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDgSAelP1hZZT_LiITb02B9TJVJ3j_ZN5fXo8TaP3Yx8NiD8H5TQMu_KfHnAlvcy7-ErCePfcLJFaQzlBl2sVBNJdVgCugc_fDoDQV4Qs6sxMXnrDyVde5I9eScf540pTNLnz-6gS1CmSvvNZcseoo4IMVMLqH757RS6FXrzqdwKpTUCeKjbZ9BqueQEpBVsbF2xrxlH8g6mu5lcotlqoiKnCyZX4IKvhDLUHeI35wXeinBRZQnR7nlOVuFQz-QkTc2R9CZA3ZXQ" />
-            </div>
+            </div> -->
         </div>
         <!-- Contact Form -->
         <div class="col-lg-7">
@@ -297,9 +297,15 @@
             </div>
         </div>
     </div>
+
+    <div class="row g-5 pt-5">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.076772078941!2d-79.8438509252445!3d-6.760493193236141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x904ceec554871813%3A0xd0b3503f63538f26!2sAm%C3%A9rica%20316%2C%20Jos%C3%A9%20Leonardo%20Ortiz%2014002!5e0!3m2!1ses!2spe!4v1782879148899!5m2!1ses!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
 </div>
+
+
 <!-- FAQ Section -->
-<section class="py-5" style="background-color: #f7f2f8;">
+<!-- <section class="py-5" style="background-color: #f7f2f8;">
     <div class="container py-5">
         <div class="text-center mb-5">
             <h2 class="h1">Preguntas Frecuentes</h2>
@@ -308,7 +314,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="accordion" id="faqAccordion">
-                    <!-- Item 1 -->
+                  
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" data-bs-target="#collapseOne" data-bs-toggle="collapse" type="button">
@@ -321,7 +327,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Item 2 -->
+                  
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" data-bs-target="#collapseTwo" data-bs-toggle="collapse" type="button">
@@ -334,7 +340,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Item 3 -->
+                    
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" data-bs-target="#collapseThree" data-bs-toggle="collapse" type="button">
@@ -351,6 +357,6 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 @endsection

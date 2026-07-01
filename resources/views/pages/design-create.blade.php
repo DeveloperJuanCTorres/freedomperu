@@ -277,7 +277,7 @@
 
     footer {
         background-color: var(--surface-container);
-        padding: 80px 0 40px;
+        /* padding: 80px 0 40px; */
         margin-top: 100px;
     }
 
@@ -294,345 +294,61 @@
             max-width: 1600px;
         }
     }
+
+    .design-item{
+
+        position:relative;
+
+        border-radius:12px;
+
+        overflow:hidden;
+
+        cursor:pointer;
+
+        transition:.3s;
+
+    }
+
+    .design-item:hover{
+
+        transform:translateY(-3px);
+
+    }
+
+    .design-item img{
+
+        width:100%;
+
+        /* height:90px; */
+
+        object-fit:cover;
+
+    }
+
+    .remove-design{
+
+        position:absolute;
+
+        top:6px;
+
+        right:6px;
+
+        width:28px;
+
+        height:28px;
+
+        border-radius:50%;
+
+        border:none;
+
+        background:#dc3545;
+
+        color:#fff;
+
+    }
 </style>
 
 @section('content')
-<!-- <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-<script id="tailwind-config">
-    tailwind.config = {
-        darkMode: "class",
-        theme: {
-            extend: {
-                "colors": {
-                    "on-surface": "#1c1b1b",
-                    "secondary-fixed-dim": "#c5c7c8",
-                    "surface-tint": "#6c5582",
-                    "tertiary-container": "#b5ac73",
-                    "error-container": "#ffdad6",
-                    "surface-dim": "#dcd9d9",
-                    "outline-variant": "#ccc4ce",
-                    "surface-bright": "#fcf9f8",
-                    "secondary-fixed": "#e1e3e4",
-                    "on-primary-container": "#a087b8",
-                    "on-error-container": "#93000a",
-                    "surface-container-highest": "#e5e2e1",
-                    "surface": "#fcf9f8",
-                    "on-tertiary-fixed-variant": "#4e4719",
-                    "tertiary-fixed-dim": "#d1c88c",
-                    "primary-fixed-dim": "#d8bcf0",
-                    "inverse-on-surface": "#f3f0ef",
-                    "primary": "#1f0a34",
-                    "tertiary-fixed": "#eee4a6",
-                    "on-error": "#ffffff",
-                    "on-secondary": "#ffffff",
-                    "error": "#ba1a1a",
-                    "surface-container-high": "#eae7e7",
-                    "on-primary": "#ffffff",
-                    "secondary": "#5c5f60",
-                    "on-secondary-fixed": "#191c1d",
-                    "primary-fixed": "#f0dbff",
-                    "on-tertiary-fixed": "#201c00",
-                    "inverse-surface": "#313030",
-                    "surface-container": "#f0eded",
-                    "inverse-primary": "#d8bcf0",
-                    "surface-container-low": "#f6f3f2",
-                    "on-tertiary": "#ffffff",
-                    "on-tertiary-container": "#464012",
-                    "surface-container-lowest": "#ffffff",
-                    "on-primary-fixed-variant": "#533d69",
-                    "on-secondary-fixed-variant": "#454748",
-                    "on-primary-fixed": "#26113b",
-                    "on-secondary-container": "#626566",
-                    "tertiary": "#665f2e",
-                    "primary-container": "#35204a",
-                    "on-background": "#1c1b1b",
-                    "secondary-container": "#e1e3e4",
-                    "on-surface-variant": "#4a454d",
-                    "outline": "#7b757e",
-                    "background": "#fcf9f8",
-                    "surface-variant": "#e5e2e1"
-                },
-                "borderRadius": {
-                    "DEFAULT": "1rem",
-                    "lg": "2rem",
-                    "xl": "3rem",
-                    "full": "9999px"
-                },
-                "fontFamily": {
-                    "headline": ["Plus Jakarta Sans"],
-                    "body": ["Inter"],
-                    "label": ["Inter"]
-                }
-            },
-        },
-    }
-</script>
-
-
-<main class="pt-28 min-h-screen px-4 md:px-8 max-w-[1600px] mx-auto pb-20">
-    
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-     
-        <aside class="lg:col-span-3 space-y-6">
-            <div class="bg-surface-container-low p-6 rounded-lg shadow-sm">
-                <h2 class="text-sm font-bold uppercase tracking-widest text-primary mb-6 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-lg">tune</span> Herramientas de Diseño
-                </h2>
-              
-                <div class="space-y-4 mb-8">
-                    <label class="text-xs font-semibold uppercase text-on-surface-variant">Tipo de Prenda</label>
-                    <div class="grid grid-cols-2 gap-3">
-                        <button class="flex flex-col items-center justify-center p-4 bg-surface-container-lowest border-2 border-primary rounded-lg transition-all">
-                            <span class="material-symbols-outlined text-3xl mb-2">apparel</span>
-                            <span class="text-xs font-medium">Polo Premium</span>
-                        </button>
-                        <button class="flex flex-col items-center justify-center p-4 bg-surface-container-lowest border-2 border-transparent hover:border-outline-variant rounded-lg transition-all opacity-60">
-                            <span class="material-symbols-outlined text-3xl mb-2">dry_cleaning</span>
-                            <span class="text-xs font-medium">Polera / Hoodie</span>
-                        </button>
-                    </div>
-                </div>
-            
-                <div class="space-y-4 mb-8">
-                    <label class="text-xs font-semibold uppercase text-on-surface-variant">Color de Base</label>
-                    <div class="flex flex-wrap gap-3">
-                        <button class="w-8 h-8 rounded-full bg-white border border-outline-variant ring-2 ring-primary ring-offset-2"></button>
-                        <button class="w-8 h-8 rounded-full bg-slate-900"></button>
-                        <button class="w-8 h-8 rounded-full bg-blue-900"></button>
-                        <button class="w-8 h-8 rounded-full bg-red-800"></button>
-                        <button class="w-8 h-8 rounded-full bg-emerald-900"></button>
-                        <button class="w-8 h-8 rounded-full bg-amber-400"></button>
-                    </div>
-                </div>
-             
-                <div class="space-y-4 mb-8">
-                    <label class="text-xs font-semibold uppercase text-on-surface-variant">Arte &amp; Logotipos</label>
-                    <div class="border-2 border-dashed border-outline-variant rounded-lg p-6 text-center hover:border-primary transition-colors cursor-pointer bg-surface-container-highest/30">
-                        <span class="material-symbols-outlined text-4xl text-outline mb-2">upload_file</span>
-                        <p class="text-xs text-on-surface-variant">Sube tu archivo PNG o JPG (Max 10MB)</p>
-                    </div>
-                </div>
-               
-                <div class="space-y-4">
-                    <label class="text-xs font-semibold uppercase text-on-surface-variant">Añadir Texto</label>
-                    <input class="w-full bg-surface-container-highest border-none rounded-md px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="Escribe aquí..." type="text" />
-                    <div class="grid grid-cols-2 gap-2">
-                        <select class="bg-surface-container-highest border-none rounded-md px-2 py-2 text-xs focus:ring-0">
-                            <option>Plus Jakarta</option>
-                            <option>Inter Bold</option>
-                            <option>Serif Vintage</option>
-                        </select>
-                        <select class="bg-surface-container-highest border-none rounded-md px-2 py-2 text-xs focus:ring-0">
-                            <option>24px</option>
-                            <option>32px</option>
-                            <option>48px</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-           
-            <div class="bg-primary-container text-on-primary rounded-lg p-6 relative overflow-hidden">
-                <div class="relative z-10">
-                    <h3 class="text-sm font-bold mb-2">Sugerencia Pro</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Usa imágenes con fondo transparente para un acabado profesional tipo serigrafía.</p>
-                </div>
-                <div class="absolute -right-4 -bottom-4 opacity-10">
-                    <span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
-                </div>
-            </div>
-        </aside>
-      
-        <main class="lg:col-span-6 flex flex-col gap-6">
-            <div class="bg-surface-container-low rounded-lg p-8 relative flex flex-col items-center justify-center min-h-[600px] shadow-sm">
-             
-                <div class="absolute top-6 left-6 flex gap-2">
-                    <button class="bg-surface-container-lowest px-4 py-2 rounded-full text-xs font-bold shadow-sm flex items-center gap-2 border border-primary/10">
-                        <span class="material-symbols-outlined text-sm">front_hand</span> Frente
-                    </button>
-                    <button class="bg-white/50 px-4 py-2 rounded-full text-xs font-bold hover:bg-white transition-all flex items-center gap-2">
-                        <span class="material-symbols-outlined text-sm">back_hand</span> Espalda
-                    </button>
-                </div>
-             
-                <div class="absolute top-6 right-6 flex flex-col gap-2">
-                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-lg">zoom_in</span>
-                    </button>
-                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-lg">restart_alt</span>
-                    </button>
-                </div>
-             
-                <div class="relative w-full max-w-md aspect-square bg-white rounded-xl shadow-2xl overflow-hidden group mt-5">
-
-                    <div class="design-canvas-wrapper m-auto w-full">
-                        <canvas id="canvas" width="400" height="450" class="w-full h-full"></canvas>
-                    </div>
-                
-                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div class="w-48 h-48 border-2 border-dashed border-primary/20 flex flex-col items-center justify-center text-primary/30">
-                            <span class="material-symbols-outlined text-5xl mb-2">add_photo_alternate</span>
-                            <span class="text-[10px] uppercase font-bold tracking-widest">Área de Diseño</span>
-                        </div>
-                    </div>
-                </div>
-              
-                <div class="mt-8 flex items-center gap-4 bg-white/40 px-6 py-3 rounded-full backdrop-blur-sm">
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span class="text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant">Calidad de Impresión: Alta</span>
-                    </div>
-                    <div class="w-px h-4 bg-outline-variant"></div>
-                    <span class="text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant">300 DPI</span>
-                </div>
-            </div>
-   
-            <div class="grid grid-cols-4 gap-4">
-                <div class="aspect-square bg-surface-container-high rounded-lg overflow-hidden group cursor-pointer">
-                    <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="urban style graphic t-shirt with aesthetic print on a model in a minimal studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrpG2FLujOEbP_SgzfdkdJRhzuNf6Baxm10o9dfIc5hMQXPUrIPWNIq9SMPZkHefdQuloiapVbALFM0SOefHgpF4Xn0j1JysyCSYhF-jLtNizAJa76VTC3P-bU2PYybvR60RTv196clYAuiWoa9dQDliAK-jaBsDNgX-DxHg5HkMdtrKbP9StfowEXcy0QuYijR7gAg-sY5nDjGoJ7WfPn97pexNynw20EkW2-O9VUx-28Xg4Ju2H0RCAh79nwbkLRd6_s0jtikfU" />
-                </div>
-                <div class="aspect-square bg-surface-container-high rounded-lg overflow-hidden group cursor-pointer">
-                    <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="high fashion minimalist white t-shirt design mockup on a textured grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvTUss1IFXeAeJSsp8pBGtAZRzga7cD5rJpOQBhDm5xPw2uVg4ez5niPFoyU8BeAqwLNIJnFWbDmKgVbs9XJtSC3FiXJHuFYwTae_S4UJLdjEwwgcc2X95XU5Jun1fQm94fVsRyZzT7KI4bDkSv8Rz3nSUkH9wdO46KXEDBVSa1ARDroX9kL_gxrBExGnkyalKrt8euzV1dos3Owc1qJ22pHITjjieZuGc6tlFiuSMObRvKKPplpcqP3F6ySuCyiF5S1LtxnrxA2A" />
-                </div>
-                <div class="aspect-square bg-surface-container-high rounded-lg overflow-hidden group cursor-pointer">
-                    <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="black premium cotton shirt with embroidered detail in soft dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATOtpW3DVeNDpprihoVqUuH4iP2jmG0a4OCFDU10OrRyAImH6iFMw_3c-cmtMB5q7i5NpZYkXlZM_hQOv9N2WVXFjf22qclR5YI6XuLtolrPffzZLCMqrVKlxQsTa05KKsfP8w59BhZu5WiBUvRuEIglTs-lX-OakHu36zp0TcbsrxtzyFlKITLzoGPFPf6UANpPXDwBqt8N3zbSuQYdqag-7ecOtDA5LSJcKfkwZ1d2YRzpZqS5DRxHfaxPI69rasmmWmNl7Nu9I" />
-                </div>
-                <div class="aspect-square bg-surface-container-high rounded-lg flex items-center justify-center border-2 border-dashed border-outline-variant hover:border-primary transition-all cursor-pointer">
-                    <span class="material-symbols-outlined text-outline">add</span>
-                </div>
-            </div>
-        </main>
-   
-        <aside class="lg:col-span-3 space-y-6">
-            <div class="bg-surface-container-low p-6 rounded-lg shadow-sm border border-transparent">
-                <h2 class="text-sm font-bold uppercase tracking-widest text-primary mb-6 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-lg">shopping_basket</span> Finalizar Pedido
-                </h2>
-             
-                <div class="space-y-4 mb-8">
-                    <div class="flex justify-between items-center">
-                        <label class="text-xs font-semibold uppercase text-on-surface-variant">Talla</label>
-                        <button class="text-[10px] uppercase font-bold text-primary underline underline-offset-4">Guía de tallas</button>
-                    </div>
-                    <div class="grid grid-cols-4 gap-2">
-                        <button class="h-10 flex items-center justify-center rounded-md bg-white border border-outline-variant text-xs font-bold hover:bg-primary hover:text-white transition-all">S</button>
-                        <button class="h-10 flex items-center justify-center rounded-md bg-primary text-white text-xs font-bold ring-2 ring-primary ring-offset-2">M</button>
-                        <button class="h-10 flex items-center justify-center rounded-md bg-white border border-outline-variant text-xs font-bold hover:bg-primary hover:text-white transition-all">L</button>
-                        <button class="h-10 flex items-center justify-center rounded-md bg-white border border-outline-variant text-xs font-bold hover:bg-primary hover:text-white transition-all">XL</button>
-                    </div>
-                </div>
-              
-                <div class="space-y-4 mb-8">
-                    <label class="text-xs font-semibold uppercase text-on-surface-variant">Cantidad</label>
-                    <div class="flex items-center justify-between bg-surface-container-highest rounded-md p-1">
-                        <button class="w-10 h-10 flex items-center justify-center hover:bg-white rounded-md transition-all">
-                            <span class="material-symbols-outlined">remove</span>
-                        </button>
-                        <span class="font-bold text-sm">1</span>
-                        <button class="w-10 h-10 flex items-center justify-center hover:bg-white rounded-md transition-all">
-                            <span class="material-symbols-outlined">add</span>
-                        </button>
-                    </div>
-                </div>
-            
-                <div class="border-t border-outline-variant pt-6 space-y-3 mb-8">
-                    <div class="flex justify-between items-center text-on-surface-variant">
-                        <span class="text-sm">Prenda base</span>
-                        <span class="text-sm font-medium">S/ 45.00</span>
-                    </div>
-                    <div class="flex justify-between items-center text-on-surface-variant">
-                        <span class="text-sm">Personalización</span>
-                        <span class="text-sm font-medium">S/ 15.00</span>
-                    </div>
-                    <div class="flex justify-between items-center pt-3">
-                        <span class="text-base font-bold text-primary">Total Estimado</span>
-                        <span class="text-xl font-black text-primary">S/ 60.00</span>
-                    </div>
-                </div>
-          
-                <button class="w-full bg-primary-container text-white py-3 rounded-xl font-bold uppercase tracking-widest flex items-center justify-center gap-3 shadow-lg hover:shadow-primary/20 transition-all scale-100 active:scale-95 group">
-                    <span>Añadir al Carrito</span>
-                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                </button>
-                <p class="text-[10px] text-center text-on-surface-variant mt-4 leading-relaxed px-4">
-                    Envío estimado en <span class="font-bold">3 a 5 días hábiles</span> dentro de Lima Metropolitana.
-                </p>
-            </div>
-       
-            <div class="space-y-4">
-                <div class="flex items-start gap-4 p-4 bg-emerald-50 rounded-lg">
-                    <span class="material-symbols-outlined text-emerald-600">verified</span>
-                    <div>
-                        <h4 class="text-xs font-bold text-emerald-900 mb-1">Garantía de Satisfacción</h4>
-                        <p class="text-[10px] text-emerald-700">Revisamos manualmente cada diseño antes de imprimir para asegurar la mejor calidad.</p>
-                    </div>
-                </div>
-            </div>
-        </aside>
-    </div>
-</main> -->
-
-<!-- <div class="design-page" style="padding-top: 100px;">
-
-    <div class="container">
-
-        <div class="design-grid">
-
-
-            <div class="design-sidebar">
-
-                <h3 class="sidebar-title">Personaliza tu Polo</h3>
-
-              
-                <div class="tool-group">
-                    <label>Vista</label>
-                    <div class="view-selector">
-                        <button class="view-btn active" data-view="frontal">Frontal</button>
-                        <button class="view-btn" data-view="trasera">Trasera</button>
-                        <button class="view-btn" data-view="manga_izquierda">Manga Izq.</button>
-                        <button class="view-btn" data-view="manga_derecha">Manga Der.</button>
-                    </div>
-                </div>
-
-                
-                <div class="tool-group">
-                    <label>Color del Polo</label>
-                    <input type="color" id="colorPicker" value="#ffffff">
-                </div>
-
-               
-                <div class="tool-group">
-                    <label>Agregar Texto</label>
-                    <button id="addText" class="btn-tool">Agregar Texto</button>
-                </div>
-
-             
-                <div class="tool-group">
-                    <label>Subir Imagen</label>
-                    <input type="file" id="uploadImage" class="file-input">
-                </div>
-
-                <button id="saveDesign" class="btn-save">Guardar Diseño</button>
-
-            </div>
-
-          
-            <div class="design-canvas-wrapper m-auto">
-                    <canvas id="designCanvas" width="450" height="550"></canvas>
-            </div>
-
-        </div>
-
-    </div>
-
-</div> -->
-
-
-
 
 <!-- Page Header -->
 <section class="hero-mini">
@@ -662,19 +378,19 @@
                         <div class="col-6">
                             <div class="product-card active p-3 text-center rounded-3 border-2">
                                 <i class="fa-solid fa-shirt fs-4 mb-2 text-primary"></i>
-                                <p class="small fw-bold mb-0 text-primary">Polo Premium</p>
+                                <p class="small fw-bold mb-0 text-primary">Polo</p>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="product-card p-3 text-center rounded-3 border-2">
                                 <i class="fa-solid fa-vest fs-4 mb-2 text-muted"></i>
-                                <p class="small fw-bold mb-0 text-muted">Hoodie Pro</p>
+                                <p class="small fw-bold mb-0 text-muted">Polera</p>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="product-card p-3 text-center rounded-3 border-2">
                                 <i class="fa-solid fa-hat-cowboy fs-4 mb-2 text-muted"></i>
-                                <p class="small fw-bold mb-0 text-muted">Gorra (Cap)</p>
+                                <p class="small fw-bold mb-0 text-muted">Gorra</p>
                             </div>
                         </div>
                         <div class="col-6">
@@ -797,7 +513,16 @@
 
             </div>
             <!-- Thumbnails -->
-            <div class="row mt-4 g-3 justify-content-center">
+             <div class="mt-4">
+                <h6 class="fw-bold mb-3">
+                    Elementos del diseño
+                </h6>
+
+                <div id="designGallery" class="row g-3">
+
+                </div>
+            </div>
+            <!-- <div class="row mt-4 g-3 justify-content-center">
                 <div class="col-2">
                     <img alt="Front" class="img-fluid rounded-3 border border-secondary shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFhay53JEA-FZgagSUgYkAtveg1-g1AATTvHpDOkwbh4-MdTKmGWN5bOcR6_vZiYh5RTQ7NRzkow7Lyh3L7JxurDJ7pIYEUkv9UzfzX-OmnAw2cfrUqlc369QonV-Z-5zERxD69sOkaSSXXhEMbq1fP2FdpTIVGthgxaeYpDuI_c4DTLLmCwi_pyysvfoHogjVfIeyFaY0jU5Tsyg_6S3iR1T5R6qeJyd8PIJ6MZacqLW8R7MkuhERQENIkchFKpcqCWHOOyTcEg" />
                 </div>
@@ -810,7 +535,7 @@
                 <div class="col-2 opacity-50">
                     <img alt="Texture" class="img-fluid rounded-3 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2wfwrzXrv-hD38oHWc-QmewY0JMLgOYCk8mGhU4pPY6AyKMP1ap08YRBsllVxyHWTUPGdEQceAU6h6POZ9yX2GixR1LL2G9LSD_gcUeBvIaKdmHIEGe8SKM1BLj9wiB63l2tdWzt575ScEhzBR4W8irCl0BXQRm_j7JVPawOpwlUV156F7g7JhonQwPYT_nR-mh6Fs0g3wL3Z0hiH06zIvkiWp9XRLI-kz_zEzmXvDhWTYTzq-h4NpFk6aD1C0a98Fu6RSqhq7A" />
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- 3. RIGHT PANEL: SUMMARY -->
         <div class="col-xl-3 col-lg-12">
@@ -885,16 +610,189 @@
             preserveObjectStacking: true
         });
 
-        let currentView = 'frontal';
-        let currentShirt = null;
-        let currentColor = '#1f0a34';
+        canvas.on('object:added', autoSave);
 
-        let zoom = 1;
+        canvas.on('object:modified', autoSave);
 
-        let designs = {
-            frontal: null,
-            trasera: null
+        canvas.on('object:removed', autoSave);
+
+        canvas.on('text:changed', autoSave);
+
+        // let currentView = 'frontal';
+        // let currentShirt = null;
+        // let currentColor = '#1f0a34';
+
+        // let zoom = 1;
+
+        // let designs = {
+        //     frontal: null,
+        //     trasera: null
+        // };
+
+        const project = {
+
+            currentView: 'frontal',
+
+            currentColor: '#1f0a34',
+
+            zoom: 1,
+
+            mockup: null,
+
+            views:{
+
+                frontal:{
+
+                    json:null,
+
+                    preview:null,
+
+                    gallery:[]
+
+                },
+
+                trasera:{
+
+                    json:null,
+
+                    preview:null,
+
+                    gallery:[]
+
+                }
+
+            }
+
         };
+
+        let loadingCanvas = false;
+
+        function saveCurrentDesign() {
+
+            project.views[project.currentView].json =
+                canvas.toJSON([
+                    'customId'
+                ]);
+
+            
+        }
+
+        function getProject() {
+
+            return {
+
+                color: project.currentColor,
+
+                frontal: project.views.frontal.json,
+
+                trasera: project.views.trasera.json
+
+            };
+
+        }
+
+        function getPreview() {
+
+            return canvas.toDataURL({
+
+                format:'png',
+
+                multiplier:2
+
+            });
+
+        }
+
+        function autoSave() {
+
+            if (loadingCanvas) return;
+
+            project.views[project.currentView].json = canvas.toJSON(['customId']);
+
+            project.views[project.currentView].preview = canvas.toDataURL({
+                format: 'png',
+                multiplier: 2
+            });
+
+            console.log("Guardado:", project.currentView);
+        }
+
+        
+        function renderGallery() {
+
+            const gallery = document.getElementById('designGallery');
+
+            gallery.innerHTML = '';
+
+            canvas.getObjects().forEach(obj => {
+
+                if (obj.excludeFromExport) return;
+
+                const col = document.createElement('div');
+
+                col.className = 'col-3';
+
+                let preview = '';
+
+                if (obj.type === 'image') {
+
+                    preview = obj._element.src;
+
+                } else {
+
+                    preview = null;
+
+                }
+
+                col.innerHTML = `
+                    <div class="design-item bg-white border">
+
+                        <button class="remove-design">
+
+                            <i class="fa fa-times"></i>
+
+                        </button>
+
+                        ${
+                            preview
+                            ? `<img src="${preview}">`
+                            : `<div class="p-3 fw-bold text-center">${obj.text}</div>`
+                        }
+
+                    </div>
+                `;
+
+                gallery.appendChild(col);
+
+                // seleccionar
+
+                col.onclick = function () {
+
+                    canvas.setActiveObject(obj);
+
+                    canvas.renderAll();
+
+                };
+
+                // eliminar
+
+                col.querySelector('.remove-design').onclick = function(e){
+
+                    e.stopPropagation();
+
+                    canvas.remove(obj);
+
+                    renderGallery();
+
+                    saveCurrentDesign();
+
+                    canvas.renderAll();
+
+                };
+
+            });
+
+        }
 
         /*
         |--------------------------------------------------------------------------
@@ -902,64 +800,150 @@
         |--------------------------------------------------------------------------
         */
 
-        function loadShirt(view) {
+        // function loadShirt(view) {
+
+        //     canvas.clear();
+
+        //     const imagePath = "{{ asset('images') }}/polo_base_" + view + ".png";
+
+        //     fabric.Image.fromURL(imagePath, function(img) {
+
+        //         img.set({
+        //             left: 0,
+        //             top: 0,
+        //             selectable: false,
+        //             evented: false,
+        //             excludeFromExport: true
+        //         });
+
+        //         img.scaleToWidth(500);
+
+        //         if (currentColor) {
+
+        //             img.filters = [
+        //                 new fabric.Image.filters.BlendColor({
+        //                     color: currentColor,
+        //                     mode: 'multiply',
+        //                     alpha: 1
+        //                 })
+        //             ];
+
+        //             img.applyFilters();
+        //         }
+
+        //         canvas.add(img);
+
+        //         // addThumbnail(img,file.name,event.target.result);
+
+        //         canvas.sendToBack(img);
+
+        //         currentShirt = img;
+
+        //         if (designs[view]) {
+
+        //             canvas.loadFromJSON(designs[view], () => {
+
+        //                 canvas.renderAll();
+
+        //                 canvas.sendToBack(currentShirt);
+
+        //             });
+
+        //         } else {
+
+        //             canvas.renderAll();
+
+        //         }
+
+        //     });
+
+        // }
+
+        function loadShirt() {
+
+            loadingCanvas = true;
 
             canvas.clear();
 
-            const imagePath = "{{ asset('images') }}/polo_base_" + view + ".png";
+            const json = project.views[project.currentView].json;
 
-            fabric.Image.fromURL(imagePath, function(img) {
+            // Primero restaurar el diseño
+            const restoreCanvas = function(callback) {
 
-                img.set({
-                    left: 0,
-                    top: 0,
-                    selectable: false,
-                    evented: false,
-                    excludeFromExport: true
-                });
+                if (json) {
 
-                img.scaleToWidth(500);
-
-                if (currentColor) {
-
-                    img.filters = [
-                        new fabric.Image.filters.BlendColor({
-                            color: currentColor,
-                            mode: 'multiply',
-                            alpha: 1
-                        })
-                    ];
-
-                    img.applyFilters();
-                }
-
-                canvas.add(img);
-
-                canvas.sendToBack(img);
-
-                currentShirt = img;
-
-                if (designs[view]) {
-
-                    canvas.loadFromJSON(designs[view], () => {
+                    canvas.loadFromJSON(json, function() {
 
                         canvas.renderAll();
 
-                        canvas.sendToBack(currentShirt);
+                        callback();
 
                     });
 
                 } else {
 
-                    canvas.renderAll();
+                    callback();
 
                 }
+
+            };
+
+            restoreCanvas(function() {
+
+                const imagePath =
+                    "{{ asset('images') }}/polo_base_" +
+                    project.currentView +
+                    ".png";
+
+                fabric.Image.fromURL(imagePath, function(img) {
+
+                    img.set({
+
+                        left: 0,
+                        top: 0,
+                        selectable: false,
+                        evented: false,
+                        excludeFromExport: true
+
+                    });
+
+                    img.scaleToWidth(500);
+
+                    img.filters = [
+
+                        new fabric.Image.filters.BlendColor({
+
+                            color: project.currentColor,
+                            mode: 'multiply',
+                            alpha: 1
+
+                        })
+
+                    ];
+
+                    img.applyFilters();
+
+                    canvas.add(img);
+
+                    canvas.sendToBack(img);
+
+                    project.mockup = img;
+
+                    canvas.renderAll();
+
+                    renderGallery();
+
+                    loadingCanvas = false;
+
+                    saveCurrentDesign();
+
+                });
 
             });
 
         }
 
-        loadShirt(currentView);
+        loadShirt();
 
         /*
         |--------------------------------------------------------------------------
@@ -967,22 +951,41 @@
         |--------------------------------------------------------------------------
         */
 
-        document.querySelectorAll('.btn-view').forEach(btn => {
+        // document.querySelectorAll('.btn-view').forEach(btn => {
 
-            btn.addEventListener('click', function() {
+        //     btn.addEventListener('click', function() {
+
+        //         document.querySelectorAll('.btn-view')
+        //             .forEach(b => b.classList.remove('active'));
+
+        //         this.classList.add('active');
+
+        //         designs[currentView] = canvas.toJSON();
+
+        //         currentView = this.dataset.view;
+
+        //         loadShirt(currentView);
+
+        //     });
+
+        // });
+
+        document.querySelectorAll('.btn-view').forEach(btn=>{
+
+            btn.onclick=function(){
 
                 document.querySelectorAll('.btn-view')
-                    .forEach(b => b.classList.remove('active'));
+                    .forEach(b=>b.classList.remove('active'));
 
                 this.classList.add('active');
 
-                designs[currentView] = canvas.toJSON();
+                saveCurrentDesign();
 
-                currentView = this.dataset.view;
+                project.currentView=this.dataset.view;
 
-                loadShirt(currentView);
+                loadShirt();
 
-            });
+            }
 
         });
 
@@ -1001,20 +1004,20 @@
 
                 this.classList.add('active');
 
-                currentColor = window.getComputedStyle(this)
+                project.currentColor = window.getComputedStyle(this)
                     .backgroundColor;
 
-                if (!currentShirt) return;
+                if (!project.mockup) return;
 
-                currentShirt.filters = [
+                project.mockup.filters = [
                     new fabric.Image.filters.BlendColor({
-                        color: currentColor,
+                        color: project.currentColor,
                         mode: 'multiply',
                         alpha: 1
                     })
                 ];
 
-                currentShirt.applyFilters();
+                project.mockup.applyFilters();
 
                 canvas.renderAll();
 
@@ -1055,21 +1058,96 @@
 
                 fabric.Image.fromURL(event.target.result, function(img) {
 
-                    img.scaleToWidth(180);
+                    img.customId = crypto.randomUUID();
+
+                    img.scaleToWidth(180);                    
 
                     canvas.add(img);
+
+                    // addThumbnail(img,file.name,event.target.result);
 
                     canvas.centerObject(img);
 
                     canvas.setActiveObject(img);
 
+                    renderGallery();
+
+                    saveCurrentDesign();
+
+                    canvas.renderAll();
+
                 });
+
+                inputFile.value='';
 
             };
 
             reader.readAsDataURL(file);
 
         });
+
+        // function addThumbnail(object, name, preview) {
+
+        //     const gallery = document.getElementById('designGallery');
+
+        //     const col = document.createElement('div');
+
+        //     col.className = 'col-3';
+
+        //     col.dataset.id = object.customId;
+
+        //     col.innerHTML = `
+        //         <div class="design-item">
+
+        //             <button class="remove-design">
+        //                 <i class="fa fa-times"></i>
+        //             </button>
+
+        //             <img src="${preview}">
+
+        //         </div>
+        //     `;
+
+        //     gallery.appendChild(col);
+
+        //     // Seleccionar objeto
+        //     col.querySelector('img').onclick = function () {
+
+        //         const obj = canvas.getObjects().find(o => o.customId === object.customId);
+
+        //         if (obj) {
+
+        //             canvas.setActiveObject(obj);
+
+        //             canvas.renderAll();
+
+        //         }
+
+        //     };
+
+        //     // Eliminar
+        //     col.querySelector('.remove-design').onclick = function (e) {
+
+        //         e.stopPropagation();
+
+        //         const obj = canvas.getObjects().find(o => o.customId === object.customId);
+
+        //         if (obj) {
+
+        //             canvas.remove(obj);
+
+        //             canvas.renderAll();
+
+        //         }
+
+        //         col.remove();
+
+        //         // Permite volver a subir el mismo archivo
+        //         inputFile.value = "";
+
+        //     };
+
+        // }
 
         /*
         |--------------------------------------------------------------------------
@@ -1092,9 +1170,17 @@
                     fill: '#000'
                 });
 
+                textbox.customId = crypto.randomUUID();
+
                 canvas.add(textbox);
 
+                // addTextThumbnail(textbox,textbox.text);
+
                 canvas.setActiveObject(textbox);
+
+                renderGallery();
+
+                saveCurrentDesign();
 
                 canvas.renderAll();
 
@@ -1103,6 +1189,66 @@
             }
 
         });
+
+        // function addTextThumbnail(object, text) {
+
+        //     const gallery = document.getElementById('designGallery');
+
+        //     const col = document.createElement('div');
+
+        //     col.className = 'col-3';
+
+        //     col.dataset.id = object.customId;
+
+        //     col.innerHTML = `
+        //         <div class="design-item bg-white border p-2 text-center">
+
+        //             <button class="remove-design">
+        //                 <i class="fa fa-times"></i>
+        //             </button>
+
+        //             <div class="small fw-bold">
+        //                 ${text}
+        //             </div>
+
+        //         </div>
+        //     `;
+
+        //     gallery.appendChild(col);
+
+        //     col.onclick = function () {
+
+        //         const obj = canvas.getObjects().find(o => o.customId === object.customId);
+
+        //         if (obj) {
+
+        //             canvas.setActiveObject(obj);
+
+        //             canvas.renderAll();
+
+        //         }
+
+        //     };
+
+        //     col.querySelector('.remove-design').onclick = function (e) {
+
+        //         e.stopPropagation();
+
+        //         const obj = canvas.getObjects().find(o => o.customId === object.customId);
+
+        //         if (obj) {
+
+        //             canvas.remove(obj);
+
+        //             canvas.renderAll();
+
+        //         }
+
+        //         col.remove();
+
+        //     };
+
+        // }
 
         /*
         |--------------------------------------------------------------------------
@@ -1184,6 +1330,12 @@
                 if (active) {
 
                     canvas.remove(active);
+                    
+                    renderGallery();
+
+                    saveCurrentDesign();
+
+                    canvas.renderAll();
 
                 }
 
