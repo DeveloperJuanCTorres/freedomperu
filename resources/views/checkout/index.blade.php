@@ -135,4 +135,62 @@ CONTENIDO
 
 <script src="{{ asset('js/checkout.js') }}"></script>
 
+<script>
+    $(document).ready(function () {
+
+        function toggleDeliveryAddress() {
+
+            let method = $('input[name="shipping_method"]:checked').val();
+
+            if (method === 'delivery') {
+
+                $('#deliveryAddressCard').stop(true, true).slideDown(300);
+
+                $('#shippingInfo')
+                    .html('<i class="fas fa-info-circle text-primary me-2"></i> El costo del envío se calculará según el distrito seleccionado.');
+
+            } else {
+
+                $('#deliveryAddressCard').stop(true, true).slideUp(300);
+
+                $('#shippingInfo')
+                    .html('<i class="fas fa-store text-success me-2"></i> Recogerás tu pedido en nuestra tienda. No se aplicarán costos de envío.');
+
+            }
+
+        }
+
+        toggleDeliveryAddress();
+
+        $('input[name="shipping_method"]').on('change', function () {
+            toggleDeliveryAddress();
+        });
+
+    });
+
+    function toggleDeliveryAddress() {
+
+        let method = $('input[name="shipping_method"]:checked').val();
+
+        if (method === 'delivery') {
+
+            $('#deliveryAddressCard').slideDown(300);
+
+        } else {
+
+            $('#deliveryAddressCard').slideUp(300);
+
+            $('#deliveryAddressCard')
+                .find('input[type="text"], textarea')
+                .val('');
+
+            $('#deliveryAddressCard')
+                .find('select')
+                .prop('selectedIndex', 0);
+
+        }
+
+    }
+</script>
+
 @endpush

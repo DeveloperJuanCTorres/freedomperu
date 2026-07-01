@@ -107,7 +107,7 @@
 
 </div>
 
-<div class="card shadow-sm rounded-4 border-0 mb-4">
+<div class="card shadow-sm rounded-4 border-0 mb-4" id="deliveryAddressCard">
 
     <div class="card-header bg-white border-0 pt-4 px-4">
 
