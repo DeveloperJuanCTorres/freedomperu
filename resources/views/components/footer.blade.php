@@ -11,7 +11,7 @@
             <div class="col-lg-4">
 
                 <div class="footer-logo">
-                    FREEDOM
+                    <img src="{{ asset('images/logo_freedom.png') }}" alt="Logo" height="50">
                 </div>
 
                 <p class="footer-description">
