@@ -58,13 +58,33 @@
     <div class="row g-4">
         @foreach($categories as $category)
         <div class="col-6 col-md-4 col-lg">
-            <div class="category-card position-relative overflow-hidden rounded-4 shadow-sm h-100" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; aspect-ratio: 3/4;">
-                <img alt="{{ $category->name }}" class="w-100 h-100 object-fit-cover" src="{{ asset('storage/' . $category->image) }}" />
-                <div class="position-absolute bottom-0 start-0 end-0 p-4 bg-black bg-opacity-10 backdrop-blur-md" style="backdrop-filter: blur(10px); background: linear-gradient(transparent, rgba(0,0,0,0.7));">
-                    <h4 class="text-white h5 mb-0 fw-bold">{{ $category->name }}</h4>
-                    <p class="text-white-50 small mb-0">Esenciales Premium</p>
+            <a href="{{ route('shop.index', ['taxonomy' => $category->id]) }}"
+            class="text-decoration-none">
+                
+                <div class="category-card position-relative overflow-hidden rounded-4 shadow-sm h-100"
+                    style="transition: all .5s cubic-bezier(0.4,0,0.2,1); cursor:pointer; aspect-ratio:3/4;">
+
+                    <img
+                        src="{{ asset('storage/'.$category->image) }}"
+                        class="w-100 h-100 object-fit-cover"
+                        alt="{{ $category->name }}">
+
+                    <div class="position-absolute bottom-0 start-0 end-0 p-4 bg-black bg-opacity-10"
+                        style="backdrop-filter: blur(10px); background:linear-gradient(transparent, rgba(0,0,0,.7));">
+
+                        <h4 class="text-white h5 mb-0 fw-bold">
+                            {{ $category->name }}
+                        </h4>
+
+                        <p class="text-white-50 small mb-0">
+                            Esenciales Premium
+                        </p>
+
+                    </div>
+
                 </div>
-            </div>
+
+            </a>
         </div>
         @endforeach
         
@@ -179,9 +199,9 @@
                 <h2 class="display-3 fw-bolder lh-1 mb-4">Diseña sin <br /><span style="color: #ffb689; font-style: italic;">límites.</span></h2>
                 <p class="lead opacity-75 mb-5" style="max-width: 500px;">Nuestra herramienta de personalización 3D te permite visualizar cada detalle en tiempo real de tu diseño.</p>
                 <div class="d-flex flex-column flex-md-row align-items-md-center gap-4">
-                    <button class="btn btn-lg btn-warning fw-bold px-4 py-3 shadow-lg" style="background-color: var(--secondary-color); border: none; color: white;">
+                    <a href="{{route('design.index')}}" class="btn btn-lg btn-warning fw-bold px-4 py-3 shadow-lg" style="background-color: var(--secondary-color); border: none; color: white;">
                         Diseñar Ahora <i class="fas fa-paint-brush ms-2"></i>
-                    </button>
+                    </a>
                     <div class="d-flex align-items-center gap-2">
                         <div class="d-flex -space-x-2">
                             <img alt="user" class="rounded-circle border border-2 border-dark" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgsBT779-B1keCyaqG1kcBiJfYUbJwQ4zptIwwefA5w--6Y1-Iyq_HtYOgrG1GesPXCz0W8yQopYRzJcclHc427ULNG5nvXzDOnTkDB2_v0QcV--0Xoa7rda_DEbmOFnOrmKcOj00mtpOMTm25jmIBmjSq-NDfRmZuAk0I4OITSr-KPkLNnfrHbA3ZoTy79zLLU-ITMzllDtyh9muyfLEXaQ2e4aEctkkkH_RKq-Qb3OJbPJYGavarEnhJb-LuDPxEtaHbJB55cA" width="40" />

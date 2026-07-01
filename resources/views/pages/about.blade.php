@@ -240,8 +240,8 @@
                     <h1 class="hero-title font-headline">EXPRESA TU LIBERTAD A TRAVÉS DEL ESTILO.</h1>
                     <p class="lead mb-5 text-white-50">No somos una marca de ropa. Somos el lienzo para tu propia identidad. En un mundo de copias masivas, reclamamos el derecho a la singularidad radical.</p>
                     <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
-                        <a class="btn btn-light rounded-0 px-4 py-3 fw-bold" href="#">VER COLECCIONES</a>
-                        <a class="btn btn-outline-light rounded-0 px-4 py-3 fw-bold" href="#">CREAR DISEÑO</a>
+                        <a class="btn btn-light rounded-0 px-4 py-3 fw-bold" href="{{ route('shop.index') }}">VER COLECCIONES</a>
+                        <a class="btn btn-outline-light rounded-0 px-4 py-3 fw-bold" href="{{ route('design.index') }}">CREAR DISEÑO</a>
                     </div>
                 </div>
             </div>

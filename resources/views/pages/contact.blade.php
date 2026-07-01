@@ -224,7 +224,7 @@
             <div class="info-card">
                 <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
                 <div class="info-content">
-                    <h4>Dirección</h4>m
+                    <h4>Dirección</h4>
                     <p>Av. America 316 San Carlos - JLO<br />Chiclayo, Perú</p>
                 </div>
             </div>
