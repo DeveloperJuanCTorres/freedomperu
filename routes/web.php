@@ -69,6 +69,10 @@ Route::prefix('carrito')->group(function () {
         ->name('cart.clear');
 });
 
+
+Route::post('/cart/add-customized', [CartController::class, 'addCustomized'])
+    ->name('cart.addCustomized');
+
 /*
 |--------------------------------------------------------------------------
 | CHECKOUT

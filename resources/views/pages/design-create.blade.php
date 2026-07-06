@@ -346,6 +346,59 @@
         color:#fff;
 
     }
+
+    #summaryTotal{
+
+        color:#ffc107;
+
+        font-size:2rem;
+
+        font-weight:800;
+
+    }
+
+
+    .price-badge{
+
+        position:absolute;
+
+        background:#1f0a34;
+
+        color:white;
+
+        padding:8px 12px;
+
+        border-radius:10px;
+
+        box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+        pointer-events:none;
+
+        z-index:999;
+
+        min-width:120px;
+
+        text-align:center;
+
+        transition:.15s;
+
+    }
+
+    .price-badge small{
+
+        color:#ffc107;
+
+        font-weight:bold;
+
+        display:block;
+
+    }
+
+    .price-badge.d-none{
+
+        display:none;
+
+    }
 </style>
 
 @section('content')
@@ -405,12 +458,9 @@
                 <div class="mb-5">
                     <label class="tool-label"><span class="step-number">2</span> Color de Base</label>
                     <div class="d-flex flex-wrap gap-3 p-3 bg-white rounded-3 shadow-sm border border-light">
-                        <div class="color-swatch active" style="background: #1f0a34;" title="Night Purple"></div>
-                        <div class="color-swatch" style="background: #ffffff; border: 1px solid #ddd;" title="Clean White"></div>
-                        <div class="color-swatch" style="background: #1c1b1f;" title="Carbon Black"></div>
-                        <div class="color-swatch" style="background: #665f2e;" title="Olive Drab"></div>
-                        <div class="color-swatch" style="background: #984800;" title="Amber Sunset"></div>
-                        <div class="color-swatch" style="background: #ebe7ec;" title="Stone Grey"></div>
+                        @foreach($colors as $key => $color)
+                            <div class="color-swatch {{ $key == 0 ? 'active' : '' }}" style="background: {{ $color->hex_code }}; border: 1px solid #ddd;" title="{{ $color->name }}" data-color-id="{{ $color->id }}" data-color-hex="{{ $color->hex_code }}"></div>
+                        @endforeach
                     </div>
                 </div>
                 <!-- STEP 3: DISEÑO -->
@@ -441,6 +491,19 @@
                                     <option>48px</option>
                                 </select>
                             </div>
+                            <div class="row g-2 mt-2">
+                                <div class="col-12">
+                                    <label class="small fw-bold text-muted mb-1">
+                                        Color del texto
+                                    </label>
+
+                                    <input type="color"
+                                        id="textColor"
+                                        class="form-control form-control-color w-100"
+                                        value="#000000"
+                                        title="Color del texto">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -449,18 +512,39 @@
                     <label class="tool-label"><span class="step-number">4</span> Talla y Cantidad</label>
                     <div class="row g-3">
                         <div class="col-7">
-                            <select class="form-select border-light-subtle p-2 px-3 fw-bold">
-                                <option>Talla Media (M)</option>
-                                <option>Talla Grande (L)</option>
-                                <option>Extra Grande (XL)</option>
-                                <option>Pequeña (S)</option>
+                            <select
+                                id="size"
+                                class="form-select border-light-subtle p-2 px-3 fw-bold">
+
+                                <option value="S">Pequeña (S)</option>
+                                <option value="M" selected>Media (M)</option>
+                                <option value="L">Grande (L)</option>
+                                <option value="XL">Extra Grande (XL)</option>
+
                             </select>
                         </div>
                         <div class="col-5">
                             <div class="input-group">
-                                <button class="btn btn-outline-secondary btn-sm" type="button">-</button>
-                                <input class="form-control text-center p-2 fw-bold" type="text" value="1" />
-                                <button class="btn btn-outline-secondary btn-sm" type="button">+</button>
+                                <button
+                                    id="btnMinus"
+                                    class="btn btn-outline-secondary btn-sm"
+                                    type="button">
+                                    -
+                                </button>
+
+                                <input
+                                    id="quantity"
+                                    class="form-control text-center p-2 fw-bold"
+                                    type="number"
+                                    min="1"
+                                    value="1">
+
+                                <button
+                                    id="btnPlus"
+                                    class="btn btn-outline-secondary btn-sm"
+                                    type="button">
+                                    +
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -500,20 +584,6 @@
 
                 </div>
 
-                <!-- <div class="position-absolute top-0 start-0 p-3 z-3 d-flex gap-2">
-
-                    <button class="btn btn-light rounded-pill shadow-sm px-3 py-2 fw-bold btn-view active"
-                        data-view="frontal">
-                        <i class="fa-solid fa-shirt me-1"></i> Frente
-                    </button>
-
-                    <button class="btn btn-light rounded-pill shadow-sm px-3 py-2 fw-bold btn-view"
-                        data-view="trasera">
-                        <i class="fa-solid fa-rotate me-1"></i> Espalda
-                    </button>
-
-                </div> -->
-
                 <!-- CONTROLES -->
                 <div class="visualizer-controls z-3">
 
@@ -531,6 +601,11 @@
                 <div class="canvas-container-custom position-absolute">
 
                     <canvas id="canvas" width="500" height="600" class="pt-5"></canvas>
+
+                    <div id="priceBadge" class="price-badge d-none">
+                        <div class="fw-bold"></div>
+                        <small></small>
+                    </div>
 
                     <!-- GUIA -->
                     <div class="design-guide">
@@ -550,53 +625,32 @@
 
                 </div>
             </div>
-            <!-- <div class="row mt-4 g-3 justify-content-center">
-                <div class="col-2">
-                    <img alt="Front" class="img-fluid rounded-3 border border-secondary shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFhay53JEA-FZgagSUgYkAtveg1-g1AATTvHpDOkwbh4-MdTKmGWN5bOcR6_vZiYh5RTQ7NRzkow7Lyh3L7JxurDJ7pIYEUkv9UzfzX-OmnAw2cfrUqlc369QonV-Z-5zERxD69sOkaSSXXhEMbq1fP2FdpTIVGthgxaeYpDuI_c4DTLLmCwi_pyysvfoHogjVfIeyFaY0jU5Tsyg_6S3iR1T5R6qeJyd8PIJ6MZacqLW8R7MkuhERQENIkchFKpcqCWHOOyTcEg" />
-                </div>
-                <div class="col-2 opacity-50">
-                    <img alt="Back" class="img-fluid rounded-3 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXaLerMBsgqp_eY0wqWqSPeqg7nlR4u6ZpbkgH69MT5YBOroNTmNPV94R_ka48AtGxHViPH3t9lIVeE2Moyenqt15vHOzyIkXzm1SfCciZp4d3ODl1EaoqT_gpqSm2WB1qW4A0hHDqleCJ1f7Adq2HNZi4f1d0oiIw5QYdvjn13k0Ozc1ScB9FNBAHtdqL5DHs01hPoWDE5KCDtwea1joRGs-9ayZufPDlfUM8alE3E2gqSTeppZXA2-lalUBkZcItGcZ5HaNGRA" />
-                </div>
-                <div class="col-2 opacity-50">
-                    <img alt="Detail" class="img-fluid rounded-3 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmgf2Cmr14JMtgl1ALPmv9_eXzhyQRK7GISM3RaitCrErvtQdHSG3hc8PZ6vg6lvJelg-ybIAtz28oWL2WE3mg_i1hbRUYJ4Rnl-aPn_tEmHQYsCPIVMytJHCPD4IlckI0zfj7kaCIsHT3DCBW45azwa1r7iaA1lPfXqFrS3-ztHRkfjLKBcdJB90lVYHbSovkivjFNScSp9NUBhKRZ6PJvd_pxpDPq7kxEjklHlruTZZygSpIxIe9tnl3ro9gITr5G9qVmCjfTw" />
-                </div>
-                <div class="col-2 opacity-50">
-                    <img alt="Texture" class="img-fluid rounded-3 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2wfwrzXrv-hD38oHWc-QmewY0JMLgOYCk8mGhU4pPY6AyKMP1ap08YRBsllVxyHWTUPGdEQceAU6h6POZ9yX2GixR1LL2G9LSD_gcUeBvIaKdmHIEGe8SKM1BLj9wiB63l2tdWzt575ScEhzBR4W8irCl0BXQRm_j7JVPawOpwlUV156F7g7JhonQwPYT_nR-mh6Fs0g3wL3Z0hiH06zIvkiWp9XRLI-kz_zEzmXvDhWTYTzq-h4NpFk6aD1C0a98Fu6RSqhq7A" />
-                </div>
-            </div> -->
         </div>
         <!-- 3. RIGHT PANEL: SUMMARY -->
         <div class="col-xl-3 col-lg-12">
             <div class="summary-card">
                 <h4 class="h5 mb-4 text-white">Resumen de Configuración</h4>
                 <div class="summary-item">
-                    <span>Prenda:</span>
-                    <span class="fw-bold">Polo Premium Bespoke</span>
+                    <span>Prenda base</span>
+                    <span class="fw-bold" id="summaryGarment">
+                        Polo
+                    </span>
                 </div>
-                <div class="summary-item">
-                    <span>Color:</span>
-                    <span class="fw-bold">Night Purple</span>
+                <div id="summaryDetails" class="mb-4">
+
                 </div>
-                <div class="summary-item">
-                    <span>Talla:</span>
-                    <span class="fw-bold">Media (M)</span>
-                </div>
-                <div class="summary-item">
-                    <span>Cantidad:</span>
-                    <span class="fw-bold">1 unidad</span>
-                </div>
-                <div class="summary-item">
-                    <span>Personalización:</span>
-                    <span class="fw-bold">Logo Frontal</span>
-                </div>
+
                 <div class="summary-total">
                     <div class="d-flex flex-column">
                         <span class="small text-uppercase fw-bold ls-1 opacity-70">Total Estimado</span>
-                        <span class="h2 mb-0 font-headline">$124.00</span>
+                        <span class="h2 mb-0 font-headline" id="summaryTotal">
+                            S/25.00
+                        </span>
                     </div>
                 </div>
-                <button class="btn btn-add-cart-1">
-                    <i class="fa-solid fa-cart-plus me-2"></i> AGREGAR AL CARRITO
+                <button id="btnAddCart" class="btn btn-add-cart-1">
+                    <i class="fa-solid fa-cart-plus me-2"></i>
+                    AGREGAR AL CARRITO
                 </button>
                 <p class="text-center small mt-4 opacity-50" style="font-size: 0.75rem;">
                     Entrega estimada: 5-7 días hábiles. Incluye certificado de autenticidad.
@@ -629,6 +683,7 @@
 @push('scripts')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 <script>
@@ -638,6 +693,64 @@
             preserveObjectStacking: true
         });
 
+        const PRICE_RULES = {
+
+            garments: {
+
+                polo: 25,
+
+                polera: 75
+
+            },
+
+            front_back: {
+
+                text: 4,
+
+                small: 3.5,
+
+                medium: 6,
+
+                large: 10
+
+            },
+
+            sleeve: {
+
+                text: 4,
+
+                small: 2,
+
+                large: 4
+
+            }
+
+        };
+
+        const PRINT_AREAS = {
+
+            frontal: {
+                width: 220,
+                height: 260
+            },
+
+            trasera: {
+                width: 220,
+                height: 260
+            },
+
+            manga_derecha: {
+                width: 100,
+                height: 120
+            },
+
+            manga_izquierda: {
+                width: 100,
+                height: 120
+            }
+
+        };
+
         canvas.on('object:added', autoSave);
 
         canvas.on('object:modified', autoSave);
@@ -646,16 +759,24 @@
 
         canvas.on('text:changed', autoSave);
 
-        // let currentView = 'frontal';
-        // let currentShirt = null;
-        // let currentColor = '#1f0a34';
 
-        // let zoom = 1;
 
-        // let designs = {
-        //     frontal: null,
-        //     trasera: null
-        // };
+        canvas.on('selection:created', updatePriceBadge);
+
+        canvas.on('selection:updated', updatePriceBadge);
+
+        canvas.on('selection:cleared', function(){
+
+            document.getElementById('priceBadge')
+                .classList.add('d-none');
+
+        });
+
+        canvas.on('object:modified', updatePriceBadge);
+
+        canvas.on('object:scaling', updatePriceBadge);
+
+        canvas.on('object:moving', updatePriceBadge);
 
         const project = {
 
@@ -663,7 +784,9 @@
 
             currentView: 'frontal',
 
-            currentColor: '#1f0a34',
+            currentColor: null,
+
+            currentColorId: null,
 
             zoom: 1,
 
@@ -674,30 +797,48 @@
                 frontal:{
                     json:null,
                     preview:null,
-                    gallery:[]
+                    gallery:[],
+
+                    images:[],     // Información de cada imagen para calcular precios
+                    hasText:false  // ¿Existe al menos un texto?
                 },
 
                 trasera:{
                     json:null,
                     preview:null,
-                    gallery:[]
+                    gallery:[],
+
+                    images:[],
+                    hasText:false
                 },
 
                 manga_derecha:{
                     json:null,
                     preview:null,
-                    gallery:[]
+                    gallery:[],
+
+                    images:[],
+                    hasText:false
                 },
 
                 manga_izquierda:{
                     json:null,
                     preview:null,
-                    gallery:[]
+                    gallery:[],
+
+                    images:[],
+                    hasText:false
                 }
 
             }
 
         };
+
+        const firstColor = document.querySelector('.color-swatch.active');
+
+        project.currentColor = firstColor.dataset.colorHex;
+
+        project.currentColorId = parseInt(firstColor.dataset.colorId);
 
         let loadingCanvas = false;
 
@@ -747,6 +888,10 @@
 
             if (loadingCanvas) return;
 
+            updateViewInfo();
+
+            actualizarResumen();
+
             project.views[project.currentView].json = canvas.toJSON(['customId']);
 
             project.views[project.currentView].preview = canvas.toDataURL({
@@ -754,7 +899,6 @@
                 multiplier: 2
             });
 
-            console.log("Guardado:", project.currentView);
         }
 
         
@@ -834,71 +978,634 @@
 
         }
 
+        function updateViewInfo() {
+
+            const view = project.views[project.currentView];
+
+            // Reiniciar información
+            view.images = [];
+            view.hasText = false;
+
+            canvas.getObjects().forEach(obj => {
+
+                // Ignorar el mockup
+                if (obj.excludeFromExport) return;
+
+                /*
+                |--------------------------------------------------------------------------
+                | IMÁGENES
+                |--------------------------------------------------------------------------
+                */
+                if (obj.type === 'image') {
+
+                    const percentage = getImagePercentage(obj);
+
+                    let size = '';
+
+                    if (
+                        project.currentView === 'manga_derecha' ||
+                        project.currentView === 'manga_izquierda'
+                    ) {
+
+                        size = percentage <= 35
+                            ? 'small'
+                            : 'large';
+
+                    } else {
+
+                        if (percentage <= 20) {
+
+                            size = 'small';
+
+                        } else if (percentage <= 50) {
+
+                            size = 'medium';
+
+                        } else {
+
+                            size = 'large';
+
+                        }
+
+                    }
+
+                    view.images.push({
+
+                        id: obj.customId,
+
+                        size: size
+
+                    });
+
+                }
+
+                /*
+                |--------------------------------------------------------------------------
+                | TEXTO
+                |--------------------------------------------------------------------------
+                */
+                if (obj.type === 'i-text') {
+
+                    view.hasText = true;
+
+                }
+
+            });
+
+            console.log(project.views[project.currentView]);
+
+        }
+
+        function calcularPrecioVista(viewName) {
+
+            const view = project.views[viewName];
+
+            const isSleeve =
+                viewName === 'manga_derecha' ||
+                viewName === 'manga_izquierda';
+
+            let subtotal = 0;
+
+            const detalle = [];
+
+            /*
+            |--------------------------------------------------------------------------
+            | IMÁGENES
+            |--------------------------------------------------------------------------
+            */
+
+            view.images.forEach(img => {
+
+                let precio = 0;
+
+                if (isSleeve) {
+
+                    precio = PRICE_RULES.sleeve[img.size];
+
+                } else {
+
+                    precio = PRICE_RULES.front_back[img.size];
+
+                }
+
+                subtotal += precio;
+
+                detalle.push({
+
+                    tipo: 'Imagen',
+
+                    tamaño: img.size,
+
+                    precio: precio
+
+                });
+
+            });
+
+            /*
+            |--------------------------------------------------------------------------
+            | TEXTO
+            |--------------------------------------------------------------------------
+            */
+
+            if (view.hasText) {
+
+                if (view.images.length > 0) {
+
+                    detalle.push({
+
+                        tipo: 'Texto',
+
+                        precio: 0,
+
+                        gratis: true
+
+                    });
+
+                } else {
+
+                    const precio = isSleeve
+                        ? PRICE_RULES.sleeve.text
+                        : PRICE_RULES.front_back.text;
+
+                    subtotal += precio;
+
+                    detalle.push({
+
+                        tipo: 'Texto',
+
+                        precio: precio,
+
+                        gratis: false
+
+                    });
+
+                }
+
+            }
+
+            return {
+
+                subtotal,
+
+                detalle
+
+            };
+
+        }
+
+        function getImagePrice(size, isSleeve){
+
+            if(isSleeve){
+
+                return PRICE_RULES.sleeve[size];
+
+            }
+
+            return PRICE_RULES.front_back[size];
+
+        }
+
+        function updatePriceBadge(){
+
+            const badge = document.getElementById('priceBadge');
+
+            const active = canvas.getActiveObject();
+
+            if(!active || active.type !== 'image'){
+
+                badge.classList.add('d-none');
+
+                return;
+
+            }
+
+            const percentage = getImagePercentage(active);
+
+            let size='';
+
+            let isSleeve =
+                project.currentView==='manga_derecha' ||
+                project.currentView==='manga_izquierda';
+
+            if(isSleeve){
+
+                size = percentage<=35
+                    ? 'small'
+                    : 'large';
+
+            }else{
+
+                if(percentage<=20){
+
+                    size='small';
+
+                }else if(percentage<=50){
+
+                    size='medium';
+
+                }else{
+
+                    size='large';
+
+                }
+
+            }
+
+            const names={
+
+                small:'Pequeña',
+
+                medium:'Mediana',
+
+                large:'Grande'
+
+            };
+
+            const price=getImagePrice(size,isSleeve);
+
+            badge.querySelector('.fw-bold').innerHTML=
+                '🖼 Imagen '+names[size];
+
+            badge.querySelector('small').innerHTML=
+                '+ S/'+price.toFixed(2);
+
+            badge.style.left=(active.left+active.getScaledWidth()+20)+'px';
+
+            badge.style.top=(active.top)+'px';
+
+            badge.classList.remove('d-none');
+
+        }
+
+        function calcularPrecioProyecto() {
+
+            const frontal = calcularPrecioVista('frontal');
+
+            const trasera = calcularPrecioVista('trasera');
+
+            const mangaDerecha = calcularPrecioVista('manga_derecha');
+
+            const mangaIzquierda = calcularPrecioVista('manga_izquierda');
+
+            const base = PRICE_RULES.garments[project.currentGarment];
+
+            return {
+
+                base,
+
+                frontal,
+
+                trasera,
+
+                manga_derecha: mangaDerecha,
+
+                manga_izquierda: mangaIzquierda,
+
+                total:
+                    base +
+                    frontal.subtotal +
+                    trasera.subtotal +
+                    mangaDerecha.subtotal +
+                    mangaIzquierda.subtotal
+
+            };
+
+        }
+
+        function prepararProyectoParaGuardar() {
+
+            const proyecto = {
+
+                garment: project.currentGarment,
+
+                color: project.currentColor,
+
+                views: {}
+
+            };
+
+            Object.keys(project.views).forEach(view => {
+
+                proyecto.views[view] = {
+
+                    json: project.views[view].json
+
+                };
+
+            });
+
+            return proyecto;
+
+        }
+
+        function validarProyecto() {
+
+            let tienePersonalizacion = false;
+
+            Object.values(project.views).forEach(view => {
+
+                if (view.images.length > 0 || view.hasText) {
+
+                    tienePersonalizacion = true;
+
+                }
+
+            });
+
+            if (!tienePersonalizacion) {
+
+                Swal.fire({
+                    icon:'warning',
+                    title:'Personalización incompleta',
+                    text:'Debe agregar al menos una imagen o un texto.'
+                });
+
+                return false;
+
+            }
+
+            if (!document.getElementById('size').value) {
+
+                Swal.fire({
+                    icon:'warning',
+                    title:'Talla no seleccionada',
+                    text:'Seleccione una talla.'
+                });
+
+                return false;
+
+            }
+
+            if (parseInt(document.getElementById('quantity').value) < 1) {
+
+                Swal.fire({
+                    icon:'warning',
+                    title:'Cantidad inválida',
+                    text:'Ingrese una cantidad válida.'
+                });
+
+                return false;
+
+            }
+
+            return true;
+
+        }
+
+        function obtenerDatosCarrito() {
+
+            return {
+
+                garment: project.currentGarment,
+
+                color_id: project.currentColorId,
+
+                size: document.getElementById('size').value,
+
+                quantity: parseInt(document.getElementById('quantity').value),
+
+                pricing: calcularPrecioProyecto(),
+
+                project: prepararProyectoParaGuardar()
+
+            };
+
+        }
+
+        function enviarCarrito() {
+
+            if (!validarProyecto()) {
+                return;
+            }
+
+            const datos = obtenerDatosCarrito();
+
+            fetch("{{ route('cart.addCustomized') }}", {
+
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type": "application/json",
+
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+
+                },
+
+                body: JSON.stringify(datos)
+
+            })
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                console.log(data);
+
+
+                if(data.success){
+
+                    Swal.fire({
+
+                        icon:'success',
+
+                        title:'Agregado al carrito',
+
+                        text:'Tu diseño personalizado fue agregado correctamente.',
+
+                        timer:1500,
+
+                        showConfirmButton:false
+
+                    });
+
+
+                    // actualizar contador carrito
+
+                    document.querySelectorAll('.cart-count')
+                        .forEach(el => {
+
+                            el.innerHTML = data.count;
+
+                        });
+
+
+                    // actualizar offcanvas carrito si existe
+
+                    if(document.getElementById('cartItems')){
+
+                        document.getElementById('cartItems').innerHTML =
+                            data.html;
+
+                    }
+
+
+                }
+
+
+            })
+
+            .catch(error=>{
+
+                console.error(error);
+
+                Swal.fire({
+
+                    icon:'error',
+
+                    title:'Error',
+
+                    text:'No se pudo agregar el diseño al carrito.'
+
+                });
+
+            });
+
+        }
+
+        function actualizarResumen() {
+
+            const resumen = calcularPrecioProyecto();
+
+            document.getElementById('summaryGarment').innerHTML =
+                project.currentGarment === 'polo'
+                    ? 'Polo'
+                    : 'Polera';
+
+            document.getElementById('summaryTotal').innerHTML =
+                'S/' + resumen.total.toFixed(2);
+
+            let html = '';
+
+            html += `
+                <div class="summary-item">
+                    <span>Precio base (${project.currentGarment === 'polo' ? 'Polo' : 'Polera'})</span>
+                    <span>S/${resumen.base.toFixed(2)}</span>
+                </div>
+            `;
+
+            const vistas = [
+
+                {
+                    nombre:'Frontal',
+                    data:resumen.frontal
+                },
+
+                {
+                    nombre:'Espalda',
+                    data:resumen.trasera
+                },
+
+                {
+                    nombre:'Manga Der.',
+                    data:resumen.manga_derecha
+                },
+
+                {
+                    nombre:'Manga Izq.',
+                    data:resumen.manga_izquierda
+                }
+
+            ];
+
+            vistas.forEach(v=>{
+
+                html += `
+                    <hr class="border-secondary border-opacity-25">
+                    <div class="fw-bold mb-2">${v.nombre}</div>
+                `;
+
+                if(v.data.detalle.length===0){
+
+                    html += `
+                        <div class="summary-item">
+                            <span class="text-muted">
+                                <i class="fa-regular fa-circle me-1"></i>
+                                Sin personalización
+                            </span>
+                            <span>S/0.00</span>
+                        </div>
+                    `;
+
+                }else{
+
+                    v.data.detalle.forEach(item=>{
+
+                        let descripcion='';
+
+                        if (item.tipo === 'Imagen') {
+
+                                const tamanos = {
+                                    small: 'Pequeña',
+                                medium: 'Mediana',
+                                large: 'Grande'
+                            };
+
+                            descripcion = `<i class="fa-regular fa-image me-1 text-info"></i> Imagen ${tamanos[item.tamaño]}`;
+
+                        } else {
+
+                            descripcion = `<i class="fa-solid fa-font me-1 text-warning"></i> Texto`;
+
+                        }
+
+                        html+=`
+                            <div class="summary-item">
+                                <span>${descripcion}</span>
+                                <span class="${
+                                    item.gratis
+                                        ? 'text-success fw-bold'
+                                        : 'fw-bold'
+                                }">
+                                    ${
+                                        item.gratis
+                                            ? 'Gratis'
+                                            : '+ S/' + item.precio.toFixed(2)
+                                    }
+                                </span>
+                            </div>
+                        `;
+
+                    });
+
+                    html += `
+                        <div class="summary-item border-top pt-2 mt-2">
+                            <span class="fw-bold">Subtotal</span>
+                            <span class="fw-bold text-info">
+                                S/${v.data.subtotal.toFixed(2)}
+                            </span>
+                        </div>
+                    `;
+
+                }
+
+            });
+
+            document.getElementById('summaryDetails').innerHTML=html;
+
+        }
+
+        function getImagePercentage(obj) {
+
+            const area = PRINT_AREAS[project.currentView];
+
+            const printableArea = area.width * area.height;
+
+            const imageArea =
+                obj.getScaledWidth() *
+                obj.getScaledHeight();
+
+            return (imageArea / printableArea) * 100;
+
+        }
+
         /*
         |--------------------------------------------------------------------------
         | CARGAR MOCKUP
         |--------------------------------------------------------------------------
         */
-
-        // function loadShirt(view) {
-
-        //     canvas.clear();
-
-        //     const imagePath = "{{ asset('images') }}/polo_base_" + view + ".png";
-
-        //     fabric.Image.fromURL(imagePath, function(img) {
-
-        //         img.set({
-        //             left: 0,
-        //             top: 0,
-        //             selectable: false,
-        //             evented: false,
-        //             excludeFromExport: true
-        //         });
-
-        //         img.scaleToWidth(500);
-
-        //         if (currentColor) {
-
-        //             img.filters = [
-        //                 new fabric.Image.filters.BlendColor({
-        //                     color: currentColor,
-        //                     mode: 'multiply',
-        //                     alpha: 1
-        //                 })
-        //             ];
-
-        //             img.applyFilters();
-        //         }
-
-        //         canvas.add(img);
-
-        //         // addThumbnail(img,file.name,event.target.result);
-
-        //         canvas.sendToBack(img);
-
-        //         currentShirt = img;
-
-        //         if (designs[view]) {
-
-        //             canvas.loadFromJSON(designs[view], () => {
-
-        //                 canvas.renderAll();
-
-        //                 canvas.sendToBack(currentShirt);
-
-        //             });
-
-        //         } else {
-
-        //             canvas.renderAll();
-
-        //         }
-
-        //     });
-
-        // }
-
+        
         function loadShirt() {
 
             loadingCanvas = true;
@@ -975,6 +1682,10 @@
 
                     renderGallery();
 
+                    updateViewInfo();
+
+                    actualizarResumen();
+
                     loadingCanvas = false;
 
                     saveCurrentDesign();
@@ -986,31 +1697,6 @@
         }
 
         loadShirt();
-
-        /*
-        |--------------------------------------------------------------------------
-        | CAMBIO VISTAS
-        |--------------------------------------------------------------------------
-        */
-
-        // document.querySelectorAll('.btn-view').forEach(btn => {
-
-        //     btn.addEventListener('click', function() {
-
-        //         document.querySelectorAll('.btn-view')
-        //             .forEach(b => b.classList.remove('active'));
-
-        //         this.classList.add('active');
-
-        //         designs[currentView] = canvas.toJSON();
-
-        //         currentView = this.dataset.view;
-
-        //         loadShirt(currentView);
-
-        //     });
-
-        // });
 
         document.querySelectorAll('.btn-view').forEach(btn=>{
 
@@ -1044,6 +1730,8 @@
 
                 loadShirt();
 
+                actualizarResumen();
+
             });
 
         });
@@ -1063,8 +1751,9 @@
 
                 this.classList.add('active');
 
-                project.currentColor = window.getComputedStyle(this)
-                    .backgroundColor;
+                project.currentColor = this.dataset.colorHex;
+
+                project.currentColorId = parseInt(this.dataset.colorId);
 
                 if (!project.mockup) return;
 
@@ -1081,6 +1770,45 @@
                 canvas.renderAll();
 
             });
+
+        });
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | CANTIDAD
+        |--------------------------------------------------------------------------
+        */
+
+        const quantityInput = document.getElementById('quantity');
+
+        document.getElementById('btnPlus').addEventListener('click', function () {
+
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+
+        });
+
+        document.getElementById('btnMinus').addEventListener('click', function () {
+
+            let cantidad = parseInt(quantityInput.value);
+
+            if (cantidad > 1) {
+
+                quantityInput.value = cantidad - 1;
+
+            }
+
+        });
+
+        quantityInput.addEventListener('input', function () {
+
+            let valor = parseInt(this.value);
+
+            if (isNaN(valor) || valor < 1) {
+
+                this.value = 1;
+
+            }
 
         });
 
@@ -1144,70 +1872,7 @@
             reader.readAsDataURL(file);
 
         });
-
-        // function addThumbnail(object, name, preview) {
-
-        //     const gallery = document.getElementById('designGallery');
-
-        //     const col = document.createElement('div');
-
-        //     col.className = 'col-3';
-
-        //     col.dataset.id = object.customId;
-
-        //     col.innerHTML = `
-        //         <div class="design-item">
-
-        //             <button class="remove-design">
-        //                 <i class="fa fa-times"></i>
-        //             </button>
-
-        //             <img src="${preview}">
-
-        //         </div>
-        //     `;
-
-        //     gallery.appendChild(col);
-
-        //     // Seleccionar objeto
-        //     col.querySelector('img').onclick = function () {
-
-        //         const obj = canvas.getObjects().find(o => o.customId === object.customId);
-
-        //         if (obj) {
-
-        //             canvas.setActiveObject(obj);
-
-        //             canvas.renderAll();
-
-        //         }
-
-        //     };
-
-        //     // Eliminar
-        //     col.querySelector('.remove-design').onclick = function (e) {
-
-        //         e.stopPropagation();
-
-        //         const obj = canvas.getObjects().find(o => o.customId === object.customId);
-
-        //         if (obj) {
-
-        //             canvas.remove(obj);
-
-        //             canvas.renderAll();
-
-        //         }
-
-        //         col.remove();
-
-        //         // Permite volver a subir el mismo archivo
-        //         inputFile.value = "";
-
-        //     };
-
-        // }
-
+        
         /*
         |--------------------------------------------------------------------------
         | TEXTO
@@ -1226,7 +1891,7 @@
                     left: 150,
                     top: 180,
                     fontSize: 32,
-                    fill: '#000'
+                    fill: document.getElementById('textColor').value
                 });
 
                 textbox.customId = crypto.randomUUID();
@@ -1248,66 +1913,6 @@
             }
 
         });
-
-        // function addTextThumbnail(object, text) {
-
-        //     const gallery = document.getElementById('designGallery');
-
-        //     const col = document.createElement('div');
-
-        //     col.className = 'col-3';
-
-        //     col.dataset.id = object.customId;
-
-        //     col.innerHTML = `
-        //         <div class="design-item bg-white border p-2 text-center">
-
-        //             <button class="remove-design">
-        //                 <i class="fa fa-times"></i>
-        //             </button>
-
-        //             <div class="small fw-bold">
-        //                 ${text}
-        //             </div>
-
-        //         </div>
-        //     `;
-
-        //     gallery.appendChild(col);
-
-        //     col.onclick = function () {
-
-        //         const obj = canvas.getObjects().find(o => o.customId === object.customId);
-
-        //         if (obj) {
-
-        //             canvas.setActiveObject(obj);
-
-        //             canvas.renderAll();
-
-        //         }
-
-        //     };
-
-        //     col.querySelector('.remove-design').onclick = function (e) {
-
-        //         e.stopPropagation();
-
-        //         const obj = canvas.getObjects().find(o => o.customId === object.customId);
-
-        //         if (obj) {
-
-        //             canvas.remove(obj);
-
-        //             canvas.renderAll();
-
-        //         }
-
-        //         col.remove();
-
-        //     };
-
-        // }
 
         /*
         |--------------------------------------------------------------------------
@@ -1344,6 +1949,39 @@
             }
 
         });
+
+        const colorPicker = document.getElementById('textColor');
+
+        colorPicker.addEventListener('input', function () {
+
+            const active = canvas.getActiveObject();
+
+            if (active && active.type === 'i-text') {
+
+                active.set('fill', this.value);
+
+                canvas.renderAll();
+
+                saveCurrentDesign();
+
+            }
+
+        });
+
+        canvas.on('selection:created', updateTextControls);
+        canvas.on('selection:updated', updateTextControls);
+
+        function updateTextControls() {
+
+            const active = canvas.getActiveObject();
+
+            if (active && active.type === 'i-text') {
+
+                document.getElementById('textColor').value = active.fill;
+
+            }
+
+        }
 
         /*
         |--------------------------------------------------------------------------
@@ -1401,6 +2039,9 @@
             }
 
         });
+
+        document.getElementById('btnAddCart')
+            .addEventListener('click', enviarCarrito);
 
     });
 </script>

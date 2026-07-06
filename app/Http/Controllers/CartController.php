@@ -8,6 +8,7 @@ use App\Models\ProductVariant;
 use App\Models\ShirtColor;
 use App\Models\Taxonomy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Cart;
 
 class CartController extends Controller
@@ -84,6 +85,73 @@ class CartController extends Controller
         }
     }
 
+    public function addCustomized(Request $request)
+    {
+        $request->validate([
+
+            'color_id' => 'required|exists:shirt_colors,id',
+
+            'size' => 'required',
+
+            'quantity' => 'required|integer|min:1',
+
+            'project' => 'required|array',
+
+            'pricing' => 'required|array'
+
+        ]);
+        $color = ShirtColor::findOrFail($request->color_id);
+        $cartId = (string) Str::uuid();
+
+        Cart::add([
+
+            'id' => $cartId,
+
+            'name' => $product->name,
+
+            'price' => $request->pricing['total'],
+
+            'quantity' => $request->quantity,
+
+            'attributes' => [
+
+                'customized' => true,
+
+                'product_id' => $product->id,
+
+                'color_id' => $color->id,
+
+                'color' => $color->hex_code,
+
+                'color_name' => $color->name,
+
+                'size' => $request->size,
+
+                'image' => $product->image,
+
+                'project' => $request->project,
+
+                'pricing' => $request->pricing
+
+            ]
+
+        ]);
+
+        return response()->json([
+
+            'success'=>true,
+
+            'count'=>Cart::getTotalQuantity(),
+
+            'subtotal'=>Cart::getSubTotal(),
+
+            'total'=>Cart::getTotal(),
+
+            'html'=>view('components.cart-items')->render()
+
+        ]);
+    }
+
     public function content()
     {
         return view('components.cart-items')->render();
@@ -112,18 +180,6 @@ class CartController extends Controller
         ]);
     }
 
-    // public function remove(Request $request)
-    // {
-    //     Cart::remove($request->id);
-
-    //     return response()->json([
-    //         'success' => true,
-    //         'count' => Cart::getTotalQuantity(),
-    //         'subtotal' => Cart::getSubTotal(),
-    //         'total' => Cart::getTotal(),
-    //         'html' => view('components.cart-items')->render()
-    //     ]);
-    // }
 
     public function update(Request $request)
     {
