@@ -359,4 +359,43 @@
     </div>
 </section> -->
 
+<script>
+    document.addEventListener("click", function(e){
+
+        const btn = e.target.closest(".remove-cart");
+
+        if(!btn) return;
+
+        const id = btn.dataset.id;
+
+        fetch("{{ route('cart.remove') }}",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json",
+                "X-CSRF-TOKEN":"{{ csrf_token() }}"
+            },
+
+            body:JSON.stringify({
+                id:id
+            })
+
+        })
+        .then(r=>r.json())
+        .then(data=>{
+
+            document.getElementById("cart-content").innerHTML = data.html;
+
+            const cartCount = document.getElementById("cart-count");
+
+            if(cartCount){
+                cartCount.textContent = data.count;
+            }
+
+        });
+
+    });
+</script>
+
 @endsection

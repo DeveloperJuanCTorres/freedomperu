@@ -473,40 +473,40 @@
 <script>
     document.addEventListener("click", function(e){
 
-            const btn = e.target.closest(".remove-cart");
+        const btn = e.target.closest(".remove-cart");
 
-            if(!btn) return;
+        if(!btn) return;
 
-            const id = btn.dataset.id;
+        const id = btn.dataset.id;
 
-            fetch("{{ route('cart.remove') }}",{
+        fetch("{{ route('cart.remove') }}",{
 
-                method:"POST",
+            method:"POST",
 
-                headers:{
-                    "Content-Type":"application/json",
-                    "X-CSRF-TOKEN":"{{ csrf_token() }}"
-                },
+            headers:{
+                "Content-Type":"application/json",
+                "X-CSRF-TOKEN":"{{ csrf_token() }}"
+            },
 
-                body:JSON.stringify({
-                    id:id
-                })
-
+            body:JSON.stringify({
+                id:id
             })
-            .then(r=>r.json())
-            .then(data=>{
 
-                document.getElementById("cart-content").innerHTML = data.html;
+        })
+        .then(r=>r.json())
+        .then(data=>{
 
-                const cartCount = document.getElementById("cart-count");
+            document.getElementById("cart-content").innerHTML = data.html;
 
-                if(cartCount){
-                    cartCount.textContent = data.count;
-                }
+            const cartCount = document.getElementById("cart-count");
 
-            });
+            if(cartCount){
+                cartCount.textContent = data.count;
+            }
 
         });
+
+    });
 </script>
 
 

@@ -84,6 +84,19 @@ CONTENIDO
 
                         </div>
 
+                        @if(Cart::getTotalQuantity() > 0)
+
+                        <button 
+                            id="clear-cart"
+                            class="btn btn-outline-danger btn-sm mb-3">
+
+                            <i class="fas fa-trash"></i>
+                            Vaciar carrito
+
+                        </button>
+
+                        @endif
+
                         <div id="cartItems">
 
                             @include('cart.partials.items')
@@ -116,5 +129,161 @@ CONTENIDO
     </div>
 
 </section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    function refreshCart(data)
+    {
+        document.getElementById('cartItems').innerHTML = data.cart;
+
+        document.getElementById('cartSummary').innerHTML = data.summary;
+
+
+        const cartCount = document.getElementById('cart-count');
+
+        if(cartCount){
+            cartCount.textContent = data.count;
+        }
+    }
+
+    document.addEventListener('click', function(e){
+
+        // Aumentar cantidad
+
+        const plus = e.target.closest('.quantity-plus');
+
+        if(plus){
+
+            let group = plus.closest('.quantity-group');
+
+            updateQuantity(
+                group.dataset.id,
+                1
+            );
+
+        }
+
+        // Disminuir cantidad
+
+        const minus = e.target.closest('.quantity-minus');
+
+        if(minus){
+
+            let group = minus.closest('.quantity-group');
+
+            updateQuantity(
+                group.dataset.id,
+                -1
+            );
+
+        }
+
+        // Eliminar producto
+
+        const remove = e.target.closest('.remove-cart');
+
+        if(remove){
+
+            fetch("{{ route('cart.remove') }}",{
+
+                method:"POST",
+
+                headers:{
+
+                    "Content-Type":"application/json",
+
+                    "X-CSRF-TOKEN":"{{ csrf_token() }}"
+
+                },
+
+                body:JSON.stringify({
+
+                    id:remove.dataset.id
+
+                })
+
+            })
+            .then(res=>res.json())
+            .then(data=>{
+
+                refreshCart(data);
+
+            });
+
+
+        }
+    });
+
+    function updateQuantity(id,action)
+    {
+
+        fetch("{{ route('cart.update') }}",{
+
+            method:"POST",
+
+            headers:{
+
+                "Content-Type":"application/json",
+
+                "X-CSRF-TOKEN":"{{ csrf_token() }}"
+
+            },
+
+            body:JSON.stringify({
+
+                id:id,
+
+                action:action
+
+            })
+
+        })
+        .then(res=>res.json())
+        .then(data=>{
+
+            refreshCart(data);
+
+        });
+    }
+
+    document.addEventListener('click', function(e){
+        const clear = e.target.closest('#clear-cart');
+
+        if(clear){
+
+            Swal.fire({
+
+                title: '¿Vaciar carrito?',
+                text: 'Se eliminarán todos los productos',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, vaciar',
+                cancelButtonText: 'Cancelar'
+
+            }).then((result)=>{
+
+                if(result.isConfirmed){
+
+                    fetch("{{ route('cart.clear') }}",{
+
+                        method:"POST",
+                        headers:{
+                            "Content-Type":"application/json",
+                            "X-CSRF-TOKEN":"{{ csrf_token() }}"
+                        }
+                    })
+                    .then(response=>response.json())
+                    .then(data=>{
+                        refreshCart(data);
+                    });
+                }
+            });
+        }
+    });
+
+</script>
 
 @endsection

@@ -59,14 +59,18 @@ Route::get('/cart/content',[CartController::class,'content'])->name('cart.conten
 
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 
+Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+
+Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+
 Route::prefix('carrito')->group(function () {
 
     Route::get('/', [CartController::class, 'index'])
         ->name('cart.index');
 
 
-    Route::delete('/vaciar', [CartController::class, 'clear'])
-        ->name('cart.clear');
+    // Route::delete('/vaciar', [CartController::class, 'clear'])
+    //     ->name('cart.clear');
 });
 
 

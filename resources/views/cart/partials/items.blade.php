@@ -48,10 +48,10 @@
                 <span
                     class="ms-2 rounded-circle border d-inline-block"
                     style="
-                                            width:18px;
-                                            height:18px;
-                                            background:{{ $item->attributes->color }};
-                                            vertical-align:middle;">
+                        width:18px;
+                        height:18px;
+                        background:{{ $item->attributes->color }};
+                        vertical-align:middle;">
                 </span>
 
             </div>
@@ -132,7 +132,7 @@
 <div class="text-center py-5">
 
     <img
-        src="{{ asset('images/empty-cart.svg') }}"
+        src="{{ asset('images/carrito_vacio.png') }}"
         style="max-width:220px"
         class="mb-4">
 

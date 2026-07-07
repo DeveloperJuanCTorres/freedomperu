@@ -171,7 +171,7 @@ class CartController extends Controller
 
             'total'=>number_format(Cart::getTotal(),2),
 
-            'offcanvas'=>view('components.cart-items')->render(),
+            'html'=>view('components.cart-items')->render(),
 
             'cart'=>view('cart.partials.items')->render(),
 
@@ -228,6 +228,25 @@ class CartController extends Controller
 
         ]);
 
+    }
+
+    public function clear()
+    {
+        Cart::clear();
+
+        return response()->json([
+
+            'success' => true,
+
+            'count' => 0,
+
+            'cart' => view('cart.partials.items')->render(),
+
+            'summary' => view('cart.partials.summary')->render(),
+
+            'offcanvas' => view('components.cart-items')->render()
+
+        ]);
     }
 
 }
