@@ -650,7 +650,7 @@
                 </div>
                 <button id="btnAddCart" class="btn btn-add-cart-1">
                     <i class="fa-solid fa-cart-plus me-2"></i>
-                    AGREGAR AL CARRITO
+                    PROCESAR PAGO
                 </button>
                 <p class="text-center small mt-4 opacity-50" style="font-size: 0.75rem;">
                     Entrega estimada: 5-7 días hábiles. Incluye certificado de autenticidad.
@@ -1241,14 +1241,20 @@
         function calcularPrecioProyecto() {
 
             const frontal = calcularPrecioVista('frontal');
-
             const trasera = calcularPrecioVista('trasera');
-
             const mangaDerecha = calcularPrecioVista('manga_derecha');
-
             const mangaIzquierda = calcularPrecioVista('manga_izquierda');
 
             const base = PRICE_RULES.garments[project.currentGarment];
+
+            const subtotalUnitario =
+                base +
+                frontal.subtotal +
+                trasera.subtotal +
+                mangaDerecha.subtotal +
+                mangaIzquierda.subtotal;
+
+            const cantidad = parseInt(document.getElementById('quantity').value) || 1;
 
             return {
 
@@ -1262,12 +1268,11 @@
 
                 manga_izquierda: mangaIzquierda,
 
-                total:
-                    base +
-                    frontal.subtotal +
-                    trasera.subtotal +
-                    mangaDerecha.subtotal +
-                    mangaIzquierda.subtotal
+                cantidad,
+
+                subtotalUnitario,
+
+                total: subtotalUnitario * cantidad
 
             };
 
@@ -1480,10 +1485,25 @@
 
             html += `
                 <div class="summary-item">
+                    <span>Cantidad</span>
+                    <span>${resumen.cantidad}</span>
+                </div>
+                `;
+
+                html += `
+                    <div class="summary-item">
+                        <span>Precio unitario</span>
+                        <span>S/${resumen.subtotalUnitario.toFixed(2)}</span>
+                    </div>
+                    `;
+
+            html += `
+                <div class="summary-item">
                     <span>Precio base (${project.currentGarment === 'polo' ? 'Polo' : 'Polera'})</span>
                     <span>S/${resumen.base.toFixed(2)}</span>
                 </div>
             `;
+            
 
             const vistas = [
 
@@ -1583,6 +1603,7 @@
             });
 
             document.getElementById('summaryDetails').innerHTML=html;
+            
 
         }
 
@@ -1786,6 +1807,8 @@
 
             quantityInput.value = parseInt(quantityInput.value) + 1;
 
+            actualizarResumen();
+
         });
 
         document.getElementById('btnMinus').addEventListener('click', function () {
@@ -1795,6 +1818,8 @@
             if (cantidad > 1) {
 
                 quantityInput.value = cantidad - 1;
+
+                actualizarResumen();
 
             }
 
@@ -1809,6 +1834,8 @@
                 this.value = 1;
 
             }
+
+            actualizarResumen();
 
         });
 
