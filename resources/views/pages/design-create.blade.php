@@ -652,6 +652,10 @@
                     <i class="fa-solid fa-cart-plus me-2"></i>
                     PROCESAR PAGO
                 </button>
+                <!-- <button id="btnAddCart" class="btn btn-add-cart-1">
+                    <i class="fa-solid fa-cart-plus me-2"></i>
+                    PROCESAR PAGO
+                </button> -->
                 <p class="text-center small mt-4 opacity-50" style="font-size: 0.75rem;">
                     Entrega estimada: 5-7 días hábiles. Incluye certificado de autenticidad.
                 </p>
@@ -2067,8 +2071,8 @@
 
         });
 
-        document.getElementById('btnAddCart')
-            .addEventListener('click', enviarCarrito);
+        // document.getElementById('btnAddCart')
+        //     .addEventListener('click', enviarCarrito);
 
     });
 </script>
