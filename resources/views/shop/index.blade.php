@@ -194,7 +194,7 @@ OFFCANVAS FILTERS
 
             const canvas = new fabric.Canvas(canvasElement.id, {
                 selection: false,
-                enableRetinaScaling: true
+                enableRetinaScaling: false
             });
 
             const shirtPath = canvasElement.dataset.shirt;
