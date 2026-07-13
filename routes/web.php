@@ -9,6 +9,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductionController;
 use App\Http\Controllers\DesignController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\CulqiController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +63,9 @@ Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remov
 Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
 
 Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+
+Route::post('/culqi/pagar', [CulqiController::class, 'pagar'])
+    ->name('culqi.pagar');
 
 Route::prefix('carrito')->group(function () {
 

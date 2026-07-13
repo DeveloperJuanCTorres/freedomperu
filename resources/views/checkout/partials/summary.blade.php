@@ -194,14 +194,25 @@
 
         </div>
 
-        <a
+        <button
+            type="button"
+            id="btnPagar"
+            class="btn btn-primary w-100">
+
+        <i class="fas fa-lock me-2"></i>
+
+        Pagar con Culqi
+
+        </button>
+
+        <!-- <a
             class="btn btn-primary w-100 py-3 rounded-pill fw-bold">
 
             <i class="fas fa-lock me-2"></i>
 
             Confirmar Pedido
 
-        </a>
+        </a> -->
 
         <div class="text-center mt-4">
 

@@ -78,11 +78,13 @@ CONTENIDO
 <section class="py-5">
 
     <div class="container">
-
+<!-- 
         <form
-            action="{{ route('orders.store') }}"
+            action=" route('orders.store') "
             method="POST"
-            id="checkoutForm">
+            id="checkoutForm"> -->
+
+        <form id="checkoutForm">
 
             @csrf
 
@@ -132,6 +134,16 @@ CONTENIDO
 @endsection
 
 @push('scripts')
+
+<script>
+
+    window.CULQI_PUBLIC_KEY = "{{ config('services.culqi.public_key') }}";
+
+</script>
+
+<script>
+    console.log('KEY:', "{{ config('services.culqi.public_key') }}");
+</script>
 
 <script src="{{ asset('js/checkout.js') }}"></script>
 
